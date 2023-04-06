@@ -5,6 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      xsm: '575px',
+      sm: '640px',
+      md: '768px',
+      xmd: '991px',
+      lg: '1024px',
+      xl: '1200px',
+    },
     extend: {
       colors: {
         'primary': '#AD54F2',
@@ -34,18 +42,23 @@ module.exports = {
 
         'link-main': '#1496F5',
 
-        'dark-blue':'#8a43c2'
+        'dark-blue': '#8a43c2'
       },
 
       fontFamily: {
         'open-sans': ['Open Sans', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
+      },
+      backgroundImage: {
+        'hero-bg-mob': "url('../public/images/herobgmob.png')",
+        'hero-bg': "url('../public/images/heroBigBg.png')",
+        'footer-texture': "url('/public/footer-texture.png')",
       }
 
     },
   },
 
-  
+
 
   plugins: [],
 }

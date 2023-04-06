@@ -13,6 +13,11 @@ body {
   overflow-x: hidden;
 }
 
+
+.sec_spacing{
+  @apply py-[50px] xmd:py-[100px];
+}
+
 .nav_down_arrow {
   @apply duration-300;
 }
@@ -26,13 +31,12 @@ body {
 
 }
 
-
 .container {
   @apply max-w-[1210px] w-full px-5 mx-auto;
 }
 
 .solid-btn {
-  @apply text-white bg-primary font-open-sans font-semibold text-lg py-3 px-[30px] hover:bg-dark-blue duration-300;
+  @apply text-white bg-primary font-open-sans px-4 py-[10px] hover:bg-dark-blue duration-300 lg:py-3 lg:px-[30px];
 }
 
 /* ======== HEADINGS ========*/
@@ -40,7 +44,7 @@ body {
 /* Hero Heading */
 /* OpenSans - 800 - #833 - 55px */
 .ex-large-heading {
-  @apply font-open-sans font-extrabold text-main-text text-[55px] leading-[70px];
+  @apply font-open-sans font-extrabold text-main-text text-[36px] leading-[43px] md:text-[55px] md:leading-[70px];
 }
 
 /* OpenSans - 700 - #FFF - 55px */
@@ -50,7 +54,7 @@ body {
 
 /* OpenSans - 700 - #833 - 28px */
 .main-heading {
-  @apply font-open-sans font-bold text-main-text text-[28px] leading-[36px];
+  @apply font-open-sans font-bold text-main-text text-[18px] leading-[25px] md:text-[28px] md:leading-[36px];
 }
 
 /* OpenSans - 600 - #046 */
