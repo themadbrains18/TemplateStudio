@@ -11,8 +11,8 @@ const Hero = () => {
   return (
     <>
       <section>
-        <div className='container pb-[50px]'>
-          <div className='md:grid grid-cols-2 gap-24 items-center'>
+        <div className='container'>
+          <div className='md:grid grid-cols-2 items-center  md:gap-20  lg:gap-24'>
             <div className='mb-[30px]'>
               <div className='relative w-[280px] mb-[10px]'>
                 <Image src={heroVector} width={190} height={32} alt="Image Error" className=''></Image>

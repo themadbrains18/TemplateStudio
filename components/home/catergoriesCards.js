@@ -1,30 +1,34 @@
 import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-
-import cardCategory from 'public/images/cardCategory.png'
+import Card from '../snippets/card'
 const CatergoriesCards = () => {
+    let data =[
+        {
+            "img":"cardCategory.png",
+            "caption":"Web & Landing Template",
+        },
+        {
+            "img":"cardCategory2.png",
+            "caption":"Mobile Apps",
+        },
+        {
+            "img":"cardCategory3.png",
+            "caption":"Shopify Themes",
+        },
+        {
+            "img":"cardCategory4.png",
+            "caption":"HTML Development",
+        }
+    ]
     return (
         <>
             <section className='sec_spacing'>
                 <div className='container pb-[50px]'>
-                    <div className='grid grid-cols-4 gap-[30px]'>
-                        <div className='p-[25px] text-center bg-[#FFF6FF]'>
-                            <Image src={cardCategory} width={220} height={148} alt="Image Error" className='mb-[10px]'></Image>
-                            <p className=' font-open-sans font-semibold text-light-text'>Web & Landing Template</p>
-                        </div>
-                        <div className='p-[25px] text-center bg-[#FFF6FF] max-w[270px] w-full'>
-                            <Image src={cardCategory} width={220} height={148} alt="Image Error" className='mb-[10px]'></Image>
-                            <p className=' font-open-sans font-semibold text-light-text'>Web & Landing Template</p>
-                        </div>
-                        <div className='p-[25px] text-center bg-[#FFF6FF]'>
-                            <Image src={cardCategory} width={220} height={148} alt="Image Error" className='mb-[10px]'></Image>
-                            <p className=' font-open-sans font-semibold text-light-text'>Web & Landing Template</p>
-                        </div>
-                        <div className='p-[25px] text-center bg-[#FFF6FF] max-w[270px] w-full'>
-                            <Image src={cardCategory} width={220} height={148} alt="Image Error" className='mb-[10px]'></Image>
-                            <p className=' font-open-sans font-semibold text-light-text'>Web & Landing Template</p>
-                        </div>
+                    <div className='grid grid-cols-2 md:grid-cols-4 place-items-center gap-[30px]'>
+                        {
+                            data.map((value, index)=>{
+                               return <Card items={value} />
+                            })
+                        }
                     </div>
                 </div>
             </section>

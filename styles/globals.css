@@ -18,6 +18,8 @@ body {
   @apply py-[50px] xmd:py-[100px];
 }
 
+
+
 .nav_down_arrow {
   @apply duration-300;
 }
@@ -39,12 +41,18 @@ body {
   @apply text-white bg-primary font-open-sans px-4 py-[10px] hover:bg-dark-blue duration-300 lg:py-3 lg:px-[30px];
 }
 
+.solid-white-btn {
+  @apply text-primary bg-white font-open-sans px-8 py-[18px] font-semibold hover:text-white hover:bg-primary duration-300 lg:py-3 lg:px-[30px];
+}
+
+
+
 /* ======== HEADINGS ========*/
 
 /* Hero Heading */
 /* OpenSans - 800 - #833 - 55px */
 .ex-large-heading {
-  @apply font-open-sans font-extrabold text-main-text text-[36px] leading-[43px] md:text-[55px] md:leading-[70px];
+  @apply font-open-sans font-extrabold text-main-text text-[36px] leading-[43px] md:text-[45px] md:leading-[55px] lg:text-[55px] lg:leading-[70px];
 }
 
 /* OpenSans - 700 - #FFF - 55px */
@@ -78,8 +86,9 @@ body {
   @apply font-open-sans font-bold text-main-text text-[18px] leading-[28px];
 }
 
+/* OpenSans - 600 - #775 -16px */
 .medium-info {
-  @apply font-open-sans font-semibold text-light-text text-[16px] leading-[24px];
+  @apply font-open-sans font-semibold text-light-text text-[12px] leading-[24px] md:text-[16px];
 }
 
 .small-info {
@@ -97,4 +106,19 @@ body {
 
 .info-14 {
   @apply font-open-sans font-normal text-light-text text-[14px];
+}
+
+.template_card:hover .overlay{
+  @apply opacity-40
+}
+
+.template_card:hover .overlay_text{
+  @apply opacity-100
+}
+
+.template_card:hover .template_num{
+  @apply opacity-100
+}
+.template_card:hover .template_bg{
+  @apply bg-opacity-10
 }
