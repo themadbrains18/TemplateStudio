@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Ui Templates",
+        "link": "",
+        "subMenu": [
+            {
+                "linkText": "Web Templates",
+                "linkUrl": "#",
+                "FeatureProducts":[
+                    {
+                        "productImg" :"",
+                        "productTitle":"",
+                        "platform":""
+                    }
+                ]
+            },
+            {
+                "linkText": "Mobile App",
+                "linkUrl": "#"
+            },
+            {
+                "linkText": "Dashboards",
+                "linkUrl": "#"
+            }
+        ]
+    },
+    {
+        "name": "Trade",
+        "link": "",
+        "subMenu": [
+            {
+                "linkText": "Quick Buy / Express",
+                "linkUrl": "#"
+            },
+            {
+                "linkText": "P2P Trading (0 Fee)",
+                "linkUrl": "#"
+            }
+        ]
+    },
+    {
+        "name": "Earn",
+        "link": "#"
+    },
+    {
+        "name": "About",
+        "link": "#"
+    },
+    {
+        "name": "Career",
+        "link": "#"
+    }
+]

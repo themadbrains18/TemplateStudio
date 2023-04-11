@@ -37,6 +37,10 @@ body {
   @apply max-w-[1210px] w-full px-5 mx-auto;
 }
 
+.big_container {
+  @apply max-w-[1560px] w-full px-5 mx-auto;
+}
+
 .solid-btn {
   @apply text-white bg-primary font-open-sans px-4 py-[10px] hover:bg-dark-blue duration-300 lg:py-3 lg:px-[30px];
 }
@@ -57,7 +61,7 @@ body {
 
 /* OpenSans - 700 - #FFF - 55px */
 .large-heading {
-  @apply font-open-sans font-bold text-white text-[55px] leading-[70px];
+  @apply font-open-sans font-bold text-white text-[36px] leading-[49px] md:text-[45px] md:leading-[56px] lg:text-[55px] lg:leading-[70px];
 }
 
 /* OpenSans - 700 - #833 - 28px */
@@ -90,9 +94,9 @@ body {
 .medium-info {
   @apply font-open-sans font-semibold text-light-text text-[12px] leading-[24px] md:text-[16px];
 }
-
+/* OpenSans - 400 - #775 -14px */
 .small-info {
-  @apply font-open-sans font-normal text-main-text text-[14px] leading-[20px];
+  @apply font-open-sans font-normal text-light-text text-[14px] leading-[20px];
 }
 
 
@@ -121,4 +125,7 @@ body {
 }
 .template_card:hover .template_bg{
   @apply bg-opacity-10
+}
+.menu_sidebar.active{
+  @apply left-0;
 }

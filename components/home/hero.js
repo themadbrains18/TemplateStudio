@@ -10,7 +10,7 @@ import heroImg from 'public/images/heroImg.png'
 const Hero = () => {
   return (
     <>
-      <section>
+      <section className='py-10 xl:py-0'>
         <div className='container'>
           <div className='md:grid grid-cols-2 items-center  md:gap-20  lg:gap-24'>
             <div className='mb-[30px]'>

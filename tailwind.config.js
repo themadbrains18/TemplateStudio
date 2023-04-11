@@ -53,6 +53,7 @@ module.exports = {
         'hero-bg-mob': "url('../public/images/herobgmob.png')",
         'hero-bg': "url('../public/images/heroBigBg.png')",
         'footer-texture': "url('/public/footer-texture.png')",
+        'pdp-banner': "url('../public/images/pdpBanner.png')",
       },
       boxShadow: {
         'btnShadow': '0px 8px 20px rgba(120, 84, 247, 0.06)',
