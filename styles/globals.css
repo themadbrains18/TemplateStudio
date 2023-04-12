@@ -14,7 +14,7 @@ body {
 }
 
 
-.sec_spacing{
+.sec_spacing {
   @apply py-[50px] xmd:py-[100px];
 }
 
@@ -61,7 +61,7 @@ body {
 
 /* OpenSans - 700 - #FFF - 55px */
 .large-heading {
-  @apply font-open-sans font-bold text-white text-[36px] leading-[49px] md:text-[45px] md:leading-[56px] lg:text-[55px] lg:leading-[70px];
+  @apply font-open-sans font-bold text-white text-[36px] leading-[49px] md:text-[40px] md:leading-[56px] lg:text-[55px] lg:leading-[70px];
 }
 
 /* OpenSans - 700 - #833 - 28px */
@@ -86,18 +86,26 @@ body {
   @apply font-inter font-medium text-main-text text-[16px] leading-[24px];
 }
 
+/* OpenSans - 400 - #775 - 18px */
 .large-info {
-  @apply font-open-sans font-bold text-main-text text-[18px] leading-[28px];
+  @apply font-open-sans font-normal text-light-text text-[18px] leading-[28px];
 }
 
-/* OpenSans - 600 - #775 -16px */
+/* OpenSans - 400 - #775 - 16px */
+.main-info {
+  @apply font-open-sans font-normal text-light-text text-[16px] leading-[24px];
+}
+
+/* OpenSans - 600 - #775 - 16px */
 .medium-info {
   @apply font-open-sans font-semibold text-light-text text-[12px] leading-[24px] md:text-[16px];
 }
-/* OpenSans - 400 - #775 -14px */
+
+/* OpenSans - 400 - #775 - 14px */
 .small-info {
-  @apply font-open-sans font-normal text-light-text text-[14px] leading-[20px];
+  @apply font-open-sans font-normal text-light-text text-[12px] leading-[20px] md:text-[14px] md:leading-[20px];
 }
+
 
 
 .footer-title {
@@ -112,20 +120,48 @@ body {
   @apply font-open-sans font-normal text-light-text text-[14px];
 }
 
-.template_card:hover .overlay{
+.template_card:hover .overlay {
   @apply opacity-40
 }
 
-.template_card:hover .overlay_text{
+.template_card:hover .overlay_text {
   @apply opacity-100
 }
 
-.template_card:hover .template_num{
+.template_card:hover .template_num {
   @apply opacity-100
 }
-.template_card:hover .template_bg{
+
+.template_card:hover .template_bg {
   @apply bg-opacity-10
 }
-.menu_sidebar.active{
+
+.menu_sidebar.active {
   @apply left-0;
 }
+
+.icon_btn:hover  {
+  @apply text-primary transition-all duration-300;
+}
+
+.icon_btn:hover svg {
+  @apply rotate-180 transition-all duration-300;
+}
+
+/* Filter CheckBoxes (Product page) */
+.checkbx{
+  @apply opacity-0 cursor-pointer h-5 w-5 z-10;
+}
+.checkmark {
+  @apply absolute top-0 right-0 h-5 w-5 bg-transparent border-[1px] border-light-text border-opacity-30 rounded-[3px];
+}
+.checkmark::after{
+  content:'' ;
+ @apply absolute h-[14px] w-[14px] top-2/4 right-2/4  translate-x-2/4 -translate-y-2/4;
+}
+.checkbx:checked ~ .checkmark {
+ @apply border-[1px] border-primary
+}
+.checkbx:checked ~ .checkmark::after {
+  @apply bg-primary;
+ }
