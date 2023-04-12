@@ -29,7 +29,7 @@ const TemplateCard = ({ items }) => {
                         <div className='flex items-center gap-2'>
                             <Image src={`/icons/${items.companyLogo}`} width={20} height={20} alt="Image Error" className=''></Image>
                             <div className='flex gap-[10px] items-center'>
-                                <p className='medium-heading text-[12px]'> <span className='font-open-sans text-[12px] text-light-text leading-5 font-normal'>By</span>{items.companyName}</p>
+                                <p className='medium-heading text-[12px]'> <span className='font-open-sans text-[12px] text-light-text leading-5 font-normal pr-1'>By</span>{items.companyName}</p>
                                 <span className='medium-heading text-[12px]'>{items.templateType}</span>
                             </div>
                         </div>

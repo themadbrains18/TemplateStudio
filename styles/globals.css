@@ -88,7 +88,7 @@ body {
 
 /* OpenSans - 400 - #775 - 18px */
 .large-info {
-  @apply font-open-sans font-normal text-light-text text-[18px] leading-[28px];
+  @apply font-open-sans font-normal text-light-text text-[16px] leading-[28px] md:text-[18px];
 }
 
 /* OpenSans - 400 - #775 - 16px */
@@ -140,13 +140,36 @@ body {
   @apply left-0;
 }
 
-.icon_btn:hover  {
+/* Icon Button (Sory By) (Product page) */
+/* .icon_btn:hover  {
   @apply text-primary transition-all duration-300;
 }
-
 .icon_btn:hover svg {
-  @apply rotate-180 transition-all duration-300;
+  @apply rotate-180 transition-all duration-300 ;
 }
+.icon_btn:hover svg path{
+  @apply fill-primary;
+}
+
+.icon_btn:hover ~ .sortby_dropdown{
+  @apply opacity-100 visible;
+}
+.sortby_dropdown:hover{
+  @apply opacity-100 visible;
+} */
+.sortby_btn:hover .icon_btn{
+  @apply text-primary transition-all duration-300;
+}
+.sortby_btn:hover .icon_btn svg{
+  @apply rotate-180 transition-all duration-300 ;
+}
+.sortby_btn:hover .icon_btn svg path{
+  @apply fill-primary;
+}
+.sortby_btn:hover .sortby_dropdown{
+  @apply opacity-100 visible;
+}
+
 
 /* Filter CheckBoxes (Product page) */
 .checkbx{
