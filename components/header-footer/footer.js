@@ -42,7 +42,7 @@ const Footer = () => {
               <li className='footer-info block mb-[26px]'><Link href="/"> Shopify </Link></li>
               <li className='footer-info block mb-[26px]'><Link href="/"> Bootstrap </Link></li>
             </ul>
-            <ul className='md:max-w-[370px] '>
+            <ul className='md:max-w-[370px] -mt-[60px] sm:mt-0'>
               <li className='footer-title mb-[15px]'>Join Our Newsletter</li>
               <li className='info-14 text-[14px] block mb-[20px]'>Sign Up Our Newsletter And Get Notified About Exclusive Freebies!</li>
               <li className='flex items-center'><input type='email' placeholder='Enter your email' className='border-[1px] border-primary pt-[6px] pb-2 px-[10px] outline-none lg:pt-[9px] lg:pb-[9px]' /><button className='solid-btn text-sm'>Submit</button></li>

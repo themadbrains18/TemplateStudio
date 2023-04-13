@@ -82,7 +82,7 @@ const Header = () => {
                         {/* Sidebar Header */}
                         <div className='py-5 px-[15px] flex justify-between items-center mb-[30px]'>
                             <Image src={menuLogo} width={193} height={28} alt="Down Arrow" className=''></Image>
-                            <button onClick={toggleSidebar}> <Image src={popupCloseBtn} width={16} height={16} alt="Popup Close Button" className=''></Image></button>
+                            <button onClick={toggleSidebar}> <Image src={popupCloseBtn} width={16} height={16} alt="Popup Close Button" className=''/></button>
                         </div>
                         {/* Sidebar Header End*/}
 

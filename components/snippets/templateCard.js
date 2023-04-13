@@ -6,7 +6,7 @@ import shareArrowIcon from 'public/icons/shareArrowIcon.svg'
 const TemplateCard = ({ items }) => {
     return (
         <>
-            <div className='template_card border-[1px] border-divider-main'>
+            <div className='template_card border-[1px] border-divider-main max-w-[370px] w-full'>
                 <div className='relative'>
                     <Image src={`/images/${items.templateImg}`} width={370} height={278} alt="Image Error" className=''></Image>
                     <div className="overlay absolute  bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed opacity-0 transition duration-500 ease-in-out">
@@ -25,7 +25,7 @@ const TemplateCard = ({ items }) => {
                         <p className='medium-info'>{items.caption}</p>
                         <Image src={`/icons/${items.designingToolIcon}`} width={24} height={24} alt="Image Error" className=''></Image>
                     </div>
-                    <div className='flex justify-between items-center mt-3'>
+                    <div className='flex justify-between mt-3 gap-2 flex-wrap items-start'>
                         <div className='flex items-center gap-2'>
                             <Image src={`/icons/${items.companyLogo}`} width={20} height={20} alt="Image Error" className=''></Image>
                             <div className='flex gap-[10px] items-center'>
