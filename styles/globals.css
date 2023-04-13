@@ -18,6 +18,9 @@ body {
   @apply py-[50px] xmd:py-[100px];
 }
 
+.sec_spacing-80 {
+  @apply py-[40px] xmd:py-[80px];
+}
 
 
 .nav_down_arrow {
@@ -46,7 +49,7 @@ body {
 }
 
 .solid-white-btn {
-  @apply text-primary bg-white font-open-sans px-8 py-[18px] font-semibold hover:text-white hover:bg-primary duration-300 lg:py-3 lg:px-[30px];
+  @apply text-primary bg-white font-open-sans px-8 py-[8px] font-semibold hover:text-white hover:bg-primary duration-300 lg:py-3 lg:px-[30px];
 }
 
 

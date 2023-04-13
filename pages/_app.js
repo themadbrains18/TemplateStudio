@@ -2,8 +2,18 @@ import Footer from '@/components/header-footer/footer'
 import Header from '@/components/header-footer/header'
 import '@/styles/globals.css'
 import Head from 'next/head'
+import { useEffect } from 'react'
 
 export default function App({ Component, pageProps }) {
+  useEffect(()=>{
+    if(window.location.pathname != '/'){
+        let container = document.querySelectorAll("header .container");
+        for(let i of container){
+          i.classList.replace("container","big_container");
+        }
+    }
+  },[])
+
   return (
     <>
       <Head>

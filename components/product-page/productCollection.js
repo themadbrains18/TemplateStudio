@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
-
 import filterIcon from 'public/icons/filterIcon.svg'
 import filterCrossBtn from 'public/icons/filter-cross.svg'
 import popupCloseBtn from 'public/icons/popupCloseBtn.svg'
@@ -138,7 +137,7 @@ const ProductCollection = () => {
         <>
             <section className=''>
                 <div className='big_container'>
-                    <div className='bg-white flex gap-[30px] pt-[45px] pb-[42px] flex-col md:flex-row'>
+                    <div className='bg-white flex py-5 gap-[30px] flex-col md:flex-row md:pt-[45px] md:pb-[42px] '>
                         <h3 className='font-open-sans font-semibold text-xl text-main-text max-w-[357px] w-full border-r-[2px]  border-divider-main'>Catagory Tags</h3>
                         <div className='flex gap-10 overflow-x-auto'>
                             <button className='large-info whitespace-nowrap'>All</button>
@@ -156,7 +155,7 @@ const ProductCollection = () => {
                 </div>
                 <div className='bg-back-white'>
                     <div className='big_container'>
-                        <div className='flex gap-[30px] pt-10 pb-20 relative'>
+                        <div className='flex gap-[30px] pt-10 pb-10 relative mb:pb-20'>
                             <div className={` max-w-[350px] w-full px-5 py-[30px] bg-white border-[1px] border-divider-main  xl:block ${filterPopUp ? "block absolute z-10 top-20 left-0" : "hidden"}`}>
                                 <div className='flex justify-between pb-[22px]  border-b-[1px] border-divider-main'>
                                     <div className='flex gap-[10px] '>
@@ -201,14 +200,14 @@ const ProductCollection = () => {
                                     </div>
                                 </div>
 
-                                <div className='grid grid-cols-1 gap-[25px] py-[30px] place-items-center md:grid-cols-2 xl:grid-cols-3'>
+                                <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
                                     {
                                         templateData.map((value, index) => {
                                             return <TemplateCard items={value} />
                                         })
                                     }
                                 </div>
-                                <div className='text-center mt-[30px]'>
+                                <div className='text-center mt-0 md:mt-[30px]'>
                                     <button className='solid-white-btn shadow-btnShadow text-center'>Load More Products</button>
                                 </div>
                             </div>
