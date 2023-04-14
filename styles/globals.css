@@ -45,7 +45,7 @@ body {
 }
 
 .solid-btn {
-  @apply text-white bg-primary font-open-sans px-4 py-[10px] hover:bg-dark-blue duration-300 lg:py-3 lg:px-[30px];
+  @apply text-white bg-primary font-open-sans font-semibold px-4 py-[10px] hover:bg-dark-blue duration-300 lg:py-3 lg:px-[30px];
 }
 
 .solid-white-btn {

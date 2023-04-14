@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
-
 import wtsNewIcon from 'public/icons/wtsNewIcon.svg'
 import Description from './PdpTabsContents.js/description'
 import TechnicalDetails from './PdpTabsContents.js/technicalDetails'
@@ -31,21 +30,21 @@ const NewPdpTabs = () => {
                         <button className={`medium-info px-5 pt-[6px] pb-[10px] bg-primary-800 ${tabContent === 5 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(5)}>About Author</button>
                     </div>
 
-                    {/* Description Tab Content Start */}
+                    {/* Description Tab Content Called here */}
                     <Description tabContent={tabContent}/>
 
 
-                    {/* Technical Details Tab Content Start */}
+                    {/* Technical Details Tab Content Called here */}
                     <TechnicalDetails tabContent={tabContent}/>
 
 
-                    {/* Credits Tab Content Start */}
+                    {/* Credits Tab Content Called here */}
                     <Credit tabContent={tabContent}/>
 
-                    {/* What's New Tab Content Start */}
+                    {/* What's New Tab Content Called here */}
                     <WhatsNew tabContent={tabContent}/>
 
-                    {/* About Author Tab Content Start */}
+                    {/* About Author Tab Content Called here */}
                     <AboutAuthor tabContent={tabContent}/>
                 </div>
             </section>
