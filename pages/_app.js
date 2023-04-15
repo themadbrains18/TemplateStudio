@@ -8,7 +8,11 @@ export default function App({ Component, pageProps }) {
   useEffect(()=>{
     if(window.location.pathname != '/'){
         let container = document.querySelectorAll("header .container");
+        let footerContainer = document.querySelectorAll("footer .container");
         for(let i of container){
+          i.classList.replace("container","big_container");
+        }
+        for(let i of footerContainer){
           i.classList.replace("container","big_container");
         }
     }

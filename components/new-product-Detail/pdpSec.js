@@ -6,6 +6,16 @@ import pdpImg3 from 'public/images/pdpImg3.png'
 import pdpArrowRight from 'public/icons/pdpArrowRight.svg'
 import figmaIcon30 from 'public/icons/figmaIcon30.svg'
 
+// import Swiper core and required modules
+import { Navigation,} from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+
 const PdpSec = () => {
     return (
         <>
@@ -19,22 +29,48 @@ const PdpSec = () => {
                         </div>
                     </div>
 
-                    <div className='grid grid-cols-1 gap-7 xmd:grid-cols-2 items-center'>
+                    <div className='grid grid-cols-1 gap-7 xmd:grid-cols-2'>
                         <div>
                             <div className='p-[10px] xmd:p-5 border-[1px] border-divider-main'>
-                                <Image src={pdpMainImage} width={834} height={490} alt="Icon" className='' />
+                                <Image src={pdpMainImage} width={834} height={490} alt="Icon" className='mx-auto' />
                             </div>
-                            <div className=' flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
+                            <div className='px-[50px]'>
+                                <Swiper
+                                    // install Swiper modules
+                                    modules={[Navigation]}
+                                    spaceBetween={20}
+                                    slidesPerView={6}
+                                    navigation
+                                
+                                    onSwiper={(swiper) => console.log(swiper)}
+                                    onSlideChange={() => console.log('slide change')}
+                                >
+                                <div className='flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
+                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>   
+                                </div>
+
+                                </Swiper>
+                            </div>     
+                            {/* <div className=' flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
                                 <div className='grid grid-cols-6 gap-3 overflow-x-auto'>
-                                    <Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' />
-                                    <Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' />
-                                    <Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' />
-                                    <Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' />
-                                    <Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' />
-                                    <Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' />
+                                   
                                 </div>
                                 <Image src={pdpArrowRight} width={15} height={11} alt="Icon" className='hidden xmd:block' />
-                            </div>
+                            </div> */}
+
+
+
                         </div>
                         <div className=''>
                             <div className='mb-5 xmd:mb-10 '>

@@ -5,7 +5,6 @@ import DropdownTemplateCard from '../snippets/dropdownTemplateCard'
 
 
 import logo from 'public/icons/Logo.svg'
-import downArrow from 'public/icons/down-arrow.svg'
 import searchIcon from 'public/icons/search-icon.svg'
 import menuBtn from 'public/icons/menu-btn.svg'
 import menuLogo from 'public/icons/menuLogo.svg'
@@ -43,24 +42,31 @@ const Header = () => {
                             <Image src={logo} width={193} height={28} alt="Header Logo" className='xmd:max-w-[276px] xmd:w-full xmd:h-10'></Image>
                         </Link>
                         <ul className='gap-8 hidden xmd:flex'>
-                            <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary duration-300 relative'>
-                                <span className='after:absolute after:h-[1px] after:w-[0px] after:bg-primary after:bottom-[-20%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] hover:after:w-[100%] after:duration-300'>Ui Templates</span>
-                                <Image src={downArrow} width={10} height={5} alt="Down Arrow" className='nav_down_arrow'></Image>
+                            <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
+                                <span className='after:absolute after:h-[1px] after:w-[0px] after:bg-primary after:bottom-[-20%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] hover:after:w-[100%] after:transition-all after:duration-300'>Ui Templates</span>
+                                <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
                             </li>
-                            <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary duration-300 relative'>
-                                <span className='after:absolute after:h-[1px] after:w-[0px] after:bg-primary after:bottom-[-20%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] hover:after:w-[100%] after:duration-300'>HTML Templates</span>
-                                <Image src={downArrow} width={10} height={5} alt="Down Arrow" className='nav_down_arrow'></Image>
+                            <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
+                                <span className='after:absolute after:h-[1px] after:w-[0px] after:bg-primary after:bottom-[-20%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] hover:after:w-[100%] after:transition-all after:duration-300'>HTML Templates</span>
+                                <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
                             </li>
-                            <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary duration-300 relative'>
-                                <span className='after:absolute after:h-[1px] after:w-[0px] after:bg-primary after:bottom-[-20%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] hover:after:w-[100%] after:duration-300'>Studio Spacial</span>
-                                <Image src={downArrow} width={10} height={5} alt="Down Arrow" className='nav_down_arrow'></Image>
+                            <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
+                                <span className='after:absolute after:h-[1px] after:w-[0px] after:bg-primary after:bottom-[-20%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] hover:after:w-[100%] after:transition-all after:duration-300'>Studio Spacial</span>
+                                <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
                             </li>
+
                         </ul>
                         <div className='flex items-center xmd:gap-7'>
-                            <div className={`relative duration-300 `}>
-                                <Image src={searchIcon} width={18} height={18} alt="Search Icon" className='cursor-pointer' onClick={()=>{setSearchBar(true)}} />
+                            <div className={`relative transition-300 `}>
+                                <Image src={searchIcon} width={18} height={18} alt="Search Icon" className='cursor-pointer' onClick={() => { setSearchBar(true) }} />
                                 {/* continue... */}
-                                <div className={`px-2 py-3  border-[1px] border-primary-400  absolute w-[380px] top-[50%]  translate-y-[-50%] bg-white duration-700 transition-all ${searchBar ? "left-[calc(100%-380px)] visible opacity-[1]":"left-[calc(100%+20px)] invisible opacity-0"}`}>
+                                <div className={`px-2 py-3  border-[1px] border-primary-400  absolute w-[380px] top-[50%]  translate-y-[-50%] bg-white duration-700 transition-all ${searchBar ? "left-[calc(100%-380px)] visible opacity-[1]" : "left-[calc(100%+20px)] invisible opacity-0"}`}>
                                     <div className='flex gap-[10px]'>
                                         <div className='flex gap-2 px-[15px] py-[5px] bg-primary-700'>
                                             <span className='small-info'>All Products</span> <Image src={downArrowSearch} width={10} height={5} alt="Down Arrow" className='nav_down_arrow'></Image>
@@ -68,7 +74,7 @@ const Header = () => {
                                         <span className='border-[1px] border-primary-400'></span>
                                         <div className='flex'>
                                             <input type='text' placeholder='Search all templates.... ' className='max-w-[200px] w-full pr-3 outline-none' />
-                                            <Image src={searchCloseIcon} width={20} height={20} alt="Searchclose button" className='cursor-pointer' onClick={()=>{setSearchBar(false)}} />
+                                            <Image src={searchCloseIcon} width={20} height={20} alt="Searchclose button" className='cursor-pointer' onClick={() => { setSearchBar(false) }} />
                                         </div>
                                     </div>
                                 </div>

@@ -36,6 +36,7 @@ module.exports = {
 
         'back-white': '#FAFAFA',
         'back-black': '#0D0C0D',
+        'icon-bg':'#FFF6FF',
 
         'divider-main': '#F2EEFE',
         'divider-light': '#EFEEF1',

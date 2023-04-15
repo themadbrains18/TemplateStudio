@@ -13,6 +13,7 @@ body {
   overflow-x: hidden;
 }
 
+/* COMMON CLASSES */
 
 .sec_spacing {
   @apply py-[50px] xmd:py-[100px];
@@ -22,26 +23,16 @@ body {
   @apply py-[40px] xmd:py-[80px];
 }
 
-
-.nav_down_arrow {
-  @apply duration-300;
-}
-
-.hoverNavArrow:hover .nav_down_arrow {
-  @apply rotate-[-180deg] duration-300;
-}
-
-.hoverNavArrow:hover .nav_down_arrow path {
-  @apply stroke-primary;
-
-}
-
 .container {
   @apply max-w-[1210px] w-full px-5 mx-auto;
 }
 
 .big_container {
   @apply max-w-[1560px] w-full px-5 mx-auto;
+}
+
+.transition-300{
+  @apply transition-all duration-300;
 }
 
 .solid-btn {
@@ -123,6 +114,32 @@ body {
   @apply font-open-sans font-normal text-light-text text-[14px];
 }
 
+
+
+
+/* Header */
+.nav_down_arrow {
+  @apply duration-300;
+}
+
+.hoverNavArrow:hover .nav_down_arrow {
+  transform: rotateX(180deg);
+  @apply transition-300;
+}
+
+.hoverNavArrow:hover .nav_down_arrow path {
+  @apply stroke-primary;
+}
+
+/* Category Card  */
+.category_card:hover .categoryCard_img{
+  @apply scale-[0.94];
+}
+.category_card:hover .categoryCard_title{
+  @apply text-main-text;
+}
+
+
  /* Template Card Overlay On Hover */
 .template_card:hover .overlay{
   @apply opacity-40
@@ -144,6 +161,15 @@ body {
 .menu_sidebar.active {
   @apply left-0;
 }
+
+/* Free Of Cost Section */
+.small_card:hover{
+  @apply bg-icon-bg;
+}
+.small_card:hover .small_card_icon{
+  @apply bg-white;
+}
+
 
 /* Icon Button (Sory By) (Product page) */
 /* .icon_btn:hover  {
@@ -198,3 +224,18 @@ body {
  .projectCard:hover .overlay{
   @apply opacity-40;
  } 
+
+ /* Swipper of PDP Modified  */
+ .swiper-horizontal{
+  @apply !overflow-visible;
+
+ }
+ .swiper-wrapper{
+  @apply !overflow-hidden;
+ }
+ .swiper-button-prev::after{
+  @apply hidden;
+ }
+ .swiper-button-next::after{
+  @apply !text-[30px]
+ }
