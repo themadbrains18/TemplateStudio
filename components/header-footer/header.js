@@ -30,7 +30,7 @@ const Header = () => {
 
     return (
         <>
-            <header className='py-[34px] border-b-[1px] border-divider-main '>
+            <header className='py-[34px] border-b-[1px] border-divider-main relative z-50'>
                 <div className='container'>
                     <nav className='flex items-center justify-between'>
                         {/* Toggle button Mob Start */}
@@ -83,11 +83,19 @@ const Header = () => {
                                                 <span className='small-info'>All Products</span>
                                                 <Image src={downArrowSearch} width={10} height={5} alt="Down Arrow" className='nav_down_arrow' />
                                             </div>
-                                            <ul className='py-[10px] bg-white max-w-[218px] w-full fixed'>
-                                                <li className='px-[30px]'>All Products</li> 
-                                                <li>Sports</li>
-                                            </ul>
+
                                         </div>
+                                        <ul className='py-[10px] absolute top-[50px] left-0 max-w-[218px] w-full bg-white  transition-300'>
+                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>All Products</li>
+                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Sports</li>
+                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Insurance</li>
+                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Education</li>
+                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Entertainment
+                                            </li>
+                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Real Estate</li>
+                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Retail</li>
+                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Technology</li>
+                                        </ul>
 
                                         <span className='border-[1px] border-primary-400'></span>
                                         <div className='flex'>

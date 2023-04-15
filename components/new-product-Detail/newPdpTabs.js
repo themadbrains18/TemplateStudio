@@ -16,6 +16,7 @@ const NewPdpTabs = () => {
     }
 
 
+    
     return (
         <>
             <section className='py-[40px] md:py-[80px]'>

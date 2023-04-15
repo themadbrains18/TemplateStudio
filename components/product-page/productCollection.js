@@ -11,6 +11,12 @@ import TemplateCard from '../snippets/templateCard'
 const ProductCollection = () => {
 
     const [filterPopUp, setFilterPopUp] = useState(false)
+    const [tab, setTab] = useState(1);
+
+    let updateTab = (id) => {
+        setTab(id)
+    }
+
     const filterData = [
         {
             'filterTitle': 'Price Range',
@@ -140,16 +146,17 @@ const ProductCollection = () => {
                     <div className='bg-white flex py-5 gap-[30px] flex-col md:flex-row md:pt-[45px] md:pb-[42px] '>
                         <h3 className='font-open-sans font-semibold text-xl text-main-text max-w-[357px] w-full border-r-[2px]  border-divider-main'>Catagory Tags</h3>
                         <div className='flex gap-10 overflow-x-auto'>
-                            <button className='large-info whitespace-nowrap'>All</button>
-                            <button className='large-info whitespace-nowrap'>HTML</button>
-                            <button className='large-info whitespace-nowrap'>React</button>
-                            <button className='large-info whitespace-nowrap'>Wordpress</button>
-                            <button className='large-info whitespace-nowrap'>Shopify</button>
-                            <button className='large-info whitespace-nowrap'>Bootstrap</button>
-                            <button className='large-info whitespace-nowrap'>CSS</button>
-                            <button className='large-info whitespace-nowrap'>Sketch</button>
-                            <button className='large-info whitespace-nowrap'>Adobe XD</button>
-                            <button className='large-info whitespace-nowrap'>Figma</button>
+                            <button className={`large-info whitespace-nowrap  ${tab === 1 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(1)}>All</button>
+                            <button className={`large-info whitespace-nowrap  ${tab === 2 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(2)}>HTML</button>
+                            <button className={`large-info whitespace-nowrap  ${tab === 3 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(3)}>React</button>
+                            <button className={`large-info whitespace-nowrap  ${tab === 4 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(4)}>Wordpress</button>
+                            <button className={`large-info whitespace-nowrap  ${tab === 5 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(5)}>Shopify</button>
+                            <button className={`large-info whitespace-nowrap  ${tab === 6 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(6)}>Bootstrap</button>
+                            <button className={`large-info whitespace-nowrap  ${tab === 7 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(7)}>CSS</button>
+                            <button className={`large-info whitespace-nowrap  ${tab === 8 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(8)}>Sketch</button>
+                            <button className={`large-info whitespace-nowrap  ${tab === 9 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(9)}>Adobe XD</button>
+                            <button className={`large-info whitespace-nowrap  ${tab === 10 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(10)}>Figma</button>
+                          
                         </div>
                     </div>
                 </div>

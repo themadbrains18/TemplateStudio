@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import logoFooter from 'public/icons/logo-footer.svg'
-
 import mediaIcon1 from 'public/icons/mediaIcon1.svg'
 import linkedIn from 'public/icons/linkedIn.svg'
 import twitter from 'public/icons/twitter.svg'
@@ -11,6 +10,7 @@ import behance from 'public/icons/behance.svg'
 import instagram from 'public/icons/instagram.svg'
 
 const Footer = () => {
+ 
   return (
     <footer className='pt-[80px] pb-10'>
       <div className='container'>

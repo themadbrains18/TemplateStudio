@@ -15,7 +15,7 @@ const FilterCheckBox = (props) => {
                     return (
                         <div key={index} className='flex justify-between mb-[15px] relative'>
                             <p className='main-info'>{item}</p>
-                                <input type='checkbox' className='checkbx' />
+                                <input type='checkbox' className='checkbx'/>
                                 <span className='checkmark'></span>
                         </div>
                     )
