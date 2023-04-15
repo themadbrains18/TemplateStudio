@@ -30,17 +30,17 @@ const Footer = () => {
           <div className='flex gap-[68px] flex-wrap sm:flex-nowrap md:gap-10 md:justify-between xmd:gap-[68px]'>
             <ul>
               <li className='footer-title mb-10'>Design</li>
-              <li className='footer-info block mb-[26px]'><Link href="/"> Sketch </Link></li>
-              <li className='footer-info block mb-[26px]'><Link href="/"> Adobe XD </Link></li>
-              <li className='footer-info block mb-[26px]'><Link href="/"> Figma </Link></li>
+              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Sketch"><span>Sketch</span> </Link></li>
+              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Adobe XD"><span> Adobe XD</span> </Link></li>
+              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Figma"><span>Figma</span> </Link></li>
             </ul>
             <ul>
               <li className='footer-title mb-10'>Coded </li>
-              <li className='footer-info block mb-[26px]'><Link href="/"> HTML </Link></li>
-              <li className='footer-info block mb-[26px]'><Link href="/"> React</Link></li>
-              <li className='footer-info block mb-[26px]'><Link href="/"> Wordpress </Link></li>
-              <li className='footer-info block mb-[26px]'><Link href="/"> Shopify </Link></li>
-              <li className='footer-info block mb-[26px]'><Link href="/"> Bootstrap </Link></li>
+              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="HTML"><span>HTML</span> </Link></li>
+              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="React"><span> React</span> </Link></li>
+              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Wordpress"><span>Wordpress</span> </Link></li>
+              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Shopify"><span>Shopify</span> </Link></li>
+              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Bootstrap"><span>Bootstrap</span> </Link></li>
             </ul>
             <ul className='md:max-w-[370px] -mt-[60px] sm:mt-0'>
               <li className='footer-title mb-[15px]'>Join Our Newsletter</li>
@@ -52,9 +52,9 @@ const Footer = () => {
         <div className='hidden justify-between pt-[30px]  md:flex'>
           <p className='footer-info'> Template Studio | © 2022 All Rights Reserved</p>
           <div className='flex gap-[30px]'>
-            <Link href='' className='footer-info'>Licensing </Link>
-            <Link href='' className='footer-info'>Terms & Conditions </Link>
-            <Link href='' className='footer-info'>Privacy & Policy </Link>
+            <Link href="/" className='footer-info  pseudo-text-effect' data-after="Licensing"><span>Licensing</span> </Link>
+            <Link href="/" className='footer-info  pseudo-text-effect' data-after="Terms & Conditions "><span>Terms & Conditions </span> </Link>
+            <Link href="/" className='footer-info  pseudo-text-effect' data-after="Privacy & Policy"><span>Privacy & Policy </span> </Link>
           </div>
         </div>
       </div>

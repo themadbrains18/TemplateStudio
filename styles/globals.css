@@ -118,6 +118,10 @@ body {
 
 
 /* Header */
+
+.hoverNavArrow{
+  @apply after:absolute after:h-[1px] after:w-[0px] after:bg-primary after:bottom-[0%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] hover:after:w-[100%] after:transition-all after:duration-300;
+}
 .nav_down_arrow {
   @apply duration-300;
 }
@@ -239,3 +243,23 @@ body {
  .swiper-button-next::after{
   @apply !text-[30px]
  }
+
+/* Footer Links Hover Effects */
+ .pseudo-text-effect {
+  @apply relative p-0 overflow-hidden transition-all duration-500 block;
+}
+.pseudo-text-effect::after {
+  content: attr(data-after);
+  transform: translateY(100%);
+  @apply inline-block  absolute left-0 transition-all duration-500;
+}
+.pseudo-text-effect > span {
+  transform: translateY(0%);
+  @apply inline-block transition-all duration-500;
+}
+.pseudo-text-effect:hover > span {
+  transform: translateY(-100%);
+}
+.pseudo-text-effect:hover::after {
+  transform: translateY(0%);
+}

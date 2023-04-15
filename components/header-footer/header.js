@@ -27,50 +27,68 @@ const Header = () => {
         sideBar === true ? setSideBar(false) : setSideBar(true);
     }
 
-    // const setsearchBar = () =>{
-    //     searchBar === true ? setSearchBar(false) : setSearchBar(true);
-    // }
+
     return (
         <>
             <header className='py-[34px] border-b-[1px] border-divider-main '>
                 <div className='container'>
                     <nav className='flex items-center justify-between'>
+                        {/* Toggle button Mob Start */}
                         <button className='xmd:hidden' onClick={toggleSidebar}>
                             <Image src={menuBtn} width={24} height={24} alt="Menu Button"></Image>
                         </button>
-                        <Link href="/" className=''>
-                            <Image src={logo} width={193} height={28} alt="Header Logo" className='xmd:max-w-[276px] xmd:w-full xmd:h-10'></Image>
-                        </Link>
-                        <ul className='gap-8 hidden xmd:flex'>
-                            <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
-                                <span className='after:absolute after:h-[1px] after:w-[0px] after:bg-primary after:bottom-[-20%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] hover:after:w-[100%] after:transition-all after:duration-300'>Ui Templates</span>
-                                <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
-                                </svg>
-                            </li>
-                            <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
-                                <span className='after:absolute after:h-[1px] after:w-[0px] after:bg-primary after:bottom-[-20%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] hover:after:w-[100%] after:transition-all after:duration-300'>HTML Templates</span>
-                                <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
-                                </svg>
-                            </li>
-                            <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
-                                <span className='after:absolute after:h-[1px] after:w-[0px] after:bg-primary after:bottom-[-20%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] hover:after:w-[100%] after:transition-all after:duration-300'>Studio Spacial</span>
-                                <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
-                                </svg>
-                            </li>
+                        {/* Toggle button Mob End */}
 
-                        </ul>
+
+                        <div className='header_left flex gap-[65px]'>
+                            {/* Header logo Start*/}
+                            <Link href="/" className=''>
+                                <Image src={logo} width={193} height={28} alt="Header Logo" className='xmd:max-w-[276px] xmd:w-full xmd:h-10'></Image>
+                            </Link>
+                            {/* Header logo End */}
+
+
+                            {/* Nav Start */}
+                            <ul className='gap-8 hidden xmd:flex'>
+                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
+                                    <span className=''>Ui Templates</span>
+                                    <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
+                                    </svg>
+                                </li>
+                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
+                                    <span className=''>HTML Templates</span>
+                                    <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
+                                    </svg>
+                                </li>
+                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
+                                    <span className=''>Studio Spacial</span>
+                                    <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
+                                    </svg>
+                                </li>
+                            </ul>
+                            {/* Nav End */}
+                        </div>
                         <div className='flex items-center xmd:gap-7'>
+                            {/* Search Bar Start*/}
                             <div className={`relative transition-300 `}>
                                 <Image src={searchIcon} width={18} height={18} alt="Search Icon" className='cursor-pointer' onClick={() => { setSearchBar(true) }} />
-                                {/* continue... */}
+
                                 <div className={`px-2 py-3  border-[1px] border-primary-400  absolute w-[380px] top-[50%]  translate-y-[-50%] bg-white duration-700 transition-all ${searchBar ? "left-[calc(100%-380px)] visible opacity-[1]" : "left-[calc(100%+20px)] invisible opacity-0"}`}>
                                     <div className='flex gap-[10px]'>
-                                        <div className='flex gap-2 px-[15px] py-[5px] bg-primary-700'>
-                                            <span className='small-info'>All Products</span> <Image src={downArrowSearch} width={10} height={5} alt="Down Arrow" className='nav_down_arrow'></Image>
+                                        <div>
+                                            <div className='flex gap-2 px-[15px] py-[5px] bg-primary-700'>
+                                                <span className='small-info'>All Products</span>
+                                                <Image src={downArrowSearch} width={10} height={5} alt="Down Arrow" className='nav_down_arrow' />
+                                            </div>
+                                            <ul className='py-[10px] bg-white max-w-[218px] w-full fixed'>
+                                                <li className='px-[30px]'>All Products</li> 
+                                                <li>Sports</li>
+                                            </ul>
                                         </div>
+
                                         <span className='border-[1px] border-primary-400'></span>
                                         <div className='flex'>
                                             <input type='text' placeholder='Search all templates.... ' className='max-w-[200px] w-full pr-3 outline-none' />
@@ -79,7 +97,11 @@ const Header = () => {
                                     </div>
                                 </div>
                             </div>
+                            {/* Search Bar End*/}
+
+                            {/* Sign Up Button Start*/}
                             <button className='solid-btn text-lg font-semibold hidden xmd:block'>Sign Up</button>
+                            {/* Sign Up Button End*/}
                         </div>
                     </nav>
 

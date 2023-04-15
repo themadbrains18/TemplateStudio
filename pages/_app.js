@@ -5,18 +5,17 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 
 export default function App({ Component, pageProps }) {
-  useEffect(()=>{
-    if(window.location.pathname != '/'){
-        let container = document.querySelectorAll("header .container");
-        let footerContainer = document.querySelectorAll("footer .container");
-        for(let i of container){
-          i.classList.replace("container","big_container");
-        }
-        for(let i of footerContainer){
-          i.classList.replace("container","big_container");
-        }
+
+  // replacing the class container to big_container bcz of all pages contains big container excepct landing page.
+  useEffect(() => {
+    if (window.location.pathname != '/') {
+      let container = document.querySelector("header .container");
+      let footerContainer = document.querySelector("footer .container");
+      [container, footerContainer].forEach((elem) => {
+        elem?.classList.replace("container", "big_container");
+      })
     }
-  },[])
+  }, [])
 
   return (
     <>
