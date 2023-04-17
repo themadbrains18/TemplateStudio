@@ -266,3 +266,22 @@ body {
 .pseudo-text-effect:hover::after {
   transform: translateY(0%);
 }
+
+
+/* Filter CheckBoxes (Product page) */
+.pdpCheckbox{
+  @apply opacity-0 cursor-pointer h-5 w-5 z-10;
+}
+.pdpCheckmark {
+  @apply absolute top-0 left-0 h-5 w-5 bg-transparent border-[1px] border-light-text border-opacity-30 rounded-[3px];
+}
+.pdpCheckmark::after{
+  content:'' ;
+ @apply absolute h-[14px] w-[14px] top-2/4 right-2/4  translate-x-2/4 -translate-y-2/4;
+}
+.pdpCheckbox:checked ~ .pdpCheckmark {
+ @apply border-[1px] border-primary
+}
+.pdpCheckbox:checked ~ .chepdpCheckmarkckmark::after {
+  @apply bg-primary;
+ }

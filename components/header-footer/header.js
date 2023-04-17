@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import DropdownTemplateCard from '../snippets/dropdownTemplateCard'
-import ProjectCard from '../snippets/projectCard'
 
 
 import logo from 'public/icons/Logo.svg'
@@ -16,6 +15,7 @@ import sideArrow from 'public/icons/sideArrow.svg'
 import upArrowPopup from 'public/icons/upArrowPopup.svg'
 import downArrowSearch from 'public/icons/downArrowSearch.svg'
 import searchCloseIcon from 'public/icons/searchCloseIcon.svg'
+import NavDropdown from '../snippets/navDropdown'
 
 
 
@@ -24,6 +24,7 @@ const Header = () => {
     const [sideBar, setSideBar] = useState(false);
     const [searchBar, setSearchBar] = useState(false);
     const [toggle, setToggle] = useState(false);
+    const [isShown, setIsShown] = useState(false);
 
     const toggleSidebar = () => {
         sideBar === true ? setSideBar(false) : setSideBar(true);
@@ -38,29 +39,7 @@ const Header = () => {
     }
 
 
-    const ProductData = [
-        {
-            "projectImage": "projectImg4.png",
-            "projectCaption": "Room Sharing - UI Kit Te...",
-            "projectPlatform": "Figma.svg",
-        },
-        {
-            "projectImage": "projectImg4.png",
-            "projectCaption": "Room Sharing - UI Kit Te...",
-            "projectPlatform": "Figma.svg",
-        },
-        {
-            "projectImage": "projectImg4.png",
-            "projectCaption": "Room Sharing - UI Kit Te...",
-            "projectPlatform": "Figma.svg",
-        },
-        {
-            "projectImage": "projectImg4.png",
-            "projectCaption": "Room Sharing - UI Kit Te...",
-            "projectPlatform": "Figma.svg",
-        },
 
-    ]
 
     return (
         <>
@@ -81,53 +60,29 @@ const Header = () => {
                             </Link>
                             {/* Header logo End */}
 
-
                             {/* Nav Start */}
                             <ul className='gap-8 hidden xmd:flex'>
-                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
+                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative' onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
                                     <span className=''>Ui Templates</span>
                                     <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
+                                        <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" strokeWidth="1.5" strokeLinecap="round" />
                                     </svg>
                                 </li>
-
-                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
+                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative' onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
                                     <span className=''>HTML Templates</span>
                                     <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
+                                        <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" strokeWidth="1.5" strokeLinecap="round" />
                                     </svg>
                                 </li>
-                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative'>
+                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative' onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
                                     <span className=''>Studio Spacial</span>
                                     <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" stroke-width="1.5" stroke-linecap="round" />
+                                        <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" strokeWidth="1.5" strokeLinecap="round" />
                                     </svg>
                                 </li>
                             </ul>
-                            {/* First Nav Item Dropdown */}
-                            <div className='p-10 bg-white shadow-btnShadow-Dropdown absolute top-[121px] left-[33%]'>
-                                <div className='flex gap-5 items-center overflow-x-auto pb-[30px] border-bottom'>
-                                    <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap{} ${tabContent === 1 ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(1)}>Web Templates</button>
-                                    <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap{} ${tabContent === 2 ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(2)}>Mobile App</button>
-                                    <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap{} ${tabContent === 3 ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(3)}>Dashboards</button>
-                                    <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap{} ${tabContent === 4 ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(4)}>Landing Page Templates</button>
-                                    <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap{} ${tabContent === 5 ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(5)}>Web Templates</button>
-                                </div>
-                                <div className=''>
-                                    <div className='flex justify-between'>
-                                        <h2 className='main-heading !text-[18px] mt-[30px] mb-[20px] pl-[6px] border-l-2 rounded-sm text-red-50'>Feature Product</h2>
-                                        <button className='flex gap-2 items-center'>
-                                            <p className='medium-info !text-primary'>View All Products </p> <Image src={sideArrow} width={9} height={5} alt="Side Arrow" className=''></Image></button>
-                                    </div>
-                                    <div className='grid grid-cols-4 gap-5'>
-                                        {
-                                            ProductData.map((value, index) => {
-                                                return <ProjectCard items={value} />
-                                            })
-                                        }
-                                    </div>
-                                </div>
-                            </div>
+
+
                             {/* Nav End */}
                         </div>
                         <div className='flex items-center xmd:gap-7'>
@@ -154,7 +109,6 @@ const Header = () => {
                                             <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Retail</li>
                                             <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Technology</li>
                                         </ul>
-
                                         <span className='border-[1px] border-primary-400'></span>
                                         <div className='flex'>
                                             <input type='text' placeholder='Search all templates.... ' className='max-w-[200px] w-full pr-3 outline-none' />
@@ -170,6 +124,24 @@ const Header = () => {
                             {/* Sign Up Button End*/}
                         </div>
                     </nav>
+                    {/* Dropdown OF First Nav Item*/}
+                     <div className={`transition-300 hover:opacity-100 hover:visible  ${isShown === true ?'visible opacity-1' : 'opacity-0 invisible'}`}>
+                        <NavDropdown tabContent={tabContent} updateTabs={updateTabs} />
+                    </div>
+                    {/* Dropdown OF First Nav Item End*/}
+
+                    {/* Dropdown OF Second Nav Item Start*/}
+                     <div className={`transition-300 hover:opacity-100 hover:visible  ${isShown === true ?'visible opacity-1' : 'opacity-0 invisible'}`}>
+                        <NavDropdown tabContent={tabContent} updateTabs={updateTabs} />
+                    </div>
+                    {/* Dropdown OF Second Nav Item End*/}
+
+                    {/* Dropdown OF Third Nav Item Start*/}
+                     <div className={`transition-300 hover:opacity-100 hover:visible  ${isShown === true ?'visible opacity-1' : 'opacity-0 invisible'}`}>
+                        <NavDropdown tabContent={tabContent} updateTabs={updateTabs} />
+                    </div>
+                    {/* Dropdown OF Third Nav Item End*/}
+
 
                     {/*Header Menu SideBar*/}
                     <div className={`menu_sidebar max-w-[375px] w-full bg-white fixed top-0 -left-full transition-all duration-700 border-[1px] border-divider-main z-50 ${sideBar == true ? 'active' : ''}`}>

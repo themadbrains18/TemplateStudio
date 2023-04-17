@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import Image from 'next/image'
 
 import filterIcon from 'public/icons/filterIcon.svg'
@@ -210,7 +210,11 @@ const ProductCollection = () => {
                                 <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
                                     {
                                         templateData.map((value, index) => {
-                                            return <TemplateCard items={value} />
+                                            return(
+                                                <Fragment key={index}>
+                                                <TemplateCard items={value} />
+                                                </Fragment>
+                                            ) 
                                         })
                                     }
                                 </div>

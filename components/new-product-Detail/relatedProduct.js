@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import TemplateCard from '../snippets/templateCard'
 
 const RelatedProduct = () => {
@@ -45,7 +45,11 @@ const RelatedProduct = () => {
                     <div className='grid grid-cols-1 gap-[20px]  place-items-center  sm:grid-cols-2 md:gap-[30px]  lg:grid-cols-4'>
                         {
                             templateData.map((value, index) => {
-                                return <TemplateCard items={value} />
+                                return (
+                                    <Fragment key={index}>
+                                        <TemplateCard items={value} />
+                                    </Fragment>
+                                )
                             })
                         }
                     </div>

@@ -69,8 +69,6 @@ const PdpSec = () => {
                                 <Image src={pdpArrowRight} width={15} height={11} alt="Icon" className='hidden xmd:block' />
                             </div> */}
 
-
-
                         </div>
                         <div className=''>
                             <div className='mb-5 xmd:mb-10 '>
@@ -79,8 +77,8 @@ const PdpSec = () => {
                             </div>
                             <div>
                                 <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>
-                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center'>
-                                        <input type='checkbox' id='figmaDesign'></input>
+                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative'>
+                                        <input type='checkbox' id='figmaDesign' ></input>
                                         <label htmlFor='figmaDesign' className='small-info !font-semibold'>Figma Design File</label>
                                     </div>
                                     <div className='border-r-2 border-divider-main'></div>
