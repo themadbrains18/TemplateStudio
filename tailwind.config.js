@@ -58,6 +58,7 @@ module.exports = {
       },
       boxShadow: {
         'btnShadow': '0px 8px 20px rgba(120, 84, 247, 0.06)',
+        'btnShadow-Dropdown': '0px 0px 30px rgba(182, 89, 255, 0.04), 0px 8px 40px rgba(0, 0, 0, 0.06);',
       }
 
     },
