@@ -10,7 +10,7 @@ import behance from 'public/icons/behance.svg'
 import instagram from 'public/icons/instagram.svg'
 
 const Footer = () => {
- 
+
   return (
     <footer className='pt-[80px] pb-10'>
       <div className='container'>
@@ -45,7 +45,12 @@ const Footer = () => {
             <ul className='md:max-w-[370px] -mt-[60px] sm:mt-0'>
               <li className='footer-title mb-[15px]'>Join Our Newsletter</li>
               <li className='info-14 text-[14px] block mb-[20px]'>Sign Up Our Newsletter And Get Notified About Exclusive Freebies!</li>
-              <li className='flex items-center'><input type='email' placeholder='Enter your email' className='border-[1px] border-primary pt-[6px] pb-2 px-[10px] outline-none lg:pt-[9px] lg:pb-[9px]' /><button className='solid-btn text-sm'>Submit</button></li>
+              <li className='flex items-center'>
+                <form>
+                  <input type='email' placeholder='Enter your email' className='border-[1px] border-primary pt-[6px] pb-2 px-[10px] outline-none lg:pt-[9px] lg:pb-[9px]' />
+                  <button className='solid-btn text-sm'>Submit</button>
+                </form>
+              </li>
             </ul>
           </div>
         </div>

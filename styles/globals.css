@@ -75,6 +75,11 @@ body {
   @apply font-open-sans font-bold text-dark-text text-[20px] leading-[28px];
 }
 
+/* OpenSans - 700 - #833 -36px */
+.reg-heading {
+  @apply font-open-sans font-bold text-main-text text-[36px] leading-[44px];
+}
+
 
 /* ======== TEXTS ========*/
 
@@ -100,6 +105,11 @@ body {
 /* OpenSans - 400 - #775 - 14px */
 .small-info {
   @apply font-open-sans font-normal text-light-text text-[12px] leading-[20px] md:text-[14px] md:leading-[20px];
+}
+
+/* OpenSans - 400 - #827 - 16px */
+.reg-info {
+  @apply font-open-sans font-normal text-[#111827] text-[16px] leading-[20px];
 }
 
 
@@ -210,7 +220,7 @@ body {
 
 
 /* Filter CheckBoxes (Product page) */
-.checkbx{
+.checkbx,.regCheckBox{
   @apply opacity-0 cursor-pointer h-5 w-5 z-10;
 }
 .checkmark {
@@ -269,7 +279,7 @@ body {
 
 
 /* Filter CheckBoxes (Product page) */
-.pdpCheckbox{
+/* .pdpCheckbox{
   @apply opacity-0 cursor-pointer h-5 w-5 z-10;
 }
 .pdpCheckmark {
@@ -284,4 +294,19 @@ body {
 }
 .pdpCheckbox:checked ~ .chepdpCheckmarkckmark::after {
   @apply bg-primary;
- }
+ } */
+
+/* 
+  .regCheckmark {
+    @apply absolute top-0 left-0 h-5 w-5 bg-transparent border-[1px] border-light-text border-opacity-30 rounded-[3px];
+  }
+  .regCheckmark::after{
+    content:'L';
+    @apply absolute h-[20px] w-[20px] top-2/4 right-2/4  translate-x-2/4 -translate-y-2/4 text-[#AD54F2] text-[20px] font-bold;
+  }
+  .regCheckBox:checked ~ .regCheckmark {
+   
+   }
+   .regCheckBox:checked ~ .regCheckmark::after {
+     @apply bg-[#F5EAFD];
+    } */

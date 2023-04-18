@@ -34,7 +34,7 @@ const PdpSec = () => {
                             <div className='p-[10px] xmd:p-5 border-[1px] border-divider-main'>
                                 <Image src={pdpMainImage} width={834} height={490} alt="Icon" className='mx-auto' />
                             </div>
-                            <div className='px-[50px]'>
+                            <div className='px-[50px] overflow-hidden'>
                                 <Swiper
                                     // install Swiper modules
                                     modules={[Navigation]}

@@ -22,7 +22,7 @@ const CatergoriesCards = () => {
     return (
         <>
             <section className='sec_spacing'>
-                <div className='container pb-[50px]'>
+                <div className='container'>
                     <div className='grid grid-cols-2 md:grid-cols-4 place-items-center gap-[30px]'>
                         {
                             data.map((value, index) => {
