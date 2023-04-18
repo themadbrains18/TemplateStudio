@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import React from 'react'
 
-// import signInBg from 'public/images/signInBg.png'
 import googleIcon from 'public/icons/googleIcon.svg'
 import fbIcon from 'public/icons/fbIcon.svg'
 import twitterIcon from 'public/icons/twitterIcon.svg'
 import regLogo from 'public/icons/regLogo.svg'
+import backButton from 'public/icons/backButton.svg'
+import Link from 'next/link'
 
-const SignInPage = () => {
+const forgotPassword = () => {
     return (
         <>
             <div className='grid grid-cols-1 justify-items-center xmd:grid-cols-2  '>
@@ -18,27 +19,23 @@ const SignInPage = () => {
                 </div>
 
                 <div className='flex flex-col justify-between  py-[40px] px-5 xmd:py-[50px] xmd:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
-                    <h1 className='reg-heading mb-[30px] xmd:mb-0'>Hi, Welcome Back!</h1>
+                    <div className='mb-[50px]'>
+                        <h1 className='reg-heading mb-[20px] xmd:mb-[70px]'>Forgot Password</h1>
+                        <div className='flex gap-3'>
+                            <Image src={backButton} width={13} height={13} alt='image error' />
+                            <Link href="/" className='font-open-sans font-semibold text-[18px] text-primary-100'>Back To Log In</Link>
+                        </div>
+                    </div>
                     <div className='mb-[30px] xmd:mb-0'>
                         <ul className='mb-5 xmd:mb-[30px]'>
                             <li className='mb-5 xmd:mb-[30px]'>
                                 <label className='block reg-info mb-1'>Email or Phone</label>
                                 <input type='text' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                             </li>
-                            <li>
-                                <label className='block reg-info mb-1'>Password</label>
-                                <input type='password' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
-                            </li>
                         </ul>
-                        <div className=" mr-4 inline-block min-h-[1.5rem] pl-[1.5rem] mb-[30px] xmd:mb-[40px] xl:mb-[60px]">
-                            <input className="relative float-left -ml-[1.5rem] mr-[6px] mt-[0.15rem] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:-mt-px checked:after:ml-[0.25rem] checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:-mt-px checked:focus:after:ml-[0.25rem] checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-l-0 checked:focus:after:border-t-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent dark:border-neutral-600 dark:checked:border-primary dark:checked:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
-                                type="checkbox"
-                                id="showPass"
-                            />
-                            <label htmlFor='showPass' className='small-info !font-semibold !text-[#BA6EF4] cursor-pointer' >Show Password</label>
-                        </div>
+
                         <div className='text-right mb-[30px] xmd:mb-[60px]'>
-                            <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Login</button>
+                            <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Send OTP</button>
                             <button className='medium-info text-right'>Forgot Password</button>
                         </div>
                         <div className='flex justify-between gap-[15px]'>
@@ -63,4 +60,4 @@ const SignInPage = () => {
     )
 }
 
-export default SignInPage
+export default forgotPassword

@@ -1,13 +1,12 @@
 import Image from 'next/image'
 import React from 'react'
 
-// import signInBg from 'public/images/signInBg.png'
 import googleIcon from 'public/icons/googleIcon.svg'
 import fbIcon from 'public/icons/fbIcon.svg'
 import twitterIcon from 'public/icons/twitterIcon.svg'
 import regLogo from 'public/icons/regLogo.svg'
 
-const SignInPage = () => {
+const Register = () => {
     return (
         <>
             <div className='grid grid-cols-1 justify-items-center xmd:grid-cols-2  '>
@@ -18,16 +17,20 @@ const SignInPage = () => {
                 </div>
 
                 <div className='flex flex-col justify-between  py-[40px] px-5 xmd:py-[50px] xmd:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
-                    <h1 className='reg-heading mb-[30px] xmd:mb-0'>Hi, Welcome Back!</h1>
+                    <h1 className='reg-heading mb-[30px] xmd:mb-0'>Register Here!</h1>
                     <div className='mb-[30px] xmd:mb-0'>
                         <ul className='mb-5 xmd:mb-[30px]'>
+                            <li className='mb-5 xmd:mb-[30px]'>
+                                <label className='block reg-info mb-1'>Name</label>
+                                <input type='text' placeholder='Name' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                            </li>
                             <li className='mb-5 xmd:mb-[30px]'>
                                 <label className='block reg-info mb-1'>Email or Phone</label>
                                 <input type='text' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                             </li>
                             <li>
                                 <label className='block reg-info mb-1'>Password</label>
-                                <input type='password' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                                <input type='password' placeholder='Password' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                             </li>
                         </ul>
                         <div className=" mr-4 inline-block min-h-[1.5rem] pl-[1.5rem] mb-[30px] xmd:mb-[40px] xl:mb-[60px]">
@@ -38,7 +41,7 @@ const SignInPage = () => {
                             <label htmlFor='showPass' className='small-info !font-semibold !text-[#BA6EF4] cursor-pointer' >Show Password</label>
                         </div>
                         <div className='text-right mb-[30px] xmd:mb-[60px]'>
-                            <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Login</button>
+                            <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Create Account</button>
                             <button className='medium-info text-right'>Forgot Password</button>
                         </div>
                         <div className='flex justify-between gap-[15px]'>
@@ -63,4 +66,4 @@ const SignInPage = () => {
     )
 }
 
-export default SignInPage
+export default Register
