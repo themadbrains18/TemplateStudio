@@ -172,7 +172,7 @@ const Header = () => {
                             {/* Search Bar End*/}
 
                             {/* Sign Up Button Start*/}
-                            <button className='solid-btn text-lg font-semibold hidden xmd:block'>Sign Up</button>
+                            <Link href="/register" className='solid-btn text-lg font-semibold hidden xmd:block'>Sign Up</Link>
                             {/* Sign Up Button End*/}
                         </div>
                     </nav>
@@ -291,7 +291,7 @@ const Header = () => {
                             </div>
                             {/* Third Accordion End */}
 
-                            <button className='solid-btn !py-[6px]'>Sign Up</button>
+                            <Link href="/register" className='solid-btn !py-[6px]'>Sign Up</Link>
                         </div>
                         {/* Sidebar Main End */}
 

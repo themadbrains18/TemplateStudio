@@ -12,7 +12,7 @@ const CatergoriesCards = () => {
         },
         {
             "img": "cardCategory3.png",
-            "caption": "Shopify Themesa",
+            "caption": "Shopify Themes",
         },
         {
             "img": "cardCategory4.png",
