@@ -37,8 +37,8 @@ const NavDropdown = (props) => {
 
   return (
     <>
-      <div className='p-10 bg-white shadow-btnShadow-Dropdown absolute top-[121px] left-[33%] max-w-[1000px] w-full'>
-        <div className='flex gap-5 items-center flex-wrap overflow-x-auto pb-[30px] border-bottom'>
+      <div className='p-10 bg-white shadow-btnShadow-Dropdown absolute top-[121px] left-[5%] xl:left-[33%] '>
+        <div className='flex gap-5 items-center flex-wrap overflow-x-auto pb-[30px] border-bottom max-w-[900px] w-full'>
           {
             props.uiTemplate.map((elem, ind) => {
               return (

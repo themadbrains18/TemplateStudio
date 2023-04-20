@@ -27,7 +27,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className='flex gap-[68px] flex-wrap sm:flex-nowrap md:gap-10 md:justify-between xmd:gap-[68px]'>
+          <div className='flex gap-[80px] flex-wrap sm:flex-nowrap md:gap-10 md:justify-between xmd:gap-[68px]'>
             <ul>
               <li className='footer-title mb-10'>Design</li>
               <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Sketch"><span>Sketch</span> </Link></li>

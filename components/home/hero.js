@@ -10,9 +10,9 @@ import heroImg from 'public/images/heroImg.png'
 const Hero = () => {
   return (
     <>
-      <section className='py-10 xl:py-0'>
+      <section className='py-10 md:p-0'>
         <div className='container'>
-          <div className='md:grid grid-cols-2 items-center  md:gap-20  lg:gap-24'>
+          <div className='md:grid grid-cols-2 items-center md:items-end  md:gap-8  lg:gap-24'>
             <div className='mb-[30px]'>
               <div className='relative w-[280px] mb-[10px]'>
                 <Image src={heroVector} width={190} height={32} alt="Image Error" className=''></Image>
@@ -28,7 +28,7 @@ const Hero = () => {
             </div>
 
             {/* <div className='relative after:absolute after:max-w-[242px] after:w-full after:h-[295px] after:bg-[#858DA9] after:-z-10 after:top-0'> */}
-            <div className='bg-hero-bg-mob md:bg-hero-bg bg-no-repeat bg-cover w-full relative h-[392px]  xl:h-[587px]'>
+            <div className='bg-hero-bg-mob md:bg-hero-bg bg-no-repeat bg-cover w-full relative h-[425px]  xl:h-[587px]'>
               <Image src={heroImg} width={470} height={324} alt="Image Error" className='absolute top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-50%]'></Image>
             </div>
 
