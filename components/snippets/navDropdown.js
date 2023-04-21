@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import Image from 'next/image'
 
 import ProjectCard from '../snippets/projectCard'
@@ -42,7 +42,10 @@ const NavDropdown = (props) => {
           {
             props.uiTemplate.map((elem, ind) => {
               return (
-                <button key={ind} className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap  ${tabContent === ind ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(ind)}>{elem.title}</button>
+                <Fragment key={ind}>
+                  <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap  ${tabContent === ind ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(ind)}>{elem.title}</button>
+                </Fragment>
+
               )
             })
           }
@@ -57,7 +60,11 @@ const NavDropdown = (props) => {
           <div className='grid grid-cols-4 gap-5'>
             {
               ProductData.map((value, index) => {
-                return <ProjectCard key={index} items={value} />
+                return (
+                  <Fragment key={index}>
+                    <ProjectCard key={index} items={value} />
+                  </Fragment>
+                )
               })
             }
           </div>

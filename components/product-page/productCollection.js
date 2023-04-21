@@ -156,7 +156,7 @@ const ProductCollection = () => {
                             <button className={`large-info whitespace-nowrap  ${tab === 8 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(8)}>Sketch</button>
                             <button className={`large-info whitespace-nowrap  ${tab === 9 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(9)}>Adobe XD</button>
                             <button className={`large-info whitespace-nowrap  ${tab === 10 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTab(10)}>Figma</button>
-                          
+
                         </div>
                     </div>
                 </div>
@@ -169,19 +169,22 @@ const ProductCollection = () => {
                                         <Image src={filterIcon} width={20} height={20} alt="Icon" className='' />
                                         <span className='large-info'>Filters</span>
                                     </div>
-                                    <Image src={popupCloseBtn} width={16} height={16} alt=" Close Button" className='lg:hidden' onClick={()=>{setFilterPopUp(false)}} />
+                                    <Image src={popupCloseBtn} width={16} height={16} alt=" Close Button" className='lg:hidden' onClick={() => { setFilterPopUp(false) }} />
                                 </div>
                                 {filterData.map((item, index) => {
-                                    return <FilterCheckBox data={item} key={index} />
+                                    return (
+                                        <Fragment key={index}>
+                                            <FilterCheckBox data={item} />
+                                        </Fragment>
+                                    )
                                 })}
                             </div>
                             <div className='w-full'>
                                 <div className='flex justify-between pb-5 border-b border-divider-light flex-col-reverse items-end gap-[18px] xl:flex-row'>
                                     <ul className='flex gap-[10px] w-full overflow-x-auto'>
+
                                         <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap'>Freebies<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='' /></li>
-                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap'>Feature Products<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='' /></li>
-                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap'>Real Estate<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='' /></li>
-                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap'>Wordpress<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='' /></li>
+
                                         <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] rounded-sm h-8 whitespace-nowrap'>Clear all<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='' /></li>
                                     </ul>
                                     <div className='relative flex justify-between w-full items-center xl:w-auto whitespace-nowrap'>
@@ -210,11 +213,11 @@ const ProductCollection = () => {
                                 <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
                                     {
                                         templateData.map((value, index) => {
-                                            return(
+                                            return (
                                                 <Fragment key={index}>
-                                                <TemplateCard items={value} />
+                                                    <TemplateCard items={value} />
                                                 </Fragment>
-                                            ) 
+                                            )
                                         })
                                     }
                                 </div>

@@ -32,7 +32,10 @@ const NavDropdownMob = (props) => {
                         {
                             props.subHeading[props.index].map((e, i) => {
                                 return (
-                                    <button className='px-[10px] py-2 border-[0.5px] border-divider-main medium-heading text-[14px] whitespace-nowrap'>{e.title}</button>
+                                    <Fragment key={i}>
+                                        <button className='px-[10px] py-2 border-[0.5px] border-divider-main medium-heading text-[14px] whitespace-nowrap'>{e.title}</button>
+                                    </Fragment>
+
                                 )
                             })
                         }
@@ -47,7 +50,7 @@ const NavDropdownMob = (props) => {
                             navDropdownCardsMob.map((elem, index) => {
                                 return (
                                     <Fragment key={index}>
-                                        <DropdownTemplateCard data={elem}/>
+                                        <DropdownTemplateCard data={elem} />
                                     </Fragment>
                                 )
                             })
