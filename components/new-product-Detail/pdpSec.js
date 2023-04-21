@@ -5,6 +5,9 @@ import pdpMainImage from 'public/images/pdpMainImage.png'
 import pdpImg3 from 'public/images/pdpImg3.png'
 import pdpArrowRight from 'public/icons/pdpArrowRight.svg'
 import figmaIcon30 from 'public/icons/figmaIcon30.svg'
+import xdIcon30 from 'public/icons/xd--30.svg'
+import sketchIcon30 from 'public/icons/sketch-30.svg'
+
 
 // import Swiper core and required modules
 import { Navigation,} from 'swiper';
@@ -93,7 +96,7 @@ const PdpSec = () => {
                                     </div>
                                     <div className='border-r-2 border-divider-main'></div>
                                     <button className='small-info !font-semibold'>View Detail </button>
-                                    <Image src={figmaIcon30} width={30} height={30} alt="Icon" className='' />
+                                    <Image src={xdIcon30} width={30} height={30} alt="Icon" className='' />
                                 </div>
                                 <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>
                                     <div className='flex gap-[10px] xmd:gap-[22px] items-center'>
@@ -102,7 +105,7 @@ const PdpSec = () => {
                                     </div>
                                     <div className='border-r-2 border-divider-main'></div>
                                     <button className='small-info !font-semibold'>View Detail </button>
-                                    <Image src={figmaIcon30} width={30} height={30} alt="Icon" className='' />
+                                    <Image src={sketchIcon30} width={30} height={30} alt="Icon" className='' />
                                 </div>
                             </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import Image from 'next/image'
 
 import downarrowPopup from 'public/icons/downarrowPopup.svg'
@@ -45,10 +45,14 @@ const NavDropdownMob = (props) => {
                     <div className='grid grid-cols-2 place-items-center gap-[10px] mb-5'>
                         {
                             navDropdownCardsMob.map((elem, index) => {
-                               return <DropdownTemplateCard data={elem} key={index} />
+                                return (
+                                    <Fragment key={index}>
+                                        <DropdownTemplateCard data={elem}/>
+                                    </Fragment>
+                                )
                             })
                         }
-                       
+
                     </div>
                 </div>}
             </div>
