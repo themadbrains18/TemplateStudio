@@ -53,6 +53,7 @@ module.exports = {
       backgroundImage: {
         'hero-bg-mob': "url('../public/images/herobgmob.png')",
         'hero-bg': "url('../public/images/heroBigBg.png')",
+        'heroBgVector': "url('../public/images/heroBgVector.png')",
         'footer-texture': "url('/public/footer-texture.png')",
         'pdp-banner': "url('../public/images/pdpBanner.png')",
         'reg-bg': "url('../public/images/signInBg.png')",

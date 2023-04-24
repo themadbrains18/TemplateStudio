@@ -80,8 +80,9 @@ const PdpSec = () => {
                             </div>
                             <div>
                                 <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>
-                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative'>
-                                        <input type='checkbox' id='figmaDesign' ></input>
+                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
+                                        <input type='checkbox' id='figmaDesign' className='ckbx_input' ></input>
+                                        <span className='pdp_checkmark'></span>
                                         <label htmlFor='figmaDesign' className='small-info !font-semibold'>Figma Design File</label>
                                     </div>
                                     <div className='border-r-2 border-divider-main'></div>
@@ -90,8 +91,9 @@ const PdpSec = () => {
                                 </div>
 
                                 <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>
-                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center'>
-                                        <input type='checkbox' id='xdDesign'></input>
+                                <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
+                                        <input type='checkbox' id='xdDesign' className='ckbx_input' ></input>
+                                        <span className='pdp_checkmark'></span>
                                         <label htmlFor='xdDesign' className='small-info !font-semibold'>XD Design File</label>
                                     </div>
                                     <div className='border-r-2 border-divider-main'></div>
@@ -99,8 +101,9 @@ const PdpSec = () => {
                                     <Image src={xdIcon30} width={30} height={30} alt="Icon" className='' />
                                 </div>
                                 <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>
-                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center'>
-                                        <input type='checkbox' id='sketchDesign'></input>
+                                <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
+                                        <input type='checkbox' id='sketchDesign' className='ckbx_input' ></input>
+                                        <span className='pdp_checkmark'></span>
                                         <label htmlFor='sketchDesign' className='small-info !font-semibold'>Sketch Design File</label>
                                     </div>
                                     <div className='border-r-2 border-divider-main'></div>

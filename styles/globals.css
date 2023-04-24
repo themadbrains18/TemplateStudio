@@ -266,3 +266,47 @@ body {
     -webkit-appearance: none; 
     margin: 0; 
 }
+
+
+
+.ckbx_input{
+  width: 23px;
+  height: 23px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+.pdp_checkmark{
+  width: 23px;
+  height: 23px;
+  border: 2px solid #EFEEF1;
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  transition: all 0.3s;
+}
+
+.pdp_checkmark::after{
+   content: "";
+  width: 6px;
+  height: 11px;
+  border: solid #AD54F2;
+  border-width: 0 3px 3px 0;
+  top: -100%;
+  left: 30%;
+  position:absolute;
+  rotate: 45deg;
+  transition: all 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ckbx_input:checked ~ .pdp_checkmark{
+  background-color: #F5EAFD;
+}
+.ckbx_input:checked ~ .pdp_checkmark::after{
+  top: 15%;
+  opacity: 1;
+  visibility: visible;
+}
