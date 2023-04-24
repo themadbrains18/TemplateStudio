@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react'
 import Image from 'next/image'
 
-import pdpMainImage from 'public/images/pdpMainImage.png'
-import pdpImg3 from 'public/images/pdpImg3.png'
 import pdpArrowRight from 'public/icons/pdpArrowRight.svg'
 import figmaIcon30 from 'public/icons/figmaIcon30.svg'
 import xdIcon30 from 'public/icons/xd--30.svg'
@@ -10,7 +8,7 @@ import sketchIcon30 from 'public/icons/sketch-30.svg'
 
 
 // import Swiper core and required modules
-import { Navigation,} from 'swiper';
+import { Navigation, } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -18,8 +16,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-
+let thumbnailImgs = ["pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png"];
 const PdpSec = () => {
+    const [thumbnail, setThumbnail] = useState("pdpMainImage.png");
     return (
         <>
             <section className='py-[20px] bg-back-white'>
@@ -35,7 +34,7 @@ const PdpSec = () => {
                     <div className='grid grid-cols-1 gap-7 xmd:grid-cols-2'>
                         <div>
                             <div className='p-[10px] xmd:p-5 border-[1px] border-divider-main'>
-                                <Image src={pdpMainImage} width={834} height={490} alt="Icon" className='mx-auto' />
+                                <Image src={`/images/${thumbnail}`} width={834} height={490} alt="Icon" className='mx-auto' />
                             </div>
                             <div className='px-[50px] overflow-hidden'>
                                 <Swiper
@@ -44,27 +43,25 @@ const PdpSec = () => {
                                     spaceBetween={20}
                                     slidesPerView={6}
                                     navigation
-                                
+
                                     onSwiper={(swiper) => console.log(swiper)}
                                     onSlideChange={() => console.log('slide change')}
                                 >
-                                <div className='flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>
-                                    <SwiperSlide><Image src={pdpImg3} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' /></SwiperSlide>   
-                                </div>
+                                    <div className='flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
+
+                                        {
+                                            thumbnailImgs.map((elem, ind) => {
+                                                return (
+                                                    <Fragment key={ind}>
+                                                        <SwiperSlide><Image src={`/images/${elem}`} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' onClick={() => { setThumbnail(elem) }} /></SwiperSlide>
+                                                    </Fragment>
+                                                )
+                                            })
+                                        }
+                                    </div>
 
                                 </Swiper>
-                            </div>     
+                            </div>
                             {/* <div className=' flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
                                 <div className='grid grid-cols-6 gap-3 overflow-x-auto'>
                                    
@@ -91,7 +88,7 @@ const PdpSec = () => {
                                 </div>
 
                                 <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>
-                                <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
+                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
                                         <input type='checkbox' id='xdDesign' className='ckbx_input' ></input>
                                         <span className='pdp_checkmark'></span>
                                         <label htmlFor='xdDesign' className='small-info !font-semibold'>XD Design File</label>
@@ -101,7 +98,7 @@ const PdpSec = () => {
                                     <Image src={xdIcon30} width={30} height={30} alt="Icon" className='' />
                                 </div>
                                 <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>
-                                <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
+                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
                                         <input type='checkbox' id='sketchDesign' className='ckbx_input' ></input>
                                         <span className='pdp_checkmark'></span>
                                         <label htmlFor='sketchDesign' className='small-info !font-semibold'>Sketch Design File</label>
