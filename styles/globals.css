@@ -287,3 +287,4 @@ body {
 .ckbx_input:checked ~ .pdp_checkmark::after{
   @apply top-[15%] opacity-100 visible;
 }
+

@@ -102,7 +102,7 @@ const Header = () => {
                         </button>
                         {/* Toggle button Mob End */}
 
-                        <div className='header_left flex gap-[65px]'>
+                        <div className='header_left flex gap-10 xl:gap-[65px]'>
                             {/* Header logo Start*/}
                             <Link href="/" className=''>
                                 <Image src={logo} width={193} height={28} alt="Header Logo" className='xmd:max-w-[276px] xmd:w-full xmd:h-10'></Image>
