@@ -35,7 +35,6 @@ const NavDropdownMob = (props) => {
                                     <Fragment key={i}>
                                         <button className='px-[10px] py-2 border-[0.5px] border-divider-main medium-heading text-[14px] whitespace-nowrap'>{e.title}</button>
                                     </Fragment>
-
                                 )
                             })
                         }

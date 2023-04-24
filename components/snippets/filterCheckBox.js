@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 
 import arrowUp from 'public/icons/arrowUp.svg'
 
 const FilterCheckBox = (props) => {
+    const [tag, setTag] = useState('');
     return (
         <>
             <div className='pb-[10px] pt-8 bg-white border-b-[1px] border-divider-main last:border-none'>
@@ -15,7 +16,7 @@ const FilterCheckBox = (props) => {
                     return (
                         <div key={index} className='flex justify-between mb-[15px] relative'>
                             <p className='main-info'>{item}</p>
-                                <input type='checkbox' className='checkbx'/>
+                                <input type='checkbox' className='checkbx' onClick={()=>{ setTag() }}/>
                                 <span className='checkmark'></span>
                         </div>
                     )

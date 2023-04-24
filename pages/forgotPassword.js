@@ -1,3 +1,4 @@
+import ForgotPassPage from '@/components/reg-login/forgotPassPage'
 import React from 'react'
 
 

@@ -41,27 +41,27 @@ const EnterOtpPage = () => {
 
     return (
         <>
-            <div className='grid grid-cols-1 justify-items-center xmd:grid-cols-2  '>
-                <div className='bg-reg-bg w-full h-[374px] xmd:h-[700px] flex flex-col justify-between py-[50px] px-5 xmd:px-[40px] xl:px-[100px] xl:h-[1080px]'>
+            <div className='grid grid-cols-1 justify-items-center lg:grid-cols-2  '>
+                <div className='bg-reg-bg w-full h-[374px] lg:h-[900px] flex flex-col justify-between py-[50px] px-5 lg:px-[40px] xl:px-[100px] xl:h-[1080px]'>
                     <Image src={regLogo} width={276} height={40} alt='image error' />
-                    <p className='font-open-sans font-normal text-[32px] xmd:text-[40px]  xl:text-[62px] text-white max-w-[900px] w-full text-center'>Free High-quality UI kits and design resources</p>
+                    <p className='font-open-sans font-normal text-[32px] lg:text-[40px]  xl:text-[62px] text-white max-w-[900px] w-full text-center'>Free High-quality UI kits and design resources</p>
                     <p className='text-white font-open-sans font-medium text-[14px]'>By Madbrains Technologies LLP.</p>
                 </div>
 
-                <div className='flex flex-col justify-between  py-[40px] px-5 xmd:py-[50px] xmd:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
+                <div className='flex flex-col justify-between  py-[40px] px-5 lg:py-[50px] lg:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
                     <div className='mb-[50px]'>
-                        <h1 className='reg-heading mb-[20px] xmd:mb-[70px]'>Enter OTP</h1>
+                        <h1 className='reg-heading mb-[20px] lg:mb-[70px]'>Enter OTP</h1>
                         <div className='flex gap-3'>
                             <Image src={backButton} width={13} height={13} alt='image error' />
                             <Link href="/" className='font-open-sans font-semibold text-[18px] text-primary-100'>Back To Log In</Link>
                         </div>
                     </div>
-                    <div className='mb-[30px] xmd:mb-0'>
-                        <ul className='mb-5 xmd:mb-[30px]'>
-                            <li className='mb-5 xmd:mb-[30px]'>
+                    <div className='mb-[30px] lg:mb-0'>
+                        <ul className='mb-5 lg:mb-[30px]'>
+                            <li className='mb-5 lg:mb-[30px]'>
                                 <div className='mt-5 mb-[60px]'>
                                     <label className='block reg-info mb-[30px]'>Please enter one time OTP</label>
-                                    <div className="flex justify-center  bg-primary-800 py-2 xmd:py-[15px] px-5 xmd:px-[45px] gap-[10px] sm:gap-[20px] lg:gap-[30px] input_wrapper input_wrapper_email">
+                                    <div className="flex justify-center  bg-primary-800 py-2 lg:py-[15px] px-5 lg:px-[45px] gap-[10px] sm:gap-[20px] lg:gap-[30px] input_wrapper input_wrapper_email">
                                         <input type="number" className="block px-2 md:px-4  bg-divider-main border text-center border-divider-main w-[35px] md:w-[46px] min-h-[35px] md:min-h-[46px] text-black  outline-none" name="code1" />
                                         <input type="number" className="block px-2 md:px-4  bg-divider-main border text-center border-divider-main  w-[35px] md:w-[46px] min-h-[35px] md:min-h-[46px] text-black  outline-none" name="code2" />
                                         <input type="number" className="block px-2 md:px-4  bg-divider-main border text-center border-divider-main  w-[35px] md:w-[46px] min-h-[35px] md:min-h-[46px] text-black  outline-none" name="code3" />
@@ -74,7 +74,7 @@ const EnterOtpPage = () => {
                             </li>
                         </ul>
 
-                        <div className='text-right mb-[30px] xmd:mb-[60px]'>
+                        <div className='text-right mb-[30px] lg:mb-[60px]'>
                             <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Verify Now</button>
                         </div>
                         <div className='flex gap-4 justify-center'>

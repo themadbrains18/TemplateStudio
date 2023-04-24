@@ -1,10 +1,10 @@
-import SignInPage from '@/components/reg-login/signInPage'
+import LoginPage from '@/components/reg-login/loginPage'
 import React from 'react'
 
 const Login = () => {
     return (
         <>
-            <SignInPage />
+            <LoginPage />
         </>
     )
 }
