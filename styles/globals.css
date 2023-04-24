@@ -268,45 +268,22 @@ body {
 }
 
 
-
+/* PDP Section CheckBoxes */
 .ckbx_input{
-  width: 23px;
-  height: 23px;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 1;
+ @apply w-[23px] h-[23px] opacity-0 cursor-pointer z-10
 }
 .pdp_checkmark{
-  width: 23px;
-  height: 23px;
-  border: 2px solid #EFEEF1;
-  position:absolute;
-  top: 50%;
+  @apply w-[23px] h-[23px] border-[2px] border-divider-main absolute top-[50%] left-0 transition-300;
   transform: translateY(-50%);
-  left: 0;
-  transition: all 0.3s;
 }
-
 .pdp_checkmark::after{
    content: "";
-  width: 6px;
-  height: 11px;
-  border: solid #AD54F2;
-  border-width: 0 3px 3px 0;
-  top: -100%;
-  left: 30%;
-  position:absolute;
-  rotate: 45deg;
-  transition: all 0.3s;
-  opacity: 0;
-  visibility: hidden;
+   border-width: 0 3px 3px 0;
+   @apply w-[6px] h-[11px] border-primary -top-full left-[30%] absolute rotate-45 transition-300 opacity-0 invisible
 }
-
 .ckbx_input:checked ~ .pdp_checkmark{
-  background-color: #F5EAFD;
+  @apply bg-primary-700;
 }
 .ckbx_input:checked ~ .pdp_checkmark::after{
-  top: 15%;
-  opacity: 1;
-  visibility: visible;
+  @apply top-[15%] opacity-100 visible;
 }

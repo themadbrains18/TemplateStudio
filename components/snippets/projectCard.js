@@ -24,7 +24,6 @@ const ProjectCard = ({ items }) => {
             "projectCaption": "Room Sharing - UI Kit Te...",
             "projectPlatform": "Figma.svg",
         },
-
     ]
     return (
         <>

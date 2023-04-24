@@ -45,7 +45,6 @@ const NavDropdown = (props) => {
                 <Fragment key={ind}>
                   <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap  ${tabContent === ind ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(ind)}>{elem.title}</button>
                 </Fragment>
-
               )
             })
           }
@@ -62,7 +61,7 @@ const NavDropdown = (props) => {
               ProductData.map((value, index) => {
                 return (
                   <Fragment key={index}>
-                    <ProjectCard key={index} items={value} />
+                    <ProjectCard  items={value} />
                   </Fragment>
                 )
               })

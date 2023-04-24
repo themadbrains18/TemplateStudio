@@ -115,7 +115,7 @@ const Header = () => {
                                     headings.map((item, index) => {
                                         return (
                                             <Fragment key={index} >
-                                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative' onMouseEnter={() => setIsShown(1)} onMouseLeave={() => setIsShown(0)}>
+                                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative' onMouseEnter={() => setIsShown(index+1)} onMouseLeave={() => setIsShown(0)}>
                                                     <span className=''>{item}</span>
                                                     <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" strokeWidth="1.5" strokeLinecap="round" />
@@ -125,9 +125,7 @@ const Header = () => {
                                         )
                                     })
                                 }
-
                             </ul>
-
 
                             {/* Nav End */}
                         </div>
