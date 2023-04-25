@@ -291,16 +291,6 @@ body {
   @apply top-[15%] opacity-100 visible;
 }
 
-/* Hero Img */
-
-.hero::after{
-content: "";
-position: absolute;
-top: 0;
-right: 0;
-background: url("../public/images/heroBigBg.png");
-height: 600px ;
-}
 /* 
 swiper-button-next::after{
   content: "";

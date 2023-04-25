@@ -30,12 +30,19 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       {
-          router.pathname !=='/register' || router.pathname !=='/login'  || router.pathname !=='/enterOtp'|| router.pathname !=='/resetPassword' || router.pathname !=='/forgotPassword'&&
+          router.pathname =='/register' || router.pathname =='/login'  || router.pathname =='/enterOtp'|| router.pathname =='/resetPassword' || router.pathname =='/forgotPassword' ?
+          <>
+          </>
+          :
+
           <Header />
       }
       <Component {...pageProps} />
-      {  router.pathname !== '/register' || router.pathname !=='/login' || router.pathname !=='/enterOtp' || router.pathname !=='/resetPassword' || router.pathname !=='/forgotPassword'&&
-        <Footer />}
+      { router.pathname == '/register' || router.pathname =='/login' || router.pathname =='/enterOtp' || router.pathname =='/resetPassword' || router.pathname =='/forgotPassword' ?
+        <> </>
+      :
+        <Footer />
+        }
     </>
   )
 
