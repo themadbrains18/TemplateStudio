@@ -183,9 +183,9 @@ const ProductCollection = () => {
                                 <div className='flex justify-between pb-5 border-b border-divider-light flex-col-reverse items-end gap-[18px] xl:flex-row'>
                                     <ul className='flex gap-[10px] w-full overflow-x-auto'>
 
-                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap'>Freebies<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='' /></li>
+                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>Freebies<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
 
-                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] rounded-sm h-8 whitespace-nowrap'>Clear all<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='' /></li>
+                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] rounded-sm h-8 whitespace-nowrap'>Clear all<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
                                     </ul>
                                     <div className='relative flex justify-between w-full items-center xl:w-auto whitespace-nowrap'>
                                         <div className='flex gap-[10px] xl:hidden' onClick={() => {
@@ -202,9 +202,9 @@ const ProductCollection = () => {
                                                 </svg>
                                             </button>
                                             <ul className='sortby_dropdown py-[10px] absolute top-[42px] right-0 z-10 w-[208px] bg-white opacity-0 invisible transition-300'>
-                                                <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Newest releases</li>
-                                                <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Most popular</li>
-                                                <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Best sellers</li>
+                                                <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300 cursor-pointer'>Newest releases</li>
+                                                <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300 cursor-pointer'>Most popular</li>
+                                                <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300 cursor-pointer'>Best sellers</li>
                                             </ul>
                                         </div>
                                     </div>

@@ -225,18 +225,21 @@ body {
  } 
 
  /* Swipper of PDP Modified  */
- .swiper-horizontal{
+ /* .swiper-horizontal{
   @apply !overflow-visible;
 
  }
  .swiper-wrapper{
   @apply !overflow-hidden;
- }
+ } */
  .swiper-button-prev::after{
   @apply hidden;
  }
  .swiper-button-next::after{
-  @apply !text-[30px]
+  @apply !text-[30px] top-[15%] absolute right-[0px] z-20;
+ }
+ .swiper.swiper-initialized.swiper-horizontal{
+  @apply pr-12;
  }
 
 /* Footer Links Hover Effects */
@@ -288,3 +291,21 @@ body {
   @apply top-[15%] opacity-100 visible;
 }
 
+/* Hero Img */
+
+.hero::after{
+content: "";
+position: absolute;
+top: 0;
+right: 0;
+background: url("../public/images/heroBigBg.png");
+height: 600px ;
+}
+/* 
+swiper-button-next::after{
+  content: "";
+  position:absolute;
+  top: 15%;
+  right: 0px;
+
+} */

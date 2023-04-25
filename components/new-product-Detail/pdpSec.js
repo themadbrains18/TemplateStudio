@@ -1,3 +1,4 @@
+
 import React, { Fragment, useState } from 'react'
 import Image from 'next/image'
 
@@ -8,15 +9,17 @@ import sketchIcon30 from 'public/icons/sketch-30.svg'
 
 
 // import Swiper core and required modules
-import { Navigation, } from 'swiper';
+import { Navigation, Autoplay} from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 
-let thumbnailImgs = ["pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png"];
+
+let thumbnailImgs = ["pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png","pdp5.png","pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png","pdp5.png"];
 const PdpSec = () => {
     const [thumbnail, setThumbnail] = useState("pdpMainImage.png");
     return (
@@ -36,30 +39,35 @@ const PdpSec = () => {
                             <div className='p-[10px] xmd:p-5 border-[1px] border-divider-main'>
                                 <Image src={`/images/${thumbnail}`} width={834} height={490} alt="Icon" className='mx-auto' />
                             </div>
-                            <div className='px-[50px] overflow-hidden'>
+                            <div className=''>
                                 <Swiper
                                     // install Swiper modules
-                                    modules={[Navigation]}
+                                    modules={[Navigation,Autoplay]}
                                     spaceBetween={20}
                                     slidesPerView={6}
-                                    navigation
+                                    freeMode="true"
+                                    loop={true}
+                                    autoplay={{
+                                        "delay": 1000,
+                                    }}
+                                    speed="1500"
+
+                                    navigation={true}
 
                                     onSwiper={(swiper) => console.log(swiper)}
                                     onSlideChange={() => console.log('slide change')}
                                 >
                                     <div className='flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
-
                                         {
                                             thumbnailImgs.map((elem, ind) => {
                                                 return (
                                                     <Fragment key={ind}>
-                                                        <SwiperSlide><Image src={`/images/${elem}`} width={116} height={76} alt="Icon" className='border-divider-main border-[3px]' onClick={() => { setThumbnail(elem) }} /></SwiperSlide>
+                                                        <SwiperSlide><Image src={`/images/${elem}`} width={116} height={76} alt="Icon" className='cursor-pointer border-divider-main border-[3px]' onClick={() => { setThumbnail(elem) }} /></SwiperSlide>
                                                     </Fragment>
                                                 )
                                             })
                                         }
                                     </div>
-
                                 </Swiper>
                             </div>
                             {/* <div className=' flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
@@ -80,7 +88,7 @@ const PdpSec = () => {
                                     <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
                                         <input type='checkbox' id='figmaDesign' className='ckbx_input' ></input>
                                         <span className='pdp_checkmark'></span>
-                                        <label htmlFor='figmaDesign' className='small-info !font-semibold'>Figma Design File</label>
+                                        <label htmlFor='figmaDesign' className='small-info !font-semibold cursor-pointer'>Figma Design File</label>
                                     </div>
                                     <div className='border-r-2 border-divider-main'></div>
                                     <button className='small-info !font-semibold'>View Detail </button>
@@ -91,7 +99,7 @@ const PdpSec = () => {
                                     <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
                                         <input type='checkbox' id='xdDesign' className='ckbx_input' ></input>
                                         <span className='pdp_checkmark'></span>
-                                        <label htmlFor='xdDesign' className='small-info !font-semibold'>XD Design File</label>
+                                        <label htmlFor='xdDesign' className='small-info !font-semibold cursor-pointer'>XD Design File</label>
                                     </div>
                                     <div className='border-r-2 border-divider-main'></div>
                                     <button className='small-info !font-semibold'>View Detail </button>
@@ -101,7 +109,7 @@ const PdpSec = () => {
                                     <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
                                         <input type='checkbox' id='sketchDesign' className='ckbx_input' ></input>
                                         <span className='pdp_checkmark'></span>
-                                        <label htmlFor='sketchDesign' className='small-info !font-semibold'>Sketch Design File</label>
+                                        <label htmlFor='sketchDesign' className='small-info !font-semibold cursor-pointer'>Sketch Design File</label>
                                     </div>
                                     <div className='border-r-2 border-divider-main'></div>
                                     <button className='small-info !font-semibold'>View Detail </button>
@@ -120,7 +128,6 @@ const PdpSec = () => {
                             <button className='solid-white-btn w-full !py-[13px] text-[18px] border border-primary-100'>Preview</button>
                         </div>
                     </div>
-
                 </div>
             </section>
         </>

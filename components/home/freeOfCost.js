@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React, { Fragment } from 'react'
 
 import wave from 'public/icons/wave.svg'
+import Link from 'next/link'
 
 const FreeOfCost = () => {
     let designsData = [
@@ -50,10 +51,10 @@ const FreeOfCost = () => {
                             designsData.map((data, index) => {
                                 return (
                                     <Fragment key={index}>
-                                        <div className='small_card flex items-center gap-[10px] p-[10px] border-[1px] bg-white border-divider-main transition-300 md:gap-5 '>
+                                        <Link href="/" className='small_card flex items-center gap-[10px] p-[10px] border-[1px]  bg-white border-divider-main transition-300 md:gap-5 '>
                                             <Image src={`/icons/${data.designIcon}`} width={40} height={40} alt="Image Error" className="small_card_icon p-[5px] transition-300 md:w-[65px] md:h-[65px] md:p-[13px] bg-icon-bg"></Image>
                                             <p className='medium-heading text-xs md:text-base'>{data.designTitle}</p>
-                                        </div>
+                                        </Link>
                                     </Fragment>
                                 )
                             })

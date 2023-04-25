@@ -70,7 +70,7 @@ const PopularTemplate = () => {
                         }
                     </div>
                     <div className='text-center'>
-                    <a href='/' className='solid-white-btn shadow-btnShadow text-center'>View All Products</a>
+                    <a href='/productPage' className='solid-white-btn shadow-btnShadow text-center'>View All Products</a>
                     </div>
                 </div>
             </section>
