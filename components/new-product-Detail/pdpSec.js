@@ -23,6 +23,8 @@ import Link from 'next/link'
 let thumbnailImgs = ["pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png", "pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png", "pdp5.png"];
 const PdpSec = () => {
     const [thumbnail, setThumbnail] = useState("pdpMainImage.png");
+    const [pdpborder, setPdpborder] = useState(0);
+
     return (
         <>
             <section className='py-[20px] bg-back-white'>
@@ -70,7 +72,7 @@ const PdpSec = () => {
                                             thumbnailImgs.map((elem, ind) => {
                                                 return (
                                                     <Fragment key={ind}>
-                                                        <SwiperSlide><Image src={`/images/${elem}`} width={116} height={76} alt="Icon" className='cursor-pointer border-divider-main border-[3px]' onClick={() => { setThumbnail(elem) }} /></SwiperSlide>
+                                                        <SwiperSlide><Image src={`/images/${elem}`} width={116} height={76} alt="Icon" className={`cursor-pointer border-divider-main border-[2px] ${pdpborder === ind ? "border-primary":""}`} onClick={() => { setThumbnail(elem), setPdpborder(ind)}}/></SwiperSlide>
                                                     </Fragment>
                                                 )
                                             })
