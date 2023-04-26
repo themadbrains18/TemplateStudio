@@ -9,7 +9,7 @@ import sketchIcon30 from 'public/icons/sketch-30.svg'
 
 
 // import Swiper core and required modules
-import { Navigation, Autoplay} from 'swiper';
+import { Navigation, Autoplay } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -20,7 +20,7 @@ import 'swiper/css/autoplay';
 import Link from 'next/link'
 
 
-let thumbnailImgs = ["pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png","pdp5.png","pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png","pdp5.png"];
+let thumbnailImgs = ["pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png", "pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png", "pdp5.png"];
 const PdpSec = () => {
     const [thumbnail, setThumbnail] = useState("pdpMainImage.png");
     return (
@@ -37,13 +37,20 @@ const PdpSec = () => {
 
                     <div className='grid grid-cols-1 gap-7 xmd:grid-cols-2'>
                         <div>
-                            <div className='p-[10px] xmd:p-5 border-[1px] border-divider-main'>
-                                <Image src={`/images/${thumbnail}`} width={834} height={490} alt="Icon" className='mx-auto' />
+                            <div className='p-[10px] xmd:p-5 border-[1px] border-divider-main '>
+                                <Link href="/" className='pdp_main_img relative'>
+                                    <div className="overlay absolute z-10 bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed opacity-0 transition duration-500 ease-in-out">
+                                    </div>
+                                    <span className='overlay_text font-open-sans font-bold text-white text-[18px] z-20 flex gap-2 absolute  left-[50%] top-[50%] -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-500 ease-in-out'>
+                                        Preview
+                                    </span>
+                                    <Image src={`/images/${thumbnail}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700'/>
+                                </Link>
                             </div>
                             <div className=''>
                                 <Swiper
                                     // install Swiper modules
-                                    modules={[Navigation,Autoplay]}
+                                    modules={[Navigation, Autoplay]}
                                     spaceBetween={20}
                                     slidesPerView={6}
                                     freeMode="true"

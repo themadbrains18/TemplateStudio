@@ -331,3 +331,24 @@ swiper-button-next::after{
   background: url("../public/icons/heroShade.svg") no-repeat;
   z-index: -1;
 }
+
+
+
+ /* Template Card Overlay On Hover */
+ .pdp_main_img:hover .overlay{
+  @apply opacity-40
+}
+
+.pdp_main_img:hover .overlay_text {
+  @apply opacity-100
+}
+
+.pdp_main_img:hover .template_bg {
+  @apply bg-opacity-10
+}
+
+
+.pdp_main_img:hover .preview_img{
+  @apply scale-[0.97];
+}
+

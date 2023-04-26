@@ -8,19 +8,18 @@ const TemplateCard = ({ items }) => {
     return (
         <>
             <div className='template_card border-[1px] border-divider-main max-w-[370px] w-full'>
-                <div className='relative'>
+                <Link href='/newProductDetail' className='relative'>
                     <Image src={`/images/${items.templateImg}`} width={370} height={278} alt="Image Error" className=''></Image>
                     <div className="overlay absolute  bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed opacity-0 transition duration-500 ease-in-out">
                     </div>
-                    <Link href='/newProductDetail' className='overlay_text font-open-sans font-bold text-white text-[18px] flex gap-2 absolute  left-[50%] top-[50%] -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-500 ease-in-out'>
+                    <span className='overlay_text font-open-sans font-bold text-white text-[18px] flex gap-2 absolute  left-[50%] top-[50%] -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-500 ease-in-out'>
                         View Details
                         <Image src={shareArrowIcon} width={16} height={12} alt="Image Error" className=''></Image>
-                    </Link>
+                    </span>
                     <div className='template_bg text-white font-open-sans font-semibold text-sm py-[2px] px-[10px] bg-black bg-opacity-0 transition duration-500 ease-in-out rounded-[30px] absolute top-5 right-5  '>
                     <span className='template_num opacity-0 transition duration-500 ease-in-out'> 1/20 </span> 
                     </div>
-                  
-                </div>
+                </Link>
                 <div className='py-3 px-5  bg-white'>
                     <div className='flex justify-between pb-3 border-b-[1px] border-divider-main'>
                         <p className='medium-info'>{items.caption}</p>
