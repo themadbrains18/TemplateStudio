@@ -1,12 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
-
+import ReactPlayer from 'react-player'
 
 import heroVector from 'public/icons/heroSecVector.svg'
 import figma from 'public/icons/Figma.svg'
 import sketch from 'public/icons/sketch.svg'
 import xd from 'public/icons/XD.svg'
 import heroImg from 'public/images/heroImg.png'
+
+
 const Hero = () => {
   return (
     <>
@@ -27,16 +29,17 @@ const Hero = () => {
               </div>
             </div>
 
-          
-              <div className='mt-10 relative hero_part before:h-[320px] before:-top-7 before:-z-10 after:-z-20 after:top-[-10%] md:mt-0 md:before:w-[230px] md:before:h-[400px] md:before:top-[-80%] md:before:-z-20 xl:before:top-[-55%] xl:before:h-[587px]'>
-                <Image src={heroImg} width={470} height={324} alt="Image Error" className='w-full md:my-0 md:mr-0 ml-auto md:max-w-[470px]'></Image>
-              </div>
-          
-            {/* <div className='relative after:absolute after:max-w-[242px] after:w-full after:h-[295px] after:bg-[#858DA9] after:-z-10 after:top-0'> */}
-            {/* <div className='bg-hero-bg-mob md:bg-hero-bg bg-no-repeat bg-cover w-full relative h-[425px]  xl:h-[587px]'>
-            </div> */}
 
-            {/* </div> */}
+            <div className='mt-10 relative hero_part before:h-[320px] before:-top-7 before:-z-10 after:-z-20 after:top-[-10%] md:mt-0 md:before:w-[230px] md:before:h-[400px] md:before:top-[-80%] md:before:-z-20 xl:before:top-[-55%] xl:before:h-[587px]'>
+              <Image src={heroImg} width={470} height={324} alt="Image Error" className='w-full md:my-0 md:mr-0 ml-auto md:max-w-[470px]'></Image>
+
+              {/* <video autoplay="autoplay" muted="" style={{ width: '400px', height: '400px' }}>
+                <source src={"https://www.fetchfunnel.com/wp-content/uploads/2021/11/landingpagescroll.mp4"}/>
+              </video>
+               */}
+              {/* <source src={"/../public/videos/landingpagescroll.mp4"}/>  */}
+            </div>
+
           </div>
         </div>
       </section>

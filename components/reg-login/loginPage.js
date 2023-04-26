@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
 
-// import signInBg from 'public/images/signInBg.png'
 import googleIcon from 'public/icons/googleIcon.svg'
 import fbIcon from 'public/icons/fbIcon.svg'
 import twitterIcon from 'public/icons/twitterIcon.svg'

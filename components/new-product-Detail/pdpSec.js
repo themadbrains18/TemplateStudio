@@ -46,7 +46,7 @@ const PdpSec = () => {
                                     <span className='overlay_text font-open-sans font-bold text-white text-[18px] z-20 flex gap-2 absolute  left-[50%] top-[50%] -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-500 ease-in-out'>
                                         Preview
                                     </span>
-                                    <Image src={`/images/${thumbnail}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700'/>
+                                    <Image src={`/images/${thumbnail}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
                                 </Link>
                             </div>
                             <div className=''>
@@ -72,7 +72,7 @@ const PdpSec = () => {
                                             thumbnailImgs.map((elem, ind) => {
                                                 return (
                                                     <Fragment key={ind}>
-                                                        <SwiperSlide><Image src={`/images/${elem}`} width={116} height={76} alt="Icon" className={`cursor-pointer border-divider-main border-[2px] ${pdpborder === ind ? "border-primary":""}`} onClick={() => { setThumbnail(elem), setPdpborder(ind)}}/></SwiperSlide>
+                                                        <SwiperSlide><Image src={`/images/${elem}`} width={116} height={76} alt="Icon" className={`cursor-pointer border-divider-main border-[2px] ${pdpborder === ind ? "border-primary" : ""}`} onClick={() => { setThumbnail(elem), setPdpborder(ind) }} /></SwiperSlide>
                                                     </Fragment>
                                                 )
                                             })
@@ -80,12 +80,6 @@ const PdpSec = () => {
                                     </div>
                                 </Swiper>
                             </div>
-                            {/* <div className=' flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
-                                <div className='grid grid-cols-6 gap-3 overflow-x-auto'>
-                                   
-                                </div>
-                                <Image src={pdpArrowRight} width={15} height={11} alt="Icon" className='hidden xmd:block' />
-                            </div> */}
 
                         </div>
                         <div className=''>

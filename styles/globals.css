@@ -147,7 +147,38 @@ body {
 }
 
 
+
+/* HERO SEC */
+
+.hero_sec::after{
+  position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 55%;
+    background: #7854F7 no-repeat;
+    opacity: 0.5;
+    filter: blur(300px);
+    z-index: -1;
+}
+
+.hero_part::after{
+  content: "";
+  background: url("../public/icons/herovector.svg") no-repeat;
+  @apply absolute top-[-18%] right-[-28%] max-w-[382px] w-full h-[230px] z-[-1];  
+}
+
+.hero_part::before{
+  content: "";
+  background: url("../public/icons/heroShade.svg") no-repeat;
+  @apply absolute top-[-60%] left-[6%] max-w-[3230px] w-full h-[587px] z-[-1];  
+}
+
+
+
 /* Category Card  */
+
 .category_card:hover .categoryCard_img{
   @apply scale-[0.94];
 }
@@ -156,7 +187,9 @@ body {
 }
 
 
+
  /* Template Card Overlay On Hover */
+
 .template_card:hover .overlay{
   @apply opacity-40
 }
@@ -173,12 +206,18 @@ body {
   @apply bg-opacity-10
 }
 
+
+
 /* SideBar Open */
+
 .menu_sidebar.active {
   @apply left-0;
 }
 
+
+
 /* Free Of Cost Section */
+
 .small_card:hover{
   @apply bg-icon-bg;
 }
@@ -186,6 +225,9 @@ body {
   @apply bg-white;
 }
 
+
+
+/* Sort Button in Filter Page */
 
 .sortby_btn:hover .icon_btn{
   @apply text-primary transition-all duration-300;
@@ -202,6 +244,7 @@ body {
 
 
 /* Filter CheckBoxes (Product page) */
+
 .checkbx,.regCheckBox{
   @apply opacity-0 cursor-pointer h-5 w-5 z-10;
 }
@@ -219,19 +262,12 @@ body {
   @apply bg-primary;
  }
 
+
  /* Project Card Overlay On Hover */
+
  .projectCard:hover .overlay{
   @apply opacity-40;
  } 
-
- /* Swipper of PDP Modified  */
- /* .swiper-horizontal{
-  @apply !overflow-visible;
-
- }
- .swiper-wrapper{
-  @apply !overflow-hidden;
- } */
  .swiper-button-prev::after{
   @apply hidden;
  }
@@ -242,7 +278,9 @@ body {
   @apply pr-12;
  }
 
+
 /* Footer Links Hover Effects */
+
  .pseudo-text-effect {
   @apply relative p-0 overflow-hidden transition-all duration-500 block;
 }
@@ -264,6 +302,7 @@ body {
 
 
 /* OTP Input Fields  */
+
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none; 
@@ -272,6 +311,7 @@ body {
 
 
 /* PDP Section CheckBoxes */
+
 .ckbx_input{
  @apply w-[23px] h-[23px] opacity-0 cursor-pointer z-10
 }
@@ -291,50 +331,8 @@ body {
   @apply top-[15%] opacity-100 visible;
 }
 
-/* 
-swiper-button-next::after{
-  content: "";
-  position:absolute;
-  top: 15%;
-  right: 0px;
 
-} */
-.hero_sec::after{
-  position: absolute;
-    content: "";
-    top: 0;
-    right: 0;
-    width: 55%;
-    height: 55%;
-    background: #7854F7 no-repeat;
-    opacity: 0.5;
-    filter: blur(300px);
-    z-index: -1;
-}
-.hero_part::after{
-  position: absolute;
-  content: "";
-  top: -18%;
-  right: -28%;
-  width: 382px;
-  height: 230px;
-  background: url("../public/icons/herovector.svg") no-repeat;
-  z-index: -1;
-}
-.hero_part::before{
-  position: absolute;
-  content: "";
-  top: -60%;
-  left: 6%;
-  width: 230px;
-  height: 587px;
-  background: url("../public/icons/heroShade.svg") no-repeat;
-  z-index: -1;
-}
-
-
-
- /* Template Card Overlay On Hover */
+ /* PDP Main Image Overlay On Hover */
  .pdp_main_img:hover .overlay{
   @apply opacity-40
 }
@@ -346,7 +344,6 @@ swiper-button-next::after{
 .pdp_main_img:hover .template_bg {
   @apply bg-opacity-10
 }
-
 
 .pdp_main_img:hover .preview_img{
   @apply scale-[0.97];
