@@ -91,7 +91,7 @@ const PdpSec = () => {
                         <div className=''>
                             <div className='mb-5 xmd:mb-10 '>
                                 <h2 className="main-heading mb-[10px]  xmd:mb-5">Room - UI Kit for Room Sharing UI Template </h2>
-                                <p className='main-info '>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.<span className='font-semibold text-dark-text'> View more</span></p>
+                                <p className='main-info '>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.<span className='cursor-pointer font-semibold text-dark-text'> View more</span></p>
                             </div>
                             <div>
                                 <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>

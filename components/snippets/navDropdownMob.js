@@ -40,7 +40,7 @@ const NavDropdownMob = (props) => {
                         }
                     </div>
                     <div className='flex justify-between mb-5'>
-                        <h3 className='main-heading '>Feature Product</h3>
+                        <h3 className='main-heading !text-[18px]'>Feature Product</h3>
                         <button className='flex gap-2 items-center'>
                             <p className='medium-info !text-primary'>View All Products  </p><Image src={sideArrow} width={9} height={5} alt="Side Arrow" className=''></Image></button>
                     </div>
@@ -54,7 +54,6 @@ const NavDropdownMob = (props) => {
                                 )
                             })
                         }
-
                     </div>
                 </div>}
             </div>
