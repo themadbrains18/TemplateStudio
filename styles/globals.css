@@ -299,3 +299,35 @@ swiper-button-next::after{
   right: 0px;
 
 } */
+.hero_sec::after{
+  position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 55%;
+    background: #7854F7 no-repeat;
+    opacity: 0.5;
+    filter: blur(300px);
+    z-index: -1;
+}
+.hero_part::after{
+  position: absolute;
+  content: "";
+  top: -18%;
+  right: -28%;
+  width: 382px;
+  height: 230px;
+  background: url("../public/icons/herovector.svg") no-repeat;
+  z-index: -1;
+}
+.hero_part::before{
+  position: absolute;
+  content: "";
+  top: -60%;
+  left: 6%;
+  width: 230px;
+  height: 587px;
+  background: url("../public/icons/heroShade.svg") no-repeat;
+  z-index: -1;
+}

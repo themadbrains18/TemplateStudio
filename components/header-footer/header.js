@@ -93,7 +93,7 @@ const Header = () => {
     ]
     return (
         <>
-            <header className='py-[34px] border-b-[1px] border-divider-main relative z-50'>
+            <header className='py-[34px] border-b-[1px] border-divider-main relative z-50 bg-white'>
                 <div className='container'>
                     <nav className='flex items-center justify-between'>
                         {/* Toggle button Mob Start */}

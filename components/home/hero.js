@@ -10,9 +10,9 @@ import heroImg from 'public/images/heroImg.png'
 const Hero = () => {
   return (
     <>
-      <section className='py-10 md:p-0'>
+      <section className='py-10 md:mt-14 xl:pt-[80px]'>
         <div className='container'>
-          <div className='md:grid grid-cols-2 items-center md:items-end  md:gap-8  lg:gap-24'>
+          <div className='md:grid grid-cols-2 items-center md:items-center  md:gap-8  lg:gap-24 hero_sec relative' >
             <div className='mb-[30px]'>
               <div className='relative w-[280px] mb-[10px]'>
                 <Image src={heroVector} width={190} height={32} alt="Image Error" className=''></Image>
@@ -27,10 +27,14 @@ const Hero = () => {
               </div>
             </div>
 
+          
+              <div className='mt-10 relative hero_part before:h-[320px] before:-top-7 before:-z-10 after:-z-20 after:top-[-10%] md:mt-0 md:before:w-[230px] md:before:h-[400px] md:before:top-[-80%] md:before:-z-20 xl:before:top-[-55%] xl:before:h-[587px]'>
+                <Image src={heroImg} width={470} height={324} alt="Image Error" className='w-full md:my-0 md:mr-0 ml-auto md:max-w-[470px]'></Image>
+              </div>
+          
             {/* <div className='relative after:absolute after:max-w-[242px] after:w-full after:h-[295px] after:bg-[#858DA9] after:-z-10 after:top-0'> */}
-            <div className='bg-hero-bg-mob md:bg-hero-bg bg-no-repeat bg-cover w-full relative h-[425px]  xl:h-[587px]'>
-              <Image src={heroImg} width={470} height={324} alt="Image Error" className='absolute top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-50%]'></Image>
-            </div>
+            {/* <div className='bg-hero-bg-mob md:bg-hero-bg bg-no-repeat bg-cover w-full relative h-[425px]  xl:h-[587px]'>
+            </div> */}
 
             {/* </div> */}
           </div>
