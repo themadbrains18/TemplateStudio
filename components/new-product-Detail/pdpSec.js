@@ -17,6 +17,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+import Link from 'next/link'
 
 
 let thumbnailImgs = ["pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png","pdp5.png","pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png","pdp5.png"];
@@ -27,10 +28,10 @@ const PdpSec = () => {
             <section className='py-[20px] bg-back-white'>
                 <div className='big_container'>
                     <div className='flex items-center gap-2 mb-5'>
-                        <Image src='/icons/tmb_icon.svg' width={30} height={30} alt="Image Error" className=''></Image>
+                        <Link href="/"><Image src='/icons/tmb_icon.svg' width={30} height={30} alt="Image Error" className=''></Image></Link>
                         <div className='flex gap-[10px] items-center'>
-                            <p className='medium-heading text-[12px] md:text-[14px]'> <span className='font-open-sans text-[12px] md:text-[14px] text-light-text leading-5 font-normal pr-1'>By</span>themadbrains</p>
-                            <span className='medium-heading text-[12px] md:text-[14px]'>UI templates</span>
+                            <p className='medium-heading text-[12px] md:text-[14px]'> <span className='font-open-sans text-[12px] md:text-[14px] text-light-text leading-5 font-normal pr-1'>By</span> <Link href="/">themadbrains</Link></p>
+                            <Link href="/" className='medium-heading text-[12px] md:text-[14px]'>UI templates</Link>
                         </div>
                     </div>
 

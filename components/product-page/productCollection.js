@@ -1,10 +1,12 @@
 import React, { Fragment, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import filterIcon from 'public/icons/filterIcon.svg'
 import filterCrossBtn from 'public/icons/filter-cross.svg'
 import popupCloseBtn from 'public/icons/popupCloseBtn.svg'
-
+import notFoundProd from 'public/icons/notFoundProd.svg'
+import rightArrow from 'public/icons/rightArrow.svg'
 
 import FilterCheckBox from '../snippets/filterCheckBox'
 import TemplateCard from '../snippets/templateCard'
@@ -209,6 +211,17 @@ const ProductCollection = () => {
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* Product Not Found Start */}
+                                <div className='p-10 bg-white hidden'>
+                                    <p className='medium-heading text-[18px] md:text-[20px]'>Sorry, we couldn’t find any results for this search. Maybe give one of these a try?</p>
+                                    <Image src={notFoundProd} width={197} height={140} alt="Icon" className='py-[80px] m-auto' />
+                                    <div className='border-t-[1px] border-divider-main py-[30px] flex flex-col gap-5 md:justify-between'>
+                                        <p className='small-info md:!text-base'>Try <Link href="" className="text-primary border-b-[1px] border-primary"> clearing some filters </Link> and try again.</p>
+                                        <button className='solid-btn text-lg font-semibold'>Find more products</button>
+                                    </div>
+                                </div>
+                                {/* Product Not Found End */}
 
                                 <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
                                     {
