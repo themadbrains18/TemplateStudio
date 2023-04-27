@@ -21,10 +21,10 @@ const TemplateCard = ({ items }) => {
                     </div>
                 </Link>
                 <div className='py-3 px-5  bg-white'>
-                    <div className='flex justify-between pb-3 border-b-[1px] border-divider-main'>
+                    <Link href='/newProductDetail' className='flex justify-between pb-3 border-b-[1px] border-divider-main'>
                         <p className='medium-info'>{items.caption}</p>
                         <Image src={`/icons/${items.designingToolIcon}`} width={24} height={24} alt="Image Error" className=''></Image>
-                    </div>
+                    </Link>
                     <div className='flex justify-between mt-3 gap-2 flex-wrap items-start'>
                         <div className='flex items-center gap-2'>
                             <Image src={`/icons/${items.companyLogo}`} width={20} height={20} alt="Image Error" className=''></Image>

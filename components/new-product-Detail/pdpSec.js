@@ -88,36 +88,35 @@ const PdpSec = () => {
                                 <p className='main-info '>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.<span className='cursor-pointer font-semibold text-dark-text'> View more</span></p>
                             </div>
                             <div>
-                                <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>
-                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
+                                <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item justify-items-end gap-4 mb-[18px]'>
+                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
                                         <input type='checkbox' id='figmaDesign' className='ckbx_input' ></input>
                                         <span className='pdp_checkmark'></span>
                                         <label htmlFor='figmaDesign' className='small-info !font-semibold cursor-pointer'>Figma Design File</label>
                                     </div>
-                                    <div className='border-r-2 border-divider-main'></div>
+                                    <div className='h-[100%] w-[2px] bg-divider-main'></div>
                                     <button className='small-info !font-semibold'>View Detail </button>
-                                    <Image src={figmaIcon30} width={30} height={30} alt="Icon" className='' />
+                                    <Image src={figmaIcon30} width={30} height={30} alt="Icon" className='justify-self-end' />
                                 </div>
-
-                                <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>
-                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
-                                        <input type='checkbox' id='xdDesign' className='ckbx_input' ></input>
+                                <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item justify-items-end gap-4 mb-[18px]'>
+                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
+                                        <input type='checkbox' id='figmaDesign' className='ckbx_input' ></input>
                                         <span className='pdp_checkmark'></span>
-                                        <label htmlFor='xdDesign' className='small-info !font-semibold cursor-pointer'>XD Design File</label>
+                                        <label htmlFor='figmaDesign' className='small-info !font-semibold cursor-pointer'>XD Design File</label>
                                     </div>
-                                    <div className='border-r-2 border-divider-main'></div>
+                                    <div className='h-[100%] w-[2px] bg-divider-main'></div>
                                     <button className='small-info !font-semibold'>View Detail </button>
-                                    <Image src={xdIcon30} width={30} height={30} alt="Icon" className='' />
+                                    <Image src={xdIcon30} width={30} height={30} alt="Icon" className='justify-self-end' />
                                 </div>
-                                <div className='p-[10px] xmd:p-5 border border-divider-main flex justify-between gap-4 mb-[18px]'>
-                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden'>
-                                        <input type='checkbox' id='sketchDesign' className='ckbx_input' ></input>
+                                <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item  justify-items-end gap-4 mb-[18px]'>
+                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
+                                        <input type='checkbox' id='figmaDesign' className='ckbx_input' ></input>
                                         <span className='pdp_checkmark'></span>
-                                        <label htmlFor='sketchDesign' className='small-info !font-semibold cursor-pointer'>Sketch Design File</label>
+                                        <label htmlFor='figmaDesign' className='small-info !font-semibold cursor-pointer'>Sketch Design File</label>
                                     </div>
-                                    <div className='border-r-2 border-divider-main'></div>
+                                    <div className='h-[100%] w-[2px] bg-divider-main'></div>
                                     <button className='small-info !font-semibold'>View Detail </button>
-                                    <Image src={sketchIcon30} width={30} height={30} alt="Icon" className='' />
+                                    <Image src={sketchIcon30} width={30} height={30} alt="Icon" className='justify-self-end' />
                                 </div>
                             </div>
 

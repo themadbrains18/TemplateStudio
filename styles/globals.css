@@ -349,3 +349,6 @@ body {
   @apply scale-[0.97];
 }
 
+.pdp_chkbx_item{
+  grid-template-columns: 1fr 100px 1fr 1fr;
+}

@@ -22,13 +22,13 @@ const NewPdpTabs = () => {
             <section className='py-[40px] md:py-[80px]'>
                 <div className='big_container'>
                     <div className='flex gap-[15px] border-b border-divider-main whitespace-nowrap overflow-x-auto md:gap-[30px] md:justify-center'>
-                        <button className={`medium-info px-5 pt-[6px] pb-[10px] bg-primary-800 ${tabContent === 1 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(1)}>Description</button>
-                        <button className={`medium-info px-5 pt-[6px] pb-[10px] bg-primary-800 ${tabContent === 2 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(2)}>Technical Details</button>
-                        <button className={`medium-info px-5 pt-[6px] pb-[10px] bg-primary-800 ${tabContent === 3 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(3)}>Credits</button>
-                        <button className={`medium-info px-5 pt-[6px] pb-[10px] bg-primary-800 flex gap-2 ${tabContent === 4 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(4)}>What's New
+                        <button className={`medium-info px-5 py-2 bg-primary-800 ${tabContent === 1 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(1)}>Description</button>
+                        <button className={`medium-info px-5 py-2 bg-primary-800 ${tabContent === 2 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(2)}>Technical Details</button>
+                        <button className={`medium-info px-5 py-2 bg-primary-800 ${tabContent === 3 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(3)}>Credits</button>
+                        <button className={`medium-info px-5 py-2 bg-primary-800 flex gap-2 items-center ${tabContent === 4 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(4)}>What's New
                             <Image src={wtsNewIcon} width={20} height={20} alt="Icon" className='' />
                         </button>
-                        <button className={`medium-info px-5 pt-[6px] pb-[10px] bg-primary-800 ${tabContent === 5 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(5)}>About Author</button>
+                        <button className={`medium-info px-5 py-2 bg-primary-800 ${tabContent === 5 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(5)}>About Author</button>
                     </div>
 
                     {/* Description Tab Content Called here */}

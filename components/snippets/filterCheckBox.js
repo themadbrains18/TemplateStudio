@@ -10,15 +10,23 @@ const FilterCheckBox = (props) => {
 
     function setHeight(e) {
         setRotate(!rotate)
+
         let nextElem = e.currentTarget.nextSibling;
+        nextElem.style.height="0px";
         let ElemHeight = nextElem.scrollHeight;   
    
-        if (nextElem.getAttribute("style")) {
-            nextElem.removeAttribute("style");
+        if(rotate===true){
+            nextElem.style.height=`${ElemHeight}px`;
         }
-        else {
-            nextElem.setAttribute("style", `height:${ElemHeight}px`);
+        else{
+            nextElem.style.height="0px";
         }
+        // if (nextElem.getAttribute("style")) {
+        //     nextElem.removeAttribute("style");
+        // }
+        // else {
+        //     nextElem.setAttribute("style", `height:${ElemHeight}px`);
+        // }
     }
 
 
@@ -29,9 +37,9 @@ const FilterCheckBox = (props) => {
             <div className='pb-[10px] pt-8 bg-white border-b-[1px] border-divider-main last:border-none'>
                 <div className='flex justify-between pb-[27px] cursor-pointer' onClick={setHeight}>
                     <h3 className='medium-heading text-[18px]'>{props?.data?.filterTitle}</h3>
-                    <Image src={arrowUp} width={12} height={7} alt="Icon" className={`arrowIcon rotate-180 transition-300 ${rotate && "rotate-0 "}`}></Image>
+                    <Image src={arrowUp} width={12} height={7} alt="Icon" className={`arrowIcon transition-300  ${rotate && "rotate-180"}`}></Image>
                 </div>
-                <div className={`h-0 overflow-hidden transition-300`}>
+                <div className={`overflow-hidden transition-300`}>
                     {props?.data && props?.data?.filterOption.map((item, index) => {
                         return (
                             <div key={index} className='flex justify-between mb-[15px] relative'>

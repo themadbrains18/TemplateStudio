@@ -36,7 +36,7 @@ const Hero = () => {
               {/* <video autoplay="autoplay" muted="" style={{ width: '400px', height: '400px' }}>
                 <source src={"https://www.fetchfunnel.com/wp-content/uploads/2021/11/landingpagescroll.mp4"}/>
               </video>
-               */}
+
               {/* <source src={"/../public/videos/landingpagescroll.mp4"}/>  */}
             </div>
 
