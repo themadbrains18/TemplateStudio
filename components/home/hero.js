@@ -14,7 +14,7 @@ const Hero = () => {
     <>
       <section className='py-10 md:mt-14 xl:pt-[80px]'>
         <div className='container'>
-          <div className='md:grid grid-cols-2 items-center md:items-center  md:gap-8  lg:gap-24 hero_sec relative' >
+          <div className='md:grid grid-cols-2 items-center md:items-center  md:gap-8  lg:gap-24 hero_sec after:top-[50%] md:after:top-0 relative' >
             <div className='mb-[30px]'>
               <div className='relative w-[280px] mb-[10px]'>
                 <Image src={heroVector} width={190} height={32} alt="Image Error" className=''></Image>
@@ -32,7 +32,10 @@ const Hero = () => {
 
             <div className='mt-10 relative hero_part before:h-[320px] before:-top-7 before:-z-10 after:-z-20 after:top-[-10%] md:mt-0 md:before:w-[230px] md:before:h-[400px] md:before:top-[-80%] md:before:-z-20 xl:before:top-[-55%] xl:before:h-[587px]'>
               <Image src={heroImg} width={470} height={324} alt="Image Error" className='w-full md:my-0 md:mr-0 ml-auto md:max-w-[470px]'></Image>
-
+              <div className='flex gap-2 items-center mt-5 justify-center'>
+                <span className='max-w-[129px] w-full h-[1px] bg-black mr-[-65px] sm:mr-0' ></span>
+                <p className='hero_text text-[12px] font-open-sans text-[#544E4E]'>NFT (Buy & Sell) <span className=' font-semibold text-[#110833] px-[6px]'>Enefty</span>Template</p>
+              </div>
               {/* <video autoplay="autoplay" muted="" style={{ width: '400px', height: '400px' }}>
                 <source src={"https://www.fetchfunnel.com/wp-content/uploads/2021/11/landingpagescroll.mp4"}/>
               </video>
