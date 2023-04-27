@@ -100,9 +100,9 @@ const PdpSec = () => {
                                 </div>
                                 <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item justify-items-end gap-4 mb-[18px]'>
                                     <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
-                                        <input type='checkbox' id='figmaDesign' className='ckbx_input' ></input>
+                                        <input type='checkbox' id='xdDesign' className='ckbx_input' ></input>
                                         <span className='pdp_checkmark'></span>
-                                        <label htmlFor='figmaDesign' className='small-info !font-semibold cursor-pointer'>XD Design File</label>
+                                        <label htmlFor='xdDesign' className='small-info !font-semibold cursor-pointer'>XD Design File</label>
                                     </div>
                                     <div className='h-[100%] w-[2px] bg-divider-main'></div>
                                     <button className='small-info !font-semibold'>View Detail </button>
@@ -110,9 +110,9 @@ const PdpSec = () => {
                                 </div>
                                 <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item  justify-items-end gap-4 mb-[18px]'>
                                     <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
-                                        <input type='checkbox' id='figmaDesign' className='ckbx_input' ></input>
+                                        <input type='checkbox' id='sketchDesign' className='ckbx_input' ></input>
                                         <span className='pdp_checkmark'></span>
-                                        <label htmlFor='figmaDesign' className='small-info !font-semibold cursor-pointer'>Sketch Design File</label>
+                                        <label htmlFor='sketchDesign' className='small-info !font-semibold cursor-pointer'>Sketch Design File</label>
                                     </div>
                                     <div className='h-[100%] w-[2px] bg-divider-main'></div>
                                     <button className='small-info !font-semibold'>View Detail </button>
