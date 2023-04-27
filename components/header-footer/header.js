@@ -137,10 +137,10 @@ const Header = () => {
                                 <div className={`px-2 py-3  border-[1px] border-primary-400  absolute w-[315px] md:w-[380px] top-[50%]  translate-y-[-50%] bg-white duration-700 transition-all ${searchBar ? "left-[calc(100%-300px)] visible opacity-[1] md:left-[calc(100%-380px)]" : "left-[calc(100%+20px)] invisible opacity-0"}`}>
                                     <div className='flex gap-[10px]'>
                                         <div>
-                                            <div className='flex gap-2 px-[15px] py-[5px] bg-primary-700' onClick={() => { ToggleDropDown(true) }}>
+                                            <button className='flex items-center cursor-pointer gap-2 px-[15px] py-[5px] bg-primary-700' onClick={() => { ToggleDropDown(true) }}>
                                                 <span className='small-info whitespace-nowrap'>All Products</span>
-                                                <Image src={downArrowSearch} width={10} height={5} alt="Down Arrow" className='nav_down_arrow' />
-                                            </div>
+                                                <Image src={downArrowSearch} width={10} height={5} alt="Down Arrow" className={`nav_down_arrow ${toggle && "rotate-180"}  `} />
+                                            </button>
                                         </div>
                                         <ul className={`py-[10px] absolute top-[50px] left-0 max-w-[170px] sm:max-w-[218px] w-full bg-white  transition-300 shadow-btnShadow-Dropdown visible  ${toggle ? "" : " opacity-0 invisible  "} `}>
                                             <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>All Products</li>

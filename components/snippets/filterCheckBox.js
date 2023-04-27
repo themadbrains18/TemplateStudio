@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 import arrowUp from 'public/icons/arrowUp.svg'
@@ -7,6 +7,29 @@ const FilterCheckBox = (props) => {
     const [tag, setTag] = useState('');
     const [rotate, setRotate] = useState(false);
 
+
+    useEffect(()=>{
+        function setHeight(e) {
+            setRotate(!rotate)
+    
+            let nextElem = e.currentTarget.nextSibling;
+            nextElem.style.height="0px";
+            let ElemHeight = nextElem.scrollHeight;   
+       
+            if(rotate===true){
+                nextElem.style.height=`${ElemHeight}px`;
+            }
+            else{
+                nextElem.style.height="0px";
+            }
+            // if (nextElem.getAttribute("style")) {
+            //     nextElem.removeAttribute("style");
+            // }
+            // else {
+            //     nextElem.setAttribute("style", `height:${ElemHeight}px`);
+            // }
+        }
+    }) 
 
     function setHeight(e) {
         setRotate(!rotate)
