@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -22,6 +22,24 @@ const Header = () => {
     const [searchBar, setSearchBar] = useState(false);
     const [toggle, setToggle] = useState(false);
     const [isShown, setIsShown] = useState(0);
+    const dropdown = useRef(null);
+    useEffect(() => {
+
+        function handleClick(event) {
+            if (dropdown.current && !dropdown.current.contains(event.target)) {
+                setToggle(false);
+            }
+        }
+
+        window.addEventListener("click", handleClick);
+
+
+        // clean up
+        return () => window.removeEventListener("click", handleClick);
+
+
+    }, [])
+
 
     const toggleSidebar = () => {
         sideBar === true ? setSideBar(false) : setSideBar(true);
@@ -91,6 +109,33 @@ const Header = () => {
             title: "Web Template",
         },
     ]
+
+    const searchDropdown = [
+        {
+            "item": "All Products",
+        },
+        {
+            "item": "Sports",
+        },
+        {
+            "item": "Insurance",
+        },
+        {
+            "item": "Education",
+        },
+        {
+            "item": "Entertainment",
+        },
+        {
+            "item": "Real Estate",
+        },
+        {
+            "item": "Retail",
+        },
+        {
+            "item": "Technology",
+        },
+    ]
     return (
         <>
             <header className='py-[34px] border-b-[1px] border-divider-main relative z-50 bg-white'>
@@ -115,7 +160,7 @@ const Header = () => {
                                     headings.map((item, index) => {
                                         return (
                                             <Fragment key={index} >
-                                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative cursor-pointer' onMouseEnter={() => setIsShown(index+1)} onMouseLeave={() => setIsShown(0)}>
+                                                <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative cursor-pointer' onMouseEnter={() => setIsShown(index + 1)} onMouseLeave={() => setIsShown(0)}>
                                                     <span className=''>{item}</span>
                                                     <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" strokeWidth="1.5" strokeLinecap="round" />
@@ -136,22 +181,22 @@ const Header = () => {
 
                                 <div className={`px-2 py-3  border-[1px] border-primary-400  absolute w-[315px] md:w-[380px] top-[50%]  translate-y-[-50%] bg-white duration-700 transition-all ${searchBar ? "left-[calc(100%-300px)] visible opacity-[1] md:left-[calc(100%-380px)]" : "left-[calc(100%+20px)] invisible opacity-0"}`}>
                                     <div className='flex gap-[10px]'>
-                                        <div>
+                                        <div ref={dropdown} >
                                             <button className='flex items-center cursor-pointer gap-2 px-[15px] py-[5px] bg-primary-700' onClick={() => { ToggleDropDown(true) }}>
                                                 <span className='small-info whitespace-nowrap'>All Products</span>
                                                 <Image src={downArrowSearch} width={10} height={5} alt="Down Arrow" className={`nav_down_arrow ${toggle && "rotate-180"}  `} />
                                             </button>
                                         </div>
-                                        <ul className={`py-[10px] absolute top-[50px] left-0 max-w-[170px] sm:max-w-[218px] w-full bg-white  transition-300 shadow-btnShadow-Dropdown visible  ${toggle ? "" : " opacity-0 invisible  "} `}>
-                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>All Products</li>
-                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Sports</li>
-                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Insurance</li>
-                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Education</li>
-                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Entertainment
-                                            </li>
-                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Real Estate</li>
-                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Retail</li>
-                                            <li className='main-info py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>Technology</li>
+                                        <ul className={`py-[10px] absolute top-[50px] left-0 max-w-[170px] sm:max-w-[218px] w-full bg-white  transition-300 shadow-btnShadow-Dropdown visible  ${toggle ? "" : "opacity-0 invisible "}`}>
+                                            {
+                                                searchDropdown.map((elem, index) => {
+                                                    return (
+                                                        <Fragment key={index}>
+                                                            <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>{elem.item}</li>
+                                                        </Fragment>
+                                                    )
+                                                })
+                                            }
                                         </ul>
                                         <span className='border-[1px] border-primary-400'></span>
                                         <div className='flex'>
