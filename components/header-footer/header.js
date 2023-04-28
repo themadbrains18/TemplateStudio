@@ -192,7 +192,7 @@ const Header = () => {
                                                 searchDropdown.map((elem, index) => {
                                                     return (
                                                         <Fragment key={index}>
-                                                            <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 hover:border-l-2 border-primary rounded-sm transition-300'>{elem.item}</li>
+                                                            <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300'>{elem.item}</li>
                                                         </Fragment>
                                                     )
                                                 })
