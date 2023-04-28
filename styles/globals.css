@@ -172,7 +172,7 @@ body {
 .hero_part::before{
   content: "";
   background: url("../public/icons/heroShade.svg") no-repeat;
-  @apply absolute top-[-60%] left-[6%] max-w-[390px] w-full h-[587px] z-[-1] bg-left-bottom;  
+  @apply absolute top-[-60%] left-[-5%] max-w-[390px] w-full h-[587px] z-[-1] bg-left-bottom;  
 }
 
 
@@ -351,3 +351,4 @@ body {
 .pdp_main_img:hover .preview_img{
   @apply scale-[0.97];
 }
+

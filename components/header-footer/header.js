@@ -22,9 +22,11 @@ const Header = () => {
     const [searchBar, setSearchBar] = useState(false);
     const [toggle, setToggle] = useState(false);
     const [isShown, setIsShown] = useState(0);
-    const dropdown = useRef(null);
-    useEffect(() => {
+    const [text, setText] = useState('All Product');
 
+    const dropdown = useRef(null);
+
+    useEffect(() => {
         function handleClick(event) {
             if (dropdown.current && !dropdown.current.contains(event.target)) {
                 setToggle(false);
@@ -32,8 +34,6 @@ const Header = () => {
         }
 
         window.addEventListener("click", handleClick);
-
-
         // clean up
         return () => window.removeEventListener("click", handleClick);
 
@@ -183,7 +183,7 @@ const Header = () => {
                                     <div className='flex gap-[10px]'>
                                         <div ref={dropdown} >
                                             <button className='flex items-center cursor-pointer gap-2 px-[15px] py-[5px] bg-primary-700' onClick={() => { ToggleDropDown(true) }}>
-                                                <span className='small-info whitespace-nowrap'>All Products</span>
+                                                <span className='small-info whitespace-nowrap'>{text}</span>
                                                 <Image src={downArrowSearch} width={10} height={5} alt="Down Arrow" className={`nav_down_arrow ${toggle && "rotate-180"}  `} />
                                             </button>
                                         </div>
@@ -192,7 +192,10 @@ const Header = () => {
                                                 searchDropdown.map((elem, index) => {
                                                     return (
                                                         <Fragment key={index}>
-                                                            <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300'>{elem.item}</li>
+                                                            <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300' 
+                                                            onClick={()=>{
+                                                                setText(elem.item)
+                                                                }} >{elem.item}</li>
                                                         </Fragment>
                                                     )
                                                 })

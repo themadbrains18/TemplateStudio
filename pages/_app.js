@@ -19,7 +19,6 @@ export default function App({ Component, pageProps }) {
   }, [])
 
   const router = useRouter()
-  console.log("===pathname", router.pathname);
   
 // Removing Header and Footer in Sign-ups Pages
   return (
