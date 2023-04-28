@@ -53,7 +53,7 @@ const PdpSec = () => {
                                 <Swiper
                                     // install Swiper modules
                                     modules={[Navigation, Autoplay]}
-                                    spaceBetween={20}
+                                    spaceBetween={10}
                                     slidesPerView={6}
                                     freeMode="true"
                                     loop={true}
