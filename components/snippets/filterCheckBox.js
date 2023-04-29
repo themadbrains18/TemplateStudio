@@ -7,42 +7,27 @@ const FilterCheckBox = (props) => {
     const [tag, setTag] = useState('');
     const [rotate, setRotate] = useState(false);
 
+    useEffect(() => {
+        let accordinnCon = document.querySelectorAll(".acc_ontent")
+        accordinnCon.forEach((item) => {
+        let  accHeight = item.scrollHeight;
+            item.style.height = `${accHeight}px`;
+        })
 
-    useEffect(()=>{
-        function setHeight(e) {
-            setRotate(!rotate)
-    
-            let nextElem = e.currentTarget.nextSibling;
-            nextElem.style.height="0px";
-            let ElemHeight = nextElem.scrollHeight;   
-       
-            if(rotate===true){
-                nextElem.style.height=`${ElemHeight}px`;
-            }
-            else{
-                nextElem.style.height="0px";
-            }
-            // if (nextElem.getAttribute("style")) {
-            //     nextElem.removeAttribute("style");
-            // }
-            // else {
-            //     nextElem.setAttribute("style", `height:${ElemHeight}px`);
-            // }
-        }
-    }) 
+    }, [])
 
     function setHeight(e) {
         setRotate(!rotate)
 
         let nextElem = e.currentTarget.nextSibling;
-        nextElem.style.height="0px";
-        let ElemHeight = nextElem.scrollHeight;   
-   
-        if(rotate===true){
-            nextElem.style.height=`${ElemHeight}px`;
+        nextElem.style.height = "0px";
+        let ElemHeight = nextElem.scrollHeight;
+
+        if (rotate === true) {
+            nextElem.style.height = `${ElemHeight}px`;
         }
-        else{
-            nextElem.style.height="0px";
+        else {
+            nextElem.style.height = "0px";
         }
         // if (nextElem.getAttribute("style")) {
         //     nextElem.removeAttribute("style");
@@ -51,7 +36,6 @@ const FilterCheckBox = (props) => {
         //     nextElem.setAttribute("style", `height:${ElemHeight}px`);
         // }
     }
-
 
     return (
         <>
@@ -62,7 +46,7 @@ const FilterCheckBox = (props) => {
                     <h3 className='medium-heading text-[18px]'>{props?.data?.filterTitle}</h3>
                     <Image src={arrowUp} width={12} height={7} alt="Icon" className={`arrowIcon transition-300  ${rotate && "rotate-180"}`}></Image>
                 </div>
-                <div className={`overflow-hidden transition-300`}>
+                <div className={`overflow-hidden transition-300 acc_ontent`}>
                     {props?.data && props?.data?.filterOption.map((item, index) => {
                         return (
                             <div key={index} className='flex justify-between mb-[15px] relative'>

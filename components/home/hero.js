@@ -14,24 +14,24 @@ const Hero = () => {
 
   // =========== Code for Play the video on mouse hover ===========
 
-  // useEffect(()=>{
-  // // Targeting video element 
-  // let clip = document.querySelector(".vid")
+  useEffect(()=>{
+  // Targeting video element 
+  let clip = document.querySelector(".vid")
 
-  // /* Applying mouseover event on video clip 
-  // and then we call play() function to play 
-  // the video when the mouse is over the video */
-  // clip.addEventListener("mouseover", function (e) {
-  //     clip.play();
-  // })
+  /* Applying mouseover event on video clip 
+  and then we call play() function to play 
+  the video when the mouse is over the video */
+  clip.addEventListener("mouseover", function (e) {
+      clip.play();
+  })
 
-  // /* Applying mouseout event on video clip 
-  // and then we call pause() function to stop 
-  // the video when the mouse is out the video */
-  // clip.addEventListener("mouseout", function (e) {
-  //     clip.pause();
-  // })
-  // })
+  /* Applying mouseout event on video clip 
+  and then we call pause() function to stop 
+  the video when the mouse is out the video */
+  clip.addEventListener("mouseout", function (e) {
+      clip.pause();
+  })
+  })
 
   return (
     <>
@@ -55,7 +55,7 @@ const Hero = () => {
 
             <div className='mt-10 relative hero_part before:h-[320px] before:-top-7 before:-z-10 after:-z-20 after:top-[-10%] md:mt-0 md:before:w-[230px] md:before:h-[400px] md:before:top-[-80%] md:before:-z-20 xl:before:top-[-55%] xl:before:h-[587px]'>
               {/* <Image src={heroImg} width={470} height={324} alt="Image Error" className='w-full md:my-0 md:mr-0 ml-auto md:max-w-[470px]'></Image> */}
-              <video className='vid' autoPlay muted loop style={{ border: '10px solid white', borderRadius: '15px', padding: '5px' }}>
+              <video className='vid' muted loop style={{ border: '10px solid white', borderRadius: '15px', padding: '5px' }}>
                 <source src={"https://www.fetchfunnel.com/wp-content/uploads/2021/11/landingpagescroll.mp4"} />
               </video>
               <div className='flex gap-2 items-center mt-5 justify-center'>
