@@ -63,7 +63,6 @@ const Hero = () => {
                 <p className='text-[12px] font-open-sans text-[#544E4E]'>NFT (Buy & Sell) <span className=' font-semibold text-[#110833] px-[6px]'>Enefty</span>Template</p>
               </div>
 
-              {/* <source src={"/../public/videos/landingpagescroll.mp4"}/>  */}
             </div>
 
           </div>
