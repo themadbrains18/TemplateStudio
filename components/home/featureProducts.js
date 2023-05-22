@@ -66,7 +66,6 @@ const FeatureProducts = () => {
                                         <TemplateCard items={value} />
                                     </Fragment>
                                 )
-
                             })
                         }
                     </div>
