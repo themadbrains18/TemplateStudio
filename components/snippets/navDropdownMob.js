@@ -30,10 +30,10 @@ const NavDropdownMob = (props) => {
                 {isActive && <div className="dropdown_content">
                     <div className='flex gap-[5px] items-center overflow-x-auto mb-5'>
                         {
-                            props.subHeading[props.index].map((e, i) => {
+                            props.subHeading.map((e, i) => {
                                 return (
                                     <Fragment key={i}>
-                                        <button className='px-[10px] py-2 border-[0.5px] border-divider-main medium-heading text-[14px] whitespace-nowrap'>{e.title}</button>
+                                        <button className='px-[10px] py-2 border-[0.5px] border-divider-main medium-heading text-[14px] whitespace-nowrap'>{e.subCategory}</button>
                                     </Fragment>
                                 )
                             })

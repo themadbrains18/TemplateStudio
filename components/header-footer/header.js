@@ -17,7 +17,7 @@ import NavDropdownMob from '../snippets/navDropdownMob'
 
 
 
-const Header = () => {
+const Header = (props) => {
     const [sideBar, setSideBar] = useState(false);
     const [searchBar, setSearchBar] = useState(false);
     const [toggle, setToggle] = useState(false);
@@ -37,7 +37,6 @@ const Header = () => {
         // clean up
         return () => window.removeEventListener("click", handleClick);
 
-
     }, [])
 
 
@@ -47,69 +46,7 @@ const Header = () => {
     const ToggleDropDown = () => {
         toggle === true ? setToggle(false) : setToggle(true)
     }
-    const headings = ['Ui Templates', 'HTML Templates', 'Studio Templates']
-    const uiTemplate = [
-        {
-            title: "Web Templates",
-        },
-        {
-            title: "Mobile App",
-        },
-        {
-            title: "Dashboards",
-        },
-        {
-            title: "Landing Page T..",
-        },
-        {
-            title: "Web Template",
-        },
-    ]
-
-    const htmlTemplate = [
-        {
-            title: "HTML Website Templates",
-        },
-        {
-            title: "Tailwind Template",
-        },
-        {
-            title: "WordPress Themes",
-        },
-        {
-            title: "Shopify Themes",
-        },
-        {
-            title: "MUI Template",
-        },
-        {
-            title: "Bootstrap",
-        },
-        {
-            title: "CSS",
-        },
-        {
-            title: "React",
-        },
-    ]
-    const studioTemplate = [
-        {
-            title: "Web Sites",
-        },
-        {
-            title: "Mobile Sites",
-        },
-        {
-            title: "Dashboard App",
-        },
-        {
-            title: "Landing Page ",
-        },
-        {
-            title: "Web Template",
-        },
-    ]
-
+    
     const searchDropdown = [
         {
             "item": "All Products",
@@ -157,11 +94,11 @@ const Header = () => {
                             {/* Nav Start */}
                             <ul className='gap-8 hidden xmd:flex'>
                                 {
-                                    headings.map((item, index) => {
+                                    props?.categoryList.map((item, index) => {
                                         return (
                                             <Fragment key={index} >
                                                 <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative cursor-pointer' onMouseEnter={() => setIsShown(index + 1)} onMouseLeave={() => setIsShown(0)}>
-                                                    <span className=''>{item}</span>
+                                                    <span className=''>{item?.category}</span>
                                                     <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M1 1L4.93934 4.93934C5.52513 5.52513 6.47517 5.52483 7.06095 4.93905C8.4141 3.5859 9.42961 2.57039 11 1" stroke="#110833" strokeWidth="1.5" strokeLinecap="round" />
                                                     </svg>
@@ -192,9 +129,9 @@ const Header = () => {
                                                 searchDropdown.map((elem, index) => {
                                                     return (
                                                         <Fragment key={index}>
-                                                            <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300' 
-                                                            onClick={()=>{
-                                                                setText(elem.item)
+                                                            <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300'
+                                                                onClick={() => {
+                                                                    setText(elem.item)
                                                                 }} >{elem.item}</li>
                                                         </Fragment>
                                                     )
@@ -217,23 +154,12 @@ const Header = () => {
                         </div>
                     </nav>
                     {/* Dropdown OF First Nav Item*/}
-                    <div className={`transition-300 hover:opacity-100 hover:visible  ${isShown === 1 ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
-                        <NavDropdown uiTemplate={uiTemplate} />
-                    </div>
-                    {/* Dropdown OF First Nav Item End*/}
 
-                    {/* Dropdown OF Second Nav Item Start*/}
-                    <div className={`transition-300 hover:opacity-100 hover:visible  ${isShown === 2 ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
-                        <NavDropdown uiTemplate={htmlTemplate} />
-                    </div>
-                    {/* Dropdown OF Second Nav Item End*/}
-
-                    {/* Dropdown OF Third Nav Item Start*/}
-                    <div className={`transition-300 hover:opacity-100 hover:visible  ${isShown === 3 ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
-                        <NavDropdown uiTemplate={studioTemplate} />
-                    </div>
-                    {/* Dropdown OF Third Nav Item End*/}
-
+                    {props?.categoryList.map((item, index) => {
+                        return <div className={`transition-300 hover:opacity-100 hover:visible  ${isShown === (index + 1) ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
+                            <NavDropdown uiTemplate={item?.subCategories} />
+                        </div>
+                    })}
 
                     {/*Header Menu SideBar*/}
                     <div className={`menu_sidebar max-w-[375px] w-full bg-white fixed top-0 -left-full transition-all duration-700 border-[1px] border-divider-main z-50 ${sideBar == true ? 'active' : ''}`}>
@@ -253,10 +179,10 @@ const Header = () => {
 
                             {/* First Accordion */}
                             {
-                                headings.map((item, index) => {
+                                props?.categoryList.map((item, index) => {
                                     return (
                                         <Fragment key={index}>
-                                            <NavDropdownMob heading={item} subHeading={[uiTemplate, htmlTemplate, studioTemplate]} index={index} />
+                                            <NavDropdownMob heading={item?.category} subHeading={item?.subCategories} />
                                         </Fragment>
                                     )
                                 })

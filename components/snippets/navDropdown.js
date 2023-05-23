@@ -43,7 +43,7 @@ const NavDropdown = (props) => {
             props.uiTemplate.map((elem, ind) => {
               return (
                 <Fragment key={ind}>
-                  <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap ${tabContent === ind ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(ind)}>{elem.title}</button>
+                  <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap ${tabContent === ind ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(ind)}>{elem.subCategory}</button>
                 </Fragment>
               )
             })

@@ -3,11 +3,14 @@ import Header from '@/components/header-footer/header'
 import '@/styles/globals.css'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
 
-  // replacing the class container to big_container bcz of all pages contains big container excepct landing page.
+  const router = useRouter();
+
+  const [categoryList, setCategoryList] = useState([]);
+
   useEffect(() => {
     if (window.location.pathname != '/') {
       let container = document.querySelector("header .container");
@@ -16,11 +19,22 @@ export default function App({ Component, pageProps }) {
         elem?.classList.replace("container", "big_container");
       })
     }
+
+    getInitialData();
+
   }, [])
 
-  const router = useRouter()
-  
-// Removing Header and Footer in Sign-ups Pages
+  const getInitialData = async () => {
+    
+    let categoryList = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/category`, {
+      method: "GET"
+    }).then(response => response.json());
+
+    // get product list
+
+    setCategoryList(categoryList.data.data);
+  }
+
   return (
     <>
       <Head>
@@ -29,20 +43,22 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       {
-          router.pathname =='/register' || router.pathname =='/login'  || router.pathname =='/enterOtp'|| router.pathname =='/resetPassword' || router.pathname =='/forgotPassword' ?
+        router.pathname == '/register' || router.pathname == '/login' || router.pathname == '/enterOtp' || router.pathname == '/resetPassword' || router.pathname == '/forgotPassword' ?
           <>
           </>
           :
 
-          <Header />
+          <Header categoryList={ categoryList } />
       }
       <Component {...pageProps} />
-      { router.pathname == '/register' || router.pathname =='/login' || router.pathname =='/enterOtp' || router.pathname =='/resetPassword' || router.pathname =='/forgotPassword' ?
+      {router.pathname == '/register' || router.pathname == '/login' || router.pathname == '/enterOtp' || router.pathname == '/resetPassword' || router.pathname == '/forgotPassword' ?
         <> </>
-      :
+        :
         <Footer />
-        }
+      }
     </>
   )
 
 }
+
+export default App;

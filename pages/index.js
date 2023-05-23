@@ -4,7 +4,7 @@ import FeatureProducts from "@/components/home/featureProducts";
 import FreeOfCost from "@/components/home/freeOfCost";
 import PopularTemplate from "@/components/home/popularTemplate";
 
-export default function Home() {
+const Home=()=> {
   return (
     <>
       <Hero />
@@ -15,3 +15,28 @@ export default function Home() {
     </>
   )
 }
+
+
+// export async function getServerSideProps(context) {
+  
+  // const { req, params } = context;
+
+  // let subCategoryList = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/subcategory`, {
+  //   method: "GET"
+  // }).then(response => response.json());
+
+  // let categoryList = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/category`, {
+  //   method: "GET"
+  // }).then(response => response.json());
+
+  // return {
+  //   props: {
+  //     subcategory: subCategoryList?.data?.data,
+  //     category: categoryList?.data?.data,
+  //   },
+  // };
+
+// }
+
+
+export default Home;
