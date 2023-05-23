@@ -4,39 +4,41 @@ import FeatureProducts from "@/components/home/featureProducts";
 import FreeOfCost from "@/components/home/freeOfCost";
 import PopularTemplate from "@/components/home/popularTemplate";
 
-const Home=()=> {
+const Home=({productList, categoryList})=> {
   return (
     <>
       <Hero />
       <CatergoriesCards />
-      <FeatureProducts />
-      <FreeOfCost />
-      <PopularTemplate />
+      <FeatureProducts productList={productList}/>
+      <FreeOfCost categoryList={categoryList}/>
+      <PopularTemplate productList={productList}/>
     </>
   )
 }
 
 
-// export async function getServerSideProps(context) {
+export async function getServerSideProps(context) {
   
-  // const { req, params } = context;
+  const { req, params } = context;
 
-  // let subCategoryList = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/subcategory`, {
-  //   method: "GET"
-  // }).then(response => response.json());
+  let productList = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/product`, {
+    method: "GET"
+  }).then(response => response.json());
 
-  // let categoryList = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/category`, {
-  //   method: "GET"
-  // }).then(response => response.json());
+ 
+  let categoryList = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/category`, {
+    method: "GET"
+  }).then(response => response.json());
 
-  // return {
-  //   props: {
-  //     subcategory: subCategoryList?.data?.data,
-  //     category: categoryList?.data?.data,
-  //   },
-  // };
+  return {
+    props: {
+      productList: productList?.data?.data,
+      categoryList: categoryList?.data?.data,
 
-// }
+    },
+  };
+
+}
 
 
 export default Home;

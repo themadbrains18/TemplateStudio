@@ -7,7 +7,7 @@ import tmbIcon from 'public/icons/tmbIcon.svg'
 import starAbout from 'public/icons/starabout.svg'
 import rightArrow from 'public/icons/rightArrow.svg'
 import ProjectCard from '@/components/snippets/projectCard'
-const AboutAuthor = ({ tabContent }) => {
+const AboutAuthor = ({ tabContent,productList }) => {
 
     const projectData = [
         {
@@ -69,7 +69,7 @@ const AboutAuthor = ({ tabContent }) => {
                     </div>
                     <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 place-items-center'>
                         {
-                            projectData.map((value, index) => {
+                            productList.map((value, index) => {
                                 return (
                                     <Fragment key={index}>
                                         <ProjectCard items={value} />

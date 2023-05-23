@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import TemplateCard from '../snippets/templateCard'
 
-const RelatedProduct = () => {
+const RelatedProduct = (props) => {
     let templateData = [
         {
             "templateImg": "relatedCardImg1.png",
@@ -44,7 +44,7 @@ const RelatedProduct = () => {
                     <h2 className='main-heading mb-5 md:mb-6'>Related Products</h2>
                     <div className='grid grid-cols-1 gap-[20px]  place-items-center  sm:grid-cols-2 md:gap-[30px]  lg:grid-cols-4'>
                         {
-                            templateData.map((value, index) => {
+                            props?.productList.map((value, index) => {
                                 return (
                                     <Fragment key={index}>
                                         <TemplateCard items={value} />

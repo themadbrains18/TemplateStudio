@@ -9,7 +9,7 @@ import WhatsNew from './PdpTabsContents.js/whatsNew'
 import AboutAuthor from './PdpTabsContents.js/aboutAuthor'
 
 
-const NewPdpTabs = () => {
+const NewPdpTabs = (props) => {
     const [tabContent, setTabContent] = useState(1);
     let updateTabs = (id) => {
         setTabContent(id)
@@ -46,7 +46,7 @@ const NewPdpTabs = () => {
                     <WhatsNew tabContent={tabContent}/>
 
                     {/* About Author Tab Content Called here */}
-                    <AboutAuthor tabContent={tabContent}/>
+                    <AboutAuthor tabContent={tabContent} productList={props.productList}/>
                 </div>
             </section>
         </>

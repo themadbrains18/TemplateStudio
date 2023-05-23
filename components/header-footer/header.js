@@ -157,7 +157,7 @@ const Header = (props) => {
 
                     {props?.categoryList.map((item, index) => {
                         return <div className={`transition-300 hover:opacity-100 hover:visible  ${isShown === (index + 1) ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
-                            <NavDropdown uiTemplate={item?.subCategories} />
+                            <NavDropdown category={item} uiTemplate={item?.subCategories} products={props.productList} />
                         </div>
                     })}
 

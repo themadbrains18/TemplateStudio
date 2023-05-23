@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -7,17 +7,27 @@ import filterCrossBtn from 'public/icons/filter-cross.svg'
 import popupCloseBtn from 'public/icons/popupCloseBtn.svg'
 import notFoundProd from 'public/icons/notFoundProd.svg'
 import rightArrow from 'public/icons/rightArrow.svg'
+import { useRouter } from 'next/router'
+
 
 import FilterCheckBox from '../snippets/filterCheckBox'
 import TemplateCard from '../snippets/templateCard'
-const ProductCollection = () => {
+const ProductCollection = (props) => {
 
+    
     const [filterPopUp, setFilterPopUp] = useState(false)
     const [tab, setTab] = useState(0);
+
+    const router = useRouter()
+    console.log(router.query.subcategory,'=============params');
 
     let updateTab = (ind) => {
         setTab(ind)
     }
+
+    useEffect(()=>{
+        
+    },[])
 
 
     const tabsTitle = ["HTML", "React", "Wordpress", "Shopify", "Bootstrap", "CSS", "Sketch", "Adobe XD", "Figma"];
@@ -45,107 +55,7 @@ const ProductCollection = () => {
         },
     ]
 
-    let templateData = [
-        {
-            "templateImg": "productImg.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg2.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg3.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg4.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg5.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg6.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg2.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg3.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg4.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg5.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg6.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-    ]
-
-  
-
+    
     return (
         <>
             <section className=''>
@@ -228,7 +138,7 @@ const ProductCollection = () => {
 
                                 <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
                                     {
-                                        templateData.map((value, index) => {
+                                        props?.productList.map((value, index) => {
                                             return (
                                                 <Fragment key={index}>
                                                     <TemplateCard items={value} />

@@ -10,6 +10,8 @@ function App({ Component, pageProps }) {
   const router = useRouter();
 
   const [categoryList, setCategoryList] = useState([]);
+  const [productList, setproductList] = useState([]);
+
 
   useEffect(() => {
     if (window.location.pathname != '/') {
@@ -31,8 +33,12 @@ function App({ Component, pageProps }) {
     }).then(response => response.json());
 
     // get product list
+    let productList = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/product`, {
+      method: "GET"
+    }).then(response => response.json());
 
     setCategoryList(categoryList.data.data);
+    setproductList(productList.data.data.slice(0, 4));
   }
 
   return (
@@ -48,7 +54,7 @@ function App({ Component, pageProps }) {
           </>
           :
 
-          <Header categoryList={ categoryList } />
+          <Header categoryList={ categoryList } productList={ productList } />
       }
       <Component {...pageProps} />
       {router.pathname == '/register' || router.pathname == '/login' || router.pathname == '/enterOtp' || router.pathname == '/resetPassword' || router.pathname == '/forgotPassword' ?

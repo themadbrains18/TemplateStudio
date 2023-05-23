@@ -11,30 +11,6 @@ const NavDropdown = (props) => {
     setTabContent(id)
   }
 
-  const ProductData = [
-    {
-      "projectImage": "projectImg4.png",
-      "projectCaption": "Room Sharing - UI Kit Te...",
-      "projectPlatform": "Figma.svg",
-    },
-    {
-      "projectImage": "projectImg4.png",
-      "projectCaption": "Room Sharing - UI Kit Te...",
-      "projectPlatform": "Figma.svg",
-    },
-    {
-      "projectImage": "projectImg4.png",
-      "projectCaption": "Room Sharing - UI Kit Te...",
-      "projectPlatform": "Figma.svg",
-    },
-    {
-      "projectImage": "projectImg4.png",
-      "projectCaption": "Room Sharing - UI Kit Te...",
-      "projectPlatform": "Figma.svg",
-    },
-  ]
-
-
   return (
     <>
       <div className='p-10 bg-white shadow-btnShadow-Dropdown absolute top-[121px] left-[5%] xl:left-[33%] '>
@@ -43,7 +19,10 @@ const NavDropdown = (props) => {
             props.uiTemplate.map((elem, ind) => {
               return (
                 <Fragment key={ind}>
-                  <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap ${tabContent === ind ? "border-[2px] border-primary" : ""}`} onClick={() => updateTabs(ind)}>{elem.subCategory}</button>
+                  <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap ${tabContent === ind ? "border-[2px] border-primary" : ""}`} onClick={() => {
+                    updateTabs(ind);
+                    window.location.href = '/productPage?category='+props.category.category+'&subcategory='+elem.subCategory;
+                  }}>{elem.subCategory}</button>
                 </Fragment>
               )
             })
@@ -58,10 +37,10 @@ const NavDropdown = (props) => {
           </div>
           <div className='grid grid-cols-4 gap-5'>
             {
-              ProductData.map((value, index) => {
+              props?.products.map((value, index) => {
                 return (
                   <Fragment key={index}>
-                    <ProjectCard  items={value} />
+                    <ProjectCard items={value} />
                   </Fragment>
                 )
               })
