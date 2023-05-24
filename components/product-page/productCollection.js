@@ -38,8 +38,8 @@ const ProductCollection = (props) => {
     const initilizeCollectionPage = () => {
         if (router.query.subcategory !== undefined) {
             let data = props?.productList.filter((item) => {
-                if (item.templateSubCategories.length > 0) {
-                    return item.templateSubCategories[0].subCategory.subCategory === router.query.subcategory
+                if (item.templatesubcategories.length > 0) {
+                    return item.templatesubcategories[0].subcategory.subCategory === router.query.subcategory
                 }
             });
             setFilterProduct(data);
@@ -60,7 +60,7 @@ const ProductCollection = (props) => {
 
         let tabs = [];
         props?.categoryList.map((data, index) => {
-            data?.subCategories.map((item, index) => {
+            data?.subcategories.map((item, index) => {
                 if (router.query.category !== undefined) {
                     if (router.query.category === data.category) {
                         tabs.push(item.subCategory)
@@ -123,8 +123,8 @@ const ProductCollection = (props) => {
             if (soft.length > 0) {
                 if (industryType.length > 0) {
                     filterProduct.filter((item) => {
-                        if (item.templateSoftwareTypes.length > 0) {
-                            let record = soft.filter(e => e === item.templateSoftwareTypes[0].softwareType.softwareType)
+                        if (item.templatesoftwaretypes.length > 0) {
+                            let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
                             if (record.length > 0) {
                                 data.push(item);
                             }
@@ -133,8 +133,8 @@ const ProductCollection = (props) => {
                 }
                 else if(router.query.subcategory !==undefined){
                     filterProduct.filter((item) => {
-                        if (item.templateSoftwareTypes.length > 0) {
-                            let record = soft.filter(e => e === item.templateSoftwareTypes[0].softwareType.softwareType)
+                        if (item.templatesoftwaretypes.length > 0) {
+                            let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
                             if (record.length > 0) {
                                 data.push(item);
                             }
@@ -143,8 +143,8 @@ const ProductCollection = (props) => {
                 }
                 else {
                     props?.productList.filter((item) => {
-                        if (item.templateSoftwareTypes.length > 0) {
-                            let record = soft.filter(e => e === item.templateSoftwareTypes[0].softwareType.softwareType)
+                        if (item.templatesoftwaretypes.length > 0) {
+                            let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
                             if (record.length > 0) {
                                 data.push(item);
                             }
@@ -155,8 +155,8 @@ const ProductCollection = (props) => {
             else {
                 if (industryType.length > 0) {
                     props?.productList.filter((item) => {
-                        if (item.templateIndrusties.length > 0) {
-                            item.templateIndrusties.map((a) => {
+                        if (item.templateindrusties.length > 0) {
+                            item.templateindrusties.map((a) => {
                                 let record = industryType.filter(e => e === a.industry.industry)
                                 if (record.length > 0) {
                                     data.push(item);
@@ -184,8 +184,8 @@ const ProductCollection = (props) => {
             if (indust.length > 0) {
                 if (softwareType.length > 0) {
                     filterProduct.filter((item) => {
-                        if (item.templateIndrusties.length > 0) {
-                            item.templateIndrusties.map((a) => {
+                        if (item.templateindrusties.length > 0) {
+                            item.templateindrusties.map((a) => {
                                 let record = indust.filter(e => e === a.industry.industry)
                                 if (record.length > 0) {
                                     data.push(item);
@@ -196,8 +196,8 @@ const ProductCollection = (props) => {
                 }
                 else if(router.query.subcategory !==undefined){
                     filterProduct.filter((item) => {
-                        if (item.templateIndrusties.length > 0) {
-                            item.templateIndrusties.map((a) => {
+                        if (item.templateindrusties.length > 0) {
+                            item.templateindrusties.map((a) => {
                                 let record = indust.filter(e => e === a.industry.industry)
                                 if (record.length > 0) {
                                     data.push(item);
@@ -208,8 +208,8 @@ const ProductCollection = (props) => {
                 }
                 else {
                     props?.productList.filter((item) => {
-                        if (item.templateIndrusties.length > 0) {
-                            item.templateIndrusties.map((a) => {
+                        if (item.templateindrusties.length > 0) {
+                            item.templateindrusties.map((a) => {
                                 let record = indust.filter(e => e === a.industry.industry)
                                 if (record.length > 0) {
                                     data.push(item);
@@ -222,8 +222,8 @@ const ProductCollection = (props) => {
             else {
                 if(softwareType.length > 0){
                     props?.productList.filter((item) => {
-                        if (item.templateSoftwareTypes.length > 0) {
-                            let record = softwareType.filter(e => e === item.templateSoftwareTypes[0].softwareType.softwareType)
+                        if (item.templatesoftwaresypes.length > 0) {
+                            let record = softwareType.filter(e => e === item.templatsoftwaretypes[0].softwaretype.softwareType)
                             if (record.length > 0) {
                                 data.push(item);
                             }
@@ -240,11 +240,14 @@ const ProductCollection = (props) => {
         else {
             if (router.query.subcategory !== undefined) {
                 let data = props?.productList.filter((item) => {
-                    if (item.templateSubCategories.length > 0) {
-                        return item.templateSubCategories[0].subCategory.subCategory === router.query.subcategory
+                    if (item.templatesubcategories.length > 0) {
+                        return item.templatesubcategories[0].subcategory.subCategory === router.query.subcategory
                     }
                 });
                 setFilterProduct(data);
+            }
+            else{
+                setFilterProduct(props?.productList);
             }
         }
     }
