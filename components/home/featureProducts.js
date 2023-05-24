@@ -3,56 +3,7 @@ import TemplateCard from '../snippets/templateCard'
 
 
 const FeatureProducts = (props) => {
-    let templateData = [
-        {
-            "templateImg": "productImg.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg2.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg3.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg4.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg5.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "productImg6.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-    ]
+
 
     return (
         <>

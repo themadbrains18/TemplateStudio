@@ -24,11 +24,11 @@ const TemplateCard = ({ items }) => {
                 <div className='py-3 px-5  bg-white'>
                     <Link href='/newProductDetail' className='flex justify-between pb-3 border-b-[1px] border-divider-main'>
                         <p className='medium-info'>{items?.name}</p>
-                        <Image src={`/icons/${items.designingToolIcon}`} width={24} height={24} alt="Image Error" className=''></Image>
+                        <Image src="/icons/Figma.svg" width={24} height={24} alt="Image Error" className=''></Image>
                     </Link>
                     <div className='flex justify-between mt-3 gap-2 flex-wrap items-start'>
                         <div className='flex items-center gap-2'>
-                            <Image src={`/icons/${items.companyLogo}`} width={20} height={20} alt="Image Error" className=''></Image>
+                            <Image src="/icons/tmb_icon.svg" width={20} height={20} alt="Image Error" className=''></Image>
                             <div className='flex gap-[10px] items-center'>
                                 <p className='medium-heading text-[12px]'> themadbrains <span className='font-open-sans text-[12px] text-light-text leading-5 font-normal pr-1'>By</span> <Link href="/" className=''>{items.companyName}</Link></p>
                              
