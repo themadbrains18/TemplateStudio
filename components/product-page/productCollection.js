@@ -14,49 +14,65 @@ import FilterCheckBox from '../snippets/filterCheckBox'
 import TemplateCard from '../snippets/templateCard'
 const ProductCollection = (props) => {
 
+    const router = useRouter()
     const [filterPopUp, setFilterPopUp] = useState(false)
     const [tab, setTab] = useState(0);
 
     const [filterProduct, setFilterProduct] = useState([]);
-
     const [filterOption, setFilterOption] = useState([]);
-
     const [tabsTitleOption, setTabsTitleOption] = useState([]);
 
-    const router = useRouter()
+    const [softwareType, setSoftwareType] = useState([]);
+    const [industryType, setIndustryType] = useState([]);
 
-    const tabsTitle = ["HTML", "React", "Wordpress", "Shopify", "Bootstrap", "CSS", "Sketch", "Adobe XD", "Figma"];
+
 
     let updateTab = (ind) => {
         setTab(ind)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         initilizeCollectionPage();
-    },[])
+    }, [router.query.subcategory])
 
-    const initilizeCollectionPage=()=>{
-        if(router.query.subcategory !==undefined){
-            let data = props?.productList.filter((item)=>{
-                if(item.templateSubCategories.length>0){
+    const initilizeCollectionPage = () => {
+        if (router.query.subcategory !== undefined) {
+            let data = props?.productList.filter((item) => {
+                if (item.templateSubCategories.length > 0) {
                     return item.templateSubCategories[0].subCategory.subCategory === router.query.subcategory
                 }
             });
             setFilterProduct(data);
         }
-        else{
+        else {
             setFilterProduct(props?.productList);
         }
 
         let softtype = [];
-        props.softwareList.map((item)=>{
+        props.softwareList.map((item) => {
             softtype.push(item.softwareType);
         });
 
-        let industType =[];
-        props.industryList.map((item)=>{
+        let industType = [];
+        props.industryList.map((item) => {
             industType.push(item.industry);
         })
+
+        let tabs = [];
+        props?.categoryList.map((data, index) => {
+            data?.subCategories.map((item, index) => {
+                if (router.query.category !== undefined) {
+                    if (router.query.category === data.category) {
+                        tabs.push(item.subCategory)
+                    }
+                }
+                else {
+                    tabs.push(item.subCategory)
+                }
+            })
+        })
+
+        setTabsTitleOption(tabs);
 
         const filterData = [
             {
@@ -84,12 +100,155 @@ const ProductCollection = (props) => {
         setFilterOption(filterData);
     }
 
+    const filterCollectionTemplate = (type, item) => {
+        let soft;
+        let indust;
+        let data = [];
 
-    
+        if (type === 'Software Type') {
 
-    
+            soft = [...softwareType];
 
-    
+            let exist = softwareType.filter(e => e === item);
+
+            if (exist.length > 0) {
+                setSoftwareType(softwareType.filter(e => e !== item));
+                soft = soft.filter(e => e !== item);
+            }
+            else {
+                setSoftwareType(oldArray => [...oldArray, item]);
+                soft.push(item)
+            }
+
+            if (soft.length > 0) {
+                if (industryType.length > 0) {
+                    filterProduct.filter((item) => {
+                        if (item.templateSoftwareTypes.length > 0) {
+                            let record = soft.filter(e => e === item.templateSoftwareTypes[0].softwareType.softwareType)
+                            if (record.length > 0) {
+                                data.push(item);
+                            }
+                        }
+                    });
+                }
+                else if(router.query.subcategory !==undefined){
+                    filterProduct.filter((item) => {
+                        if (item.templateSoftwareTypes.length > 0) {
+                            let record = soft.filter(e => e === item.templateSoftwareTypes[0].softwareType.softwareType)
+                            if (record.length > 0) {
+                                data.push(item);
+                            }
+                        }
+                    });
+                }
+                else {
+                    props?.productList.filter((item) => {
+                        if (item.templateSoftwareTypes.length > 0) {
+                            let record = soft.filter(e => e === item.templateSoftwareTypes[0].softwareType.softwareType)
+                            if (record.length > 0) {
+                                data.push(item);
+                            }
+                        }
+                    });
+                }
+            }
+            else {
+                if (industryType.length > 0) {
+                    props?.productList.filter((item) => {
+                        if (item.templateIndrusties.length > 0) {
+                            item.templateIndrusties.map((a) => {
+                                let record = industryType.filter(e => e === a.industry.industry)
+                                if (record.length > 0) {
+                                    data.push(item);
+                                }
+                            })
+                        }
+                    });
+                }
+            }
+        }
+        if (type === 'Industries') {
+            indust = [...industryType];
+
+            let exist = industryType.filter(e => e === item);
+
+            if (exist.length > 0) {
+                setIndustryType(industryType.filter(e => e !== item));
+                indust = indust.filter(e => e !== item);
+            }
+            else {
+                setIndustryType(oldArray => [...oldArray, item]);
+                indust.push(item)
+            }
+
+            if (indust.length > 0) {
+                if (softwareType.length > 0) {
+                    filterProduct.filter((item) => {
+                        if (item.templateIndrusties.length > 0) {
+                            item.templateIndrusties.map((a) => {
+                                let record = indust.filter(e => e === a.industry.industry)
+                                if (record.length > 0) {
+                                    data.push(item);
+                                }
+                            })
+                        }
+                    });
+                }
+                else if(router.query.subcategory !==undefined){
+                    filterProduct.filter((item) => {
+                        if (item.templateIndrusties.length > 0) {
+                            item.templateIndrusties.map((a) => {
+                                let record = indust.filter(e => e === a.industry.industry)
+                                if (record.length > 0) {
+                                    data.push(item);
+                                }
+                            })
+                        }
+                    });
+                }
+                else {
+                    props?.productList.filter((item) => {
+                        if (item.templateIndrusties.length > 0) {
+                            item.templateIndrusties.map((a) => {
+                                let record = indust.filter(e => e === a.industry.industry)
+                                if (record.length > 0) {
+                                    data.push(item);
+                                }
+                            })
+                        }
+                    });
+                }
+            }
+            else {
+                if(softwareType.length > 0){
+                    props?.productList.filter((item) => {
+                        if (item.templateSoftwareTypes.length > 0) {
+                            let record = softwareType.filter(e => e === item.templateSoftwareTypes[0].softwareType.softwareType)
+                            if (record.length > 0) {
+                                data.push(item);
+                            }
+                        }
+                    });
+                }
+            }
+        }
+
+        // setFilterProduct(data);
+        if (data.length > 0) {
+            setFilterProduct(data);
+        }
+        else {
+            if (router.query.subcategory !== undefined) {
+                let data = props?.productList.filter((item) => {
+                    if (item.templateSubCategories.length > 0) {
+                        return item.templateSubCategories[0].subCategory.subCategory === router.query.subcategory
+                    }
+                });
+                setFilterProduct(data);
+            }
+        }
+    }
+
     return (
         <>
             <section className=''>
@@ -98,7 +257,7 @@ const ProductCollection = (props) => {
                         <h3 className='font-open-sans font-semibold text-xl text-main-text max-w-[357px] w-full border-r-[2px]  border-divider-main'>Catagory Tags</h3>
                         <div className='flex gap-10 overflow-x-auto'>
                             {
-                                tabsTitle.map((elem, ind) => {
+                                tabsTitleOption.map((elem, ind) => {
                                     return (
                                         <Fragment key={ind}>
                                             <button className={`large-info whitespace-nowrap border-b-[2px] border-transparent ${tab === ind ? "!border-primary" : ""}`} onClick={() => updateTab(ind)}>{elem}</button>
@@ -123,7 +282,7 @@ const ProductCollection = (props) => {
                                 {filterOption.map((item, index) => {
                                     return (
                                         <Fragment key={index}>
-                                            <FilterCheckBox data={item} />
+                                            <FilterCheckBox data={item} filterCollectionTemplate={filterCollectionTemplate} />
                                         </Fragment>
                                     )
                                 })}
@@ -131,8 +290,15 @@ const ProductCollection = (props) => {
                             <div className='w-full'>
                                 <div className='flex justify-between pb-5 border-b border-divider-light flex-col-reverse items-end gap-[18px] xl:flex-row'>
                                     <ul className='flex gap-[10px] w-full overflow-x-auto'>
-
-                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>Freebies<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
+                                        {router.query.subcategory!==undefined && 
+                                            <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{router.query.subcategory}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
+                                        }
+                                        {softwareType.map((item) => {
+                                            return <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
+                                        })}
+                                        {industryType.map((item) => {
+                                            return <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
+                                        })}
 
                                         <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] rounded-sm h-8 whitespace-nowrap'>Clear all<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
                                     </ul>

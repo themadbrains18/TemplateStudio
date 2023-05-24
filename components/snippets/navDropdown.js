@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from 'react'
 import Image from 'next/image'
-
 import ProjectCard from '../snippets/projectCard'
 import navDropdwopnRightArrow from 'public/icons/navDropdwopnRightArrow.svg'
+import { useRouter } from 'next/router'
 
 const NavDropdown = (props) => {
 
+  const router = useRouter()
   const [tabContent, setTabContent] = useState(0);
   let updateTabs = (id) => {
     setTabContent(id)
@@ -21,7 +22,8 @@ const NavDropdown = (props) => {
                 <Fragment key={ind}>
                   <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap ${tabContent === ind ? "border-[2px] border-primary" : ""}`} onClick={() => {
                     updateTabs(ind);
-                    window.location.href = '/productPage?category='+props.category.category+'&subcategory='+elem.subCategory;
+                    router.push('/productPage?category='+props.category.category+'&subcategory='+elem.subCategory);
+                    // window.location.href = '/productPage?category='+props.category.category+'&subcategory='+elem.subCategory;
                   }}>{elem.subCategory}</button>
                 </Fragment>
               )

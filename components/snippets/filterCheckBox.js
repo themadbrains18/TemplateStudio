@@ -29,13 +29,12 @@ const FilterCheckBox = (props) => {
         else {
             nextElem.style.height = "0px";
         }
-        // if (nextElem.getAttribute("style")) {
-        //     nextElem.removeAttribute("style");
-        // }
-        // else {
-        //     nextElem.setAttribute("style", `height:${ElemHeight}px`);
-        // }
     }
+
+    const filterCollection=(type, item)=>{
+        props.filterCollectionTemplate(type,item);
+    }
+
 
     return (
         <>
@@ -51,7 +50,7 @@ const FilterCheckBox = (props) => {
                         return (
                             <div key={index} className='flex justify-between mb-[15px] relative'>
                                 <p className='main-info'>{item}</p>
-                                <input type='checkbox' className='checkbx' onClick={() => { setTag() }} />
+                                <input type='checkbox' className='checkbx' onClick={() => { setTag(); filterCollection(props?.data?.filterTitle, item) }} />
                                 <span className='checkmark'></span>
                             </div>
                         )
