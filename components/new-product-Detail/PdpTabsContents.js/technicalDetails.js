@@ -14,25 +14,7 @@ const TechnicalDetails = ({ tabContent, product }) => {
                         })}
                     </ul>
 
-                    {/* <ul className='grid grid-cols-1 gap-[10px] md:grid-cols-2 border-b border-divider-main pb-5 mb-5'>
-                        {product.technical.slice(0, 2).map((item) => {
-                            return <li className='list-disc main-info'>{item}</li>
-                        })}
-                    </ul>
-                    <ul className='grid grid-cols-1 gap-[10px] md:grid-cols-2 border-b border-divider-main pb-5 mb-5'>
-                        {product.technical.slice(2, 4).map((item) => {
-                            return <li className='list-disc main-info'>{item}</li>
-                        })}
-                    </ul>
-                    <ul className='grid grid-cols-1 gap-[10px] md:grid-cols-2 border-b border-divider-main pb-5 mb-5'>
-                        {product.technical.slice(4, 6).map((item) => {
-                            return <li className='list-disc main-info'>{item}</li>
-                        })}
-                    </ul>
-                    <ul className='grid grid-cols-1 gap-[10px] md:grid-cols-2'>
-                        <li className='list-disc main-info'>Easy to edit & use</li>
-                        <li className='list-disc main-info'>2 Type of Cards</li>
-                    </ul> */}
+                
                 </div>
             </div>
         </>
