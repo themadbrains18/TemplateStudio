@@ -20,9 +20,10 @@ import 'swiper/css/autoplay';
 import Link from 'next/link'
 
 
-let thumbnailImgs = ["pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png", "pdpMainImage.png", "pdp2.png", "pdp3.png", "pdp4.png", "pdp5.png", "pdp5.png"];
-const PdpSec = () => {
-    const [thumbnail, setThumbnail] = useState("pdpMainImage.png");
+const PdpSec = ({ product }) => {
+
+    console.log(product, "product");
+    const [thumbnail, setThumbnail] = useState(product?.fullimages[0]?.filename);
     const [pdpborder, setPdpborder] = useState(0);
 
     return (
@@ -46,7 +47,7 @@ const PdpSec = () => {
                                     <span className='overlay_text font-open-sans font-bold text-white text-[18px] z-20 flex gap-2 absolute  left-[50%] top-[50%] -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-500 ease-in-out'>
                                         Preview
                                     </span>
-                                    <Image src={`/images/${thumbnail}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
+                                    <Image src={`http://localhost:7777/upload/${thumbnail !== undefined ? thumbnail:product?.fullimages[0]?.filename}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
                                 </Link>
                             </div>
                             <div className=''>
@@ -69,10 +70,10 @@ const PdpSec = () => {
                                 >
                                     <div className='flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
                                         {
-                                            thumbnailImgs.map((elem, ind) => {
+                                            product?.fullimages.map((elem, ind) => {
                                                 return (
                                                     <Fragment key={ind}>
-                                                        <SwiperSlide><Image src={`/images/${elem}`} width={116} height={76} alt="Icon" className={`cursor-pointer border-divider-main border-[2px] ${pdpborder === ind ? "border-primary" : ""}`} onClick={() => { setThumbnail(elem), setPdpborder(ind) }} /></SwiperSlide>
+                                                        <SwiperSlide><Image src={`http://localhost:7777/upload/${elem?.filename}`} width={116} height={76} alt="Icon" className={`cursor-pointer border-divider-main border-[2px] ${pdpborder === ind ? "border-primary" : ""}`} onClick={() => { setThumbnail(elem?.filename), setPdpborder(ind) }} /></SwiperSlide>
                                                     </Fragment>
                                                 )
                                             })
@@ -88,42 +89,28 @@ const PdpSec = () => {
                                 <p className='main-info '>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.<span className='cursor-pointer font-semibold text-dark-text'> View more</span></p>
                             </div>
                             <div>
-                                <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item justify-items-end gap-4 mb-[18px]'>
-                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
-                                        <input type='checkbox' id='figmaDesign' className='ckbx_input' ></input>
-                                        <span className='pdp_checkmark'></span>
-                                        <label htmlFor='figmaDesign' className='small-info !font-semibold cursor-pointer'>Figma Design File</label>
-                                    </div>
-                                    <div className='h-[100%] w-[2px] bg-divider-main'></div>
-                                    <div className='flex gap-5 w-full justify-end'>
-                                        <button className='small-info !font-semibold w-full'>View Detail </button>
-                                        <Image src={figmaIcon30} width={30} height={30} alt="Icon" className='justify-self-end' />
-                                    </div>
-                                </div>
-                                <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item justify-items-end gap-4 mb-[18px]'>
-                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
-                                        <input type='checkbox' id='xdDesign' className='ckbx_input' ></input>
-                                        <span className='pdp_checkmark'></span>
-                                        <label htmlFor='xdDesign' className='small-info !font-semibold cursor-pointer'>XD Design File</label>
-                                    </div>
-                                    <div className='h-[100%] w-[2px] bg-divider-main'></div>
-                                    <div className='flex gap-5 w-full justify-end'>
-                                        <button className='small-info !font-semibold w-full'>View Detail </button>
-                                        <Image src={xdIcon30} width={30} height={30} alt="Icon" className='justify-self-end' />
-                                    </div>
-                                </div>
-                                <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item justify-items-end gap-4 mb-[18px]'>
-                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
-                                        <input type='checkbox' id='sketchDesign' className='ckbx_input' ></input>
-                                        <span className='pdp_checkmark'></span>
-                                        <label htmlFor='sketchDesign' className='small-info !font-semibold cursor-pointer'>Sketch Design File</label>
-                                    </div>
-                                    <div className='h-[100%] w-[2px] bg-divider-main'></div>
-                                    <div className='flex gap-5 w-full justify-end'>
-                                        <button className='small-info !font-semibold w-full'>View Detail </button>
-                                        <Image src={sketchIcon30} width={30} height={30} alt="Icon" className='justify-self-end' />
-                                    </div>
-                                </div>
+                                {
+                                    product?.templatesoftwaretypes?.map((elem, ind) => {
+                                        return (
+                                            <Fragment key={ind}>
+                                                <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item justify-items-end gap-4 mb-[18px]'>
+                                                    <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
+                                                        <input type='checkbox' id={`'${elem?.softwaretype?.softwareType}'`} className='ckbx_input' ></input>
+                                                        <span className='pdp_checkmark'></span>
+                                                        <label htmlFor={`'${elem?.softwaretype?.softwareType}'`} className='small-info !font-semibold cursor-pointer'>{elem?.softwaretype?.softwareType}</label>
+                                                    </div>
+                                                    <div className='h-[100%] w-[2px] bg-divider-main'></div>
+                                                    <div className='flex gap-5 w-full justify-end'>
+                                                        <button className='small-info !font-semibold w-full'>View Detail </button>
+                                                        <Image src={figmaIcon30} width={30} height={30} alt="Icon" className='justify-self-end' />
+                                                    </div>
+                                                </div>
+                                            </Fragment>
+                                        )
+
+                                    })
+                                }
+
                             </div>
 
                             <div className='p-[10px] xmd:p-5 bg-primary-800 border border-divider-main flex justify-between items-center mb-[30px]'>
@@ -142,5 +129,7 @@ const PdpSec = () => {
         </>
     )
 }
+
+
 
 export default PdpSec

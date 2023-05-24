@@ -32,15 +32,15 @@ const NewPdpTabs = (props) => {
                     </div>
 
                     {/* Description Tab Content Called here */}
-                    <Description tabContent={tabContent}/>
+                    <Description tabContent={tabContent} product={props.product}/>
 
 
                     {/* Technical Details Tab Content Called here */}
-                    <TechnicalDetails tabContent={tabContent}/>
+                    <TechnicalDetails tabContent={tabContent} product={props.product}/>
 
 
                     {/* Credits Tab Content Called here */}
-                    <Credit tabContent={tabContent}/>
+                    <Credit tabContent={tabContent} product={props.product}/>
 
                     {/* What's New Tab Content Called here */}
                     <WhatsNew tabContent={tabContent}/>

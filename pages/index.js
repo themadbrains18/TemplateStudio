@@ -9,9 +9,9 @@ const Home=({productList, categoryList})=> {
     <>
       <Hero />
       <CatergoriesCards />
-      <FeatureProducts productList={productList.slice(0, 6)}/>
+      <FeatureProducts productList={productList?.slice(0, 6)}/>
       <FreeOfCost categoryList={categoryList}/>
-      <PopularTemplate productList={productList.slice(0, 6)}/>
+      <PopularTemplate productList={productList?.slice(0, 6)}/>
     </>
   )
 }

@@ -1,27 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const TechnicalDetails = ({tabContent}) => {
+const TechnicalDetails = ({ tabContent, product }) => {
+
     return (
         <>
             <div className={`${tabContent === 2 ? "block  pt-[20px] md:pt-[40px] xl:pt-[80px] mx-0 xl:mx-44" : "hidden "}`}>
                 <h3 className='small-heading  mb-5'>Highlight</h3>
                 <div className='px-[30px] md:px-[67px] py-5 md:py-10 border border-divider-light'>
-                    <ul className='grid grid-cols-1 gap-[10px] md:grid-cols-2 border-b border-divider-main pb-5 mb-5'>
-                        <li className='list-disc main-info'>400+ Exclusive Pre-Built Templates</li>
-                        <li className='list-disc main-info'>200+ Components</li>
+
+                    <ul class="grid grid-cols-1 gap-[10px] md:grid-cols-2">
+                        {product?.technical.map((item) => {
+                            return <li className='tech_detail list-disc main-info border-b border-divider-main pb-5 mb-5'>{item}</li>
+                        })}
+                    </ul>
+
+                    {/* <ul className='grid grid-cols-1 gap-[10px] md:grid-cols-2 border-b border-divider-main pb-5 mb-5'>
+                        {product.technical.slice(0, 2).map((item) => {
+                            return <li className='list-disc main-info'>{item}</li>
+                        })}
                     </ul>
                     <ul className='grid grid-cols-1 gap-[10px] md:grid-cols-2 border-b border-divider-main pb-5 mb-5'>
-                        <li className='list-disc main-info'>Global Style guide Included</li>
-                        <li className='list-disc main-info'>Fully Customizable & Responsive</li>
+                        {product.technical.slice(2, 4).map((item) => {
+                            return <li className='list-disc main-info'>{item}</li>
+                        })}
                     </ul>
                     <ul className='grid grid-cols-1 gap-[10px] md:grid-cols-2 border-b border-divider-main pb-5 mb-5'>
-                        <li className='list-disc main-info'>Glossy Light + Dark Mode</li>
-                        <li className='list-disc main-info'>50+ Premium 3D Illustration</li>
+                        {product.technical.slice(4, 6).map((item) => {
+                            return <li className='list-disc main-info'>{item}</li>
+                        })}
                     </ul>
                     <ul className='grid grid-cols-1 gap-[10px] md:grid-cols-2'>
                         <li className='list-disc main-info'>Easy to edit & use</li>
                         <li className='list-disc main-info'>2 Type of Cards</li>
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
         </>

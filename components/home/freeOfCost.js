@@ -53,7 +53,7 @@ const FreeOfCost = (props) => {
                                 return (
                                     <>
                                         {
-                                            data?.subCategories.map((item, index) => {
+                                            data?.subcategories.map((item, index) => {
                                                 return (
                                                     <Fragment key={index}>
                                                         <Link href="/" className='small_card flex items-center gap-[10px] p-[10px] border-[1px]  bg-white border-divider-main transition-300 md:gap-5 '>
