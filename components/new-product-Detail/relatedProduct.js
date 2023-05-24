@@ -44,7 +44,7 @@ const RelatedProduct = (props) => {
                     <h2 className='main-heading mb-5 md:mb-6'>Related Products</h2>
                     <div className='grid grid-cols-1 gap-[20px]  place-items-center  sm:grid-cols-2 md:gap-[30px]  lg:grid-cols-4'>
                         {
-                            props?.productList.map((value, index) => {
+                            props?.productList.slice(0, 4).map((value, index) => {
                                 return (
                                     <Fragment key={index}>
                                         <TemplateCard items={value} />

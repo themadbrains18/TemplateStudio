@@ -69,7 +69,7 @@ const AboutAuthor = ({ tabContent,productList }) => {
                     </div>
                     <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 place-items-center'>
                         {
-                            productList.map((value, index) => {
+                            productList.slice(0, 5).map((value, index) => {
                                 return (
                                     <Fragment key={index}>
                                         <ProjectCard items={value} />
