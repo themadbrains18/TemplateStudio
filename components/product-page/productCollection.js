@@ -14,46 +14,80 @@ import FilterCheckBox from '../snippets/filterCheckBox'
 import TemplateCard from '../snippets/templateCard'
 const ProductCollection = (props) => {
 
-    
     const [filterPopUp, setFilterPopUp] = useState(false)
     const [tab, setTab] = useState(0);
 
+    const [filterProduct, setFilterProduct] = useState([]);
+
+    const [filterOption, setFilterOption] = useState([]);
+
+    const [tabsTitleOption, setTabsTitleOption] = useState([]);
+
     const router = useRouter()
-    console.log(router.query.subcategory,'=============params');
+
+    const tabsTitle = ["HTML", "React", "Wordpress", "Shopify", "Bootstrap", "CSS", "Sketch", "Adobe XD", "Figma"];
 
     let updateTab = (ind) => {
         setTab(ind)
     }
 
     useEffect(()=>{
-        
+        initilizeCollectionPage();
     },[])
 
+    const initilizeCollectionPage=()=>{
+        if(router.query.subcategory !==undefined){
+            let data = props?.productList.filter((item)=>{
+                if(item.templateSubCategories.length>0){
+                    return item.templateSubCategories[0].subCategory.subCategory === router.query.subcategory
+                }
+            });
+            setFilterProduct(data);
+        }
+        else{
+            setFilterProduct(props?.productList);
+        }
 
-    const tabsTitle = ["HTML", "React", "Wordpress", "Shopify", "Bootstrap", "CSS", "Sketch", "Adobe XD", "Figma"];
+        let softtype = [];
+        props.softwareList.map((item)=>{
+            softtype.push(item.softwareType);
+        });
 
-    const filterData = [
-        {
-            'filterTitle': 'Price Range',
-            'filterOption': ['Freebies', '0$ - 05$', '05 - 10$', '10$ - 20 $']
-        },
-        {
-            'filterTitle': 'Template Studio Special',
-            'filterOption': ['Feature Products', 'Popular Template', 'Browse Trending Categories']
-        },
-        {
-            'filterTitle': 'Industries',
-            'filterOption': ['Real Estate', 'Insurance', 'Education', 'Entertainment', 'Real Estate', 'Retail', 'Sports', 'Technology', 'Crypto', 'NFT']
-        },
-        {
-            'filterTitle': 'Tags',
-            'filterOption': []
-        },
-        {
-            'filterTitle': 'Software Type',
-            'filterOption': ['Wordpress', 'HTML / CSS', 'React', 'Bootstrap', 'Figma', 'Sketch', 'Adobe XD']
-        },
-    ]
+        let industType =[];
+        props.industryList.map((item)=>{
+            industType.push(item.industry);
+        })
+
+        const filterData = [
+            {
+                'filterTitle': 'Price Range',
+                'filterOption': ['Freebies', '0$ - 05$', '05 - 10$', '10$ - 20 $']
+            },
+            {
+                'filterTitle': 'Template Studio Special',
+                'filterOption': ['Feature Products', 'Popular Template', 'Browse Trending Categories']
+            },
+            {
+                'filterTitle': 'Industries',
+                'filterOption': industType
+            },
+            {
+                'filterTitle': 'Tags',
+                'filterOption': []
+            },
+            {
+                'filterTitle': 'Software Type',
+                'filterOption': softtype
+            },
+        ]
+
+        setFilterOption(filterData);
+    }
+
+
+    
+
+    
 
     
     return (
@@ -86,7 +120,7 @@ const ProductCollection = (props) => {
                                     </div>
                                     <Image src={popupCloseBtn} width={16} height={16} alt=" Close Button" className='lg:hidden' onClick={() => { setFilterPopUp(false) }} />
                                 </div>
-                                {filterData.map((item, index) => {
+                                {filterOption.map((item, index) => {
                                     return (
                                         <Fragment key={index}>
                                             <FilterCheckBox data={item} />
@@ -138,7 +172,7 @@ const ProductCollection = (props) => {
 
                                 <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
                                     {
-                                        props?.productList.map((value, index) => {
+                                        filterProduct.map((value, index) => {
                                             return (
                                                 <Fragment key={index}>
                                                     <TemplateCard items={value} />

@@ -25,8 +25,7 @@ const handler = router.handler({
 
 router.get(async (req, res) => {
     try {
-
-        let data = await getDataWithoutBody(`${process.env.NEXT_PUBLIC_APIURL}/dashboard/all`)
+        let data = await getDataWithoutBody(`${process.env.NEXT_PUBLIC_APIURL}/industry/all`)
 
         res.status(200).send({ data });
     } catch (error) {

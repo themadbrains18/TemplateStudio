@@ -6,8 +6,6 @@ import Link from 'next/link'
 
 const FreeOfCost = (props) => {
 
-    console.log(props.categoryList[0].subCategories, "aalu11144===========");
-
     let designsData = [
         {
             "designIcon": "designIcon1.svg",
