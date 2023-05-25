@@ -17,7 +17,7 @@ const ProjectCard = ({ items }) => {
                 </div>
                 <div className='flex gap-1 justify-between py-[10px] px-[15px]'>
                     <p className='medium-heading text-[14px]'>{items.name}</p>
-                    <Image src={`/icons/${items.projectPlatform}`} width={24} height={24} alt="Image Error" className='' />
+                    <Image src="/icons/Figma.svg" width={24} height={24} alt="Image Error" className='' />
                 </div>
             </Link>
         </>
