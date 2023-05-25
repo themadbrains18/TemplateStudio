@@ -12,6 +12,10 @@ import { useRouter } from 'next/router'
 
 import FilterCheckBox from '../snippets/filterCheckBox'
 import TemplateCard from '../snippets/templateCard'
+
+let soft;
+let indust;
+
 const ProductCollection = (props) => {
 
     const router = useRouter()
@@ -101,155 +105,158 @@ const ProductCollection = (props) => {
     }
 
     const filterCollectionTemplate = (type, item) => {
-        let soft;
-        let indust;
+        let data=[];
+        let industryData=[];   
+        if (type === 'Software Type') {
+            let record = filterBySoftwareType(item);
+            data = record;
+        }
+
+        if (type === 'Industries') {
+            let record = filterByIndustries(item);
+            industryData = record;
+        }
+
+        const merged = [...data, ...industryData];
+
+        let uniqueArr = [...new Set(merged)];
+
+        setFilterProduct(uniqueArr);
+        if(uniqueArr.length === 0 && (soft === undefined || soft.length === 0) && (indust === undefined || indust.length === 0)){
+            setFilterProduct(props?.productList);
+        }
+        
+    }
+
+    const filterBySoftwareType = (item) => {
+        
         let data = [];
 
-        if (type === 'Software Type') {
+        soft = [...softwareType];
 
-            soft = [...softwareType];
+        let exist = softwareType.filter(e => e === item);
 
-            let exist = softwareType.filter(e => e === item);
-
-            if (exist.length > 0) {
-                setSoftwareType(softwareType.filter(e => e !== item));
-                soft = soft.filter(e => e !== item);
-            }
-            else {
-                setSoftwareType(oldArray => [...oldArray, item]);
-                soft.push(item)
-            }
-
-            if (soft.length > 0) {
-                if (industryType.length > 0) {
-                    filterProduct.filter((item) => {
-                        if (item.templatesoftwaretypes.length > 0) {
-                            let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
-                            if (record.length > 0) {
-                                data.push(item);
-                            }
-                        }
-                    });
-                }
-                else if (router.query.subcategory !== undefined) {
-                    filterProduct.filter((item) => {
-                        if (item.templatesoftwaretypes.length > 0) {
-                            let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
-                            if (record.length > 0) {
-                                data.push(item);
-                            }
-                        }
-                    });
-                }
-                else {
-                    props?.productList.filter((item) => {
-                        if (item.templatesoftwaretypes.length > 0) {
-                            let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
-                            if (record.length > 0) {
-                                data.push(item);
-                            }
-                        }
-                    });
-                }
-            }
-            else {
-                if (industryType.length > 0) {
-                    props?.productList.filter((item) => {
-                        if (item.templateindrusties.length > 0) {
-                            item.templateindrusties.map((a) => {
-                                let record = industryType.filter(e => e === a.industry.industry)
-                                if (record.length > 0) {
-                                    data.push(item);
-                                }
-                            })
-                        }
-                    });
-                }
-            }
+        if (exist.length > 0) {
+            setSoftwareType(softwareType.filter(e => e !== item));
+            soft = soft.filter(e => e !== item);
         }
-        if (type === 'Industries') {
-            indust = [...industryType];
-
-            let exist = industryType.filter(e => e === item);
-
-            if (exist.length > 0) {
-                setIndustryType(industryType.filter(e => e !== item));
-                indust = indust.filter(e => e !== item);
-            }
-            else {
-                setIndustryType(oldArray => [...oldArray, item]);
-                indust.push(item)
-            }
-
-            if (indust.length > 0) {
-                if (softwareType.length > 0) {
-                    filterProduct.filter((item) => {
-                        if (item.templateindrusties.length > 0) {
-                            item.templateindrusties.map((a) => {
-                                let record = indust.filter(e => e === a.industry.industry)
-                                if (record.length > 0) {
-                                    data.push(item);
-                                }
-                            })
-                        }
-                    });
-                }
-                else if (router.query.subcategory !== undefined) {
-                    filterProduct.filter((item) => {
-                        if (item.templateindrusties.length > 0) {
-                            item.templateindrusties.map((a) => {
-                                let record = indust.filter(e => e === a.industry.industry)
-                                if (record.length > 0) {
-                                    data.push(item);
-                                }
-                            })
-                        }
-                    });
-                }
-                else {
-                    props?.productList.filter((item) => {
-                        if (item.templateindrusties.length > 0) {
-                            item.templateindrusties.map((a) => {
-                                let record = indust.filter(e => e === a.industry.industry)
-                                if (record.length > 0) {
-                                    data.push(item);
-                                }
-                            })
-                        }
-                    });
-                }
-            }
-            else {
-                if (softwareType.length > 0) {
-                    props?.productList.filter((item) => {
-                        if (item.templatsoftwaretypes.length > 0) {
-                            let record = softwareType.filter(e => e === item.templatsoftwaretypes[0].softwaretype.softwareType)
-                            if (record.length > 0) {
-                                data.push(item);
-                            }
-                        }
-                    });
-                }
-            }
+        else {
+            setSoftwareType(oldArray => [...oldArray, item]);
+            soft.push(item)
         }
 
-        setFilterProduct(data);
-        // if (data.length > 0) {
-        //     setFilterProduct(data);
-        // }
-        // else {
-        //     if (router.query.subcategory !== undefined) {
-        //         let data = props?.productList.filter((item) => {
-        //             if (item.templatesubcategories.length > 0) {
-        //                 return item.templatesubcategories[0].subcategory.subCategory === router.query.subcategory
-        //             }
-        //         });
-        //         setFilterProduct(data);
-        //     }
-        //     else {
-        //         setFilterProduct(props?.productList);
-        //     }
-        // }
+        if (soft.length > 0) {
+            if (industryType.length > 0) {
+                props?.productList.filter((item) => {
+                    if (item.templateindrusties.length > 0) {
+                        item.templateindrusties.map((a) => {
+                            let record = industryType.filter(e => e === a.industry.industry)
+                            if (record.length > 0) {
+                                data.push(item);
+                            }
+                        })
+                    }
+                });
+            }
+
+            if(data.length === 0){
+                data = props?.productList;
+            }
+
+            let newData = [];
+
+            data.filter((item) => {
+                if (item.templatesoftwaretypes.length > 0) {
+                    let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
+                    if (record.length > 0) {
+                        newData.push(item);
+                    }
+                }
+            });
+
+            return newData;
+        }
+        else {
+            if (industryType.length > 0) {
+                props?.productList.filter((item) => {
+                    if (item.templateindrusties.length > 0) {
+                        item.templateindrusties.map((a) => {
+                            let record = industryType.filter(e => e === a.industry.industry)
+                            if (record.length > 0) {
+                                data.push(item);
+                            }
+                        })
+                    }
+                });
+            }
+
+            return data;
+        }
+
+    }
+
+    const filterByIndustries = (item) => {
+        
+        let data = [];
+
+        indust = [...industryType];
+
+        let exist = industryType.filter(e => e === item);
+
+        if (exist.length > 0) {
+            setIndustryType(industryType.filter(e => e !== item));
+            indust = indust.filter(e => e !== item);
+        }
+        else {
+            setIndustryType(oldArray => [...oldArray, item]);
+            indust.push(item)
+        }
+
+        if (indust.length > 0) {
+            if (softwareType.length > 0) {
+                props?.productList.filter((item) => {
+                    if (item.templatesoftwaretypes.length > 0) {
+                        let record = softwareType.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
+                        if (record.length > 0) {
+                            data.push(item);
+                        }
+                    }
+                });
+            }
+
+            if(data.length === 0){
+                data = props?.productList;
+            }
+
+            let newData = [];
+
+            data.filter((item) => {
+                if (item.templateindrusties.length > 0) {
+                    item.templateindrusties.map((a) => {
+                        let record = indust.filter(e => e === a.industry.industry)
+                        if (record.length > 0) {
+                            newData.push(item);
+                        }
+                    })
+                }
+            });
+
+            return newData; 
+        }
+        else {
+            if (softwareType.length > 0) {
+                props?.productList.filter((item) => {
+                    if (item.templatesoftwaretypes.length > 0) {
+                        let record = softwareType.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
+                        if (record.length > 0) {
+                            data.push(item);
+                        }
+                    }
+                });
+            }
+            return data;
+        }
+
     }
 
     return (
