@@ -131,7 +131,7 @@ const ProductCollection = (props) => {
                         }
                     });
                 }
-                else if(router.query.subcategory !==undefined){
+                else if (router.query.subcategory !== undefined) {
                     filterProduct.filter((item) => {
                         if (item.templatesoftwaretypes.length > 0) {
                             let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
@@ -194,7 +194,7 @@ const ProductCollection = (props) => {
                         }
                     });
                 }
-                else if(router.query.subcategory !==undefined){
+                else if (router.query.subcategory !== undefined) {
                     filterProduct.filter((item) => {
                         if (item.templateindrusties.length > 0) {
                             item.templateindrusties.map((a) => {
@@ -220,9 +220,9 @@ const ProductCollection = (props) => {
                 }
             }
             else {
-                if(softwareType.length > 0){
+                if (softwareType.length > 0) {
                     props?.productList.filter((item) => {
-                        if (item.templatesoftwaresypes.length > 0) {
+                        if (item.templatsoftwaretypes.length > 0) {
                             let record = softwareType.filter(e => e === item.templatsoftwaretypes[0].softwaretype.softwareType)
                             if (record.length > 0) {
                                 data.push(item);
@@ -233,23 +233,23 @@ const ProductCollection = (props) => {
             }
         }
 
-        // setFilterProduct(data);
-        if (data.length > 0) {
-            setFilterProduct(data);
-        }
-        else {
-            if (router.query.subcategory !== undefined) {
-                let data = props?.productList.filter((item) => {
-                    if (item.templatesubcategories.length > 0) {
-                        return item.templatesubcategories[0].subcategory.subCategory === router.query.subcategory
-                    }
-                });
-                setFilterProduct(data);
-            }
-            else{
-                setFilterProduct(props?.productList);
-            }
-        }
+        setFilterProduct(data);
+        // if (data.length > 0) {
+        //     setFilterProduct(data);
+        // }
+        // else {
+        //     if (router.query.subcategory !== undefined) {
+        //         let data = props?.productList.filter((item) => {
+        //             if (item.templatesubcategories.length > 0) {
+        //                 return item.templatesubcategories[0].subcategory.subCategory === router.query.subcategory
+        //             }
+        //         });
+        //         setFilterProduct(data);
+        //     }
+        //     else {
+        //         setFilterProduct(props?.productList);
+        //     }
+        // }
     }
 
     return (
@@ -293,7 +293,7 @@ const ProductCollection = (props) => {
                             <div className='w-full'>
                                 <div className='flex justify-between pb-5 border-b border-divider-light flex-col-reverse items-end gap-[18px] xl:flex-row'>
                                     <ul className='flex gap-[10px] w-full overflow-x-auto'>
-                                        {router.query.subcategory!==undefined && 
+                                        {router.query.subcategory !== undefined &&
                                             <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{router.query.subcategory}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
                                         }
                                         {softwareType.map((item) => {
@@ -329,30 +329,37 @@ const ProductCollection = (props) => {
                                 </div>
 
                                 {/* Product Not Found Start */}
-                                <div className='p-10 bg-white hidden'>
-                                    <p className='medium-heading text-[18px] md:text-[20px]'>Sorry, we couldn’t find any results for this search. Maybe give one of these a try?</p>
-                                    <Image src={notFoundProd} width={197} height={140} alt="Icon" className='py-[80px] m-auto' />
-                                    <div className='border-t-[1px] border-divider-main py-[30px] flex flex-col gap-5 md:justify-between'>
-                                        <p className='small-info md:!text-base'>Try <Link href="" className="text-primary border-b-[1px] border-primary"> clearing some filters </Link> and try again.</p>
-                                        <button className='solid-btn text-lg font-semibold'>Find more products</button>
+                                {filterProduct.length === 0 &&
+                                    <div className='p-10 bg-white'>
+                                        <p className='medium-heading text-[18px] md:text-[20px]'>Sorry, we couldn’t find any results for this search. Maybe give one of these a try?</p>
+                                        <Image src={notFoundProd} width={197} height={140} alt="Icon" className='py-[80px] m-auto' />
+                                        <div className='border-t-[1px] border-divider-main py-[30px] flex flex-col gap-5 md:justify-between'>
+                                            <p className='small-info md:!text-base'>Try <Link href="" className="text-primary border-b-[1px] border-primary"> clearing some filters </Link> and try again.</p>
+                                            <button className='solid-btn text-lg font-semibold'>Find more products</button>
+                                        </div>
                                     </div>
-                                </div>
-                                {/* Product Not Found End */}
+                                }
 
-                                <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
-                                    {
-                                        filterProduct.map((value, index) => {
-                                            return (
-                                                <Fragment key={index}>
-                                                    <TemplateCard items={value} />
-                                                </Fragment>
-                                            )
-                                        })
-                                    }
-                                </div>
-                                <div className='text-center mt-0 md:mt-[30px]'>
-                                    <button className='solid-white-btn shadow-btnShadow text-center'>Load More Products</button>
-                                </div>
+                                {/* Product Not Found End */}
+                                {filterProduct.length > 0 &&
+                                    <>
+                                        <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
+                                            {
+                                                filterProduct.map((value, index) => {
+                                                    return (
+                                                        <Fragment key={index}>
+                                                            <TemplateCard items={value} />
+                                                        </Fragment>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                        <div className='text-center mt-0 md:mt-[30px]'>
+                                            <button className='solid-white-btn shadow-btnShadow text-center'>Load More Products</button>
+                                        </div>
+                                    </>
+                                }
+
                             </div>
                         </div>
                     </div>
