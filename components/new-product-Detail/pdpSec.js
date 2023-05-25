@@ -1,11 +1,12 @@
 
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import pdpArrowRight from 'public/icons/pdpArrowRight.svg'
 import figmaIcon30 from 'public/icons/figmaIcon30.svg'
 import xdIcon30 from 'public/icons/xd--30.svg'
 import sketchIcon30 from 'public/icons/sketch-30.svg'
+import popupCloseBtn from 'public/icons/popupCloseBtn.svg'
 
 
 // import Swiper core and required modules
@@ -25,9 +26,27 @@ const PdpSec = ({ product }) => {
     console.log(product, "product");
     const [thumbnail, setThumbnail] = useState(product?.fullimages[0]?.filename);
     const [pdpborder, setPdpborder] = useState(0);
+    const [preview, setPreview] = useState(false);
+    const [showSideDrawer, setshowSideDrawer] = useState(false);
+
+    
+
+    useEffect(() => {
+       
+        let previewBtn = document.body.querySelector(".preview_btn");
+        let previewCloseBtn = document.body.querySelector(".preview_close_btn");
+
+        previewBtn.addEventListener("click", ()=>{
+                document.body.style.overflow="hidden"
+        })
+        previewCloseBtn.addEventListener("click", ()=>{
+            document.body.style.overflow="unset"
+        })
+    }, [])
 
     return (
         <>
+        {/* <SideDrawer open={showSideDrawer} closed={sideDrawerClosedHandler}/> */}
             <section className='py-[20px] bg-back-white'>
                 <div className='big_container'>
                     <div className='flex items-center gap-2 mb-5'>
@@ -47,7 +66,7 @@ const PdpSec = ({ product }) => {
                                     <span className='overlay_text font-open-sans font-bold text-white text-[18px] z-20 flex gap-2 absolute  left-[50%] top-[50%] -translate-x-2/4 -translate-y-2/4 opacity-0 transition duration-500 ease-in-out'>
                                         Preview
                                     </span>
-                                    <Image src={`http://localhost:7777/upload/${thumbnail !== undefined ? thumbnail:product?.sliderimages[0]?.filename}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
+                                    <Image src={`http://localhost:7777/upload/${thumbnail !== undefined ? thumbnail : product?.sliderimages[0]?.filename}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
                                 </Link>
                             </div>
                             <div className=''>
@@ -117,15 +136,43 @@ const PdpSec = ({ product }) => {
                                 <span className='font-open-sans font-semibold text-white text-sm bg-primary py-[2px] px-[11px]'>{product?.price == null || product?.price == undefined ? 'FREE' : 'PAID'}</span>
                                 <div className='flex gap-5 items-center'>
                                     <span className='small-info '>Total Price</span>
-                                    <span className='font-open-sans font-bold text-[20px] text-light-text'>{`${product?.price == null || product?.price == undefined ? "$0.00" : `$${product?.price.toFixed(2)}`  }`}</span>
+                                    <span className='font-open-sans font-bold text-[20px] text-light-text'>{`${product?.price == null || product?.price == undefined ? "$0.00" : `$${product?.price.toFixed(2)}`}`}</span>
                                 </div>
                             </div>
                             <button className='solid-btn w-full !py-[13px] text-[18px] mb-5'>{product?.price == null || product?.price == undefined ? 'Free —' : ''} Download</button>
-                            <button className='solid-white-btn w-full !py-[13px] text-[18px] border border-primary-100'>Preview</button>
+                            <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" className='preview_btn solid-white-btn w-full !py-[13px] text-[18px] border border-primary-100' onClick={() => preview === true ? setPreview(false) : setPreview(true)}>Preview</button>
+
+
+                            {/* <div className={`${preview === true ? "preview_act  gap-5 " : "opacity-0 invisible hidden"}`}>
+                                <Image src={`http://localhost:7777/upload/${product?.fullimages[0].filename}`} width={900} height={7570} alt='preview image' ></Image>
+                                <Image src={popupCloseBtn} width={16} height={16} alt="Popup Close Button" className='self-start' />
+                            </div> */}
                         </div>
                     </div>
                 </div>
+
             </section>
+         
+         
+            <div id="defaultModal" tabindex="-1" aria-hidden="true" className={`fixed bg-gray-600 bg-opacity-80 top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full ${preview== true? "justify-center items-center flex":"hidden "}`}>
+                <div class="relative w-full max-w-2xl max-h-full">
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                          
+                            <button type="button" class="preview_close_btn text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal" onClick={(e)=>{setPreview(false)}} >
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                    
+                        <div class="p-6 space-y-6">
+                            <Image src={`http://localhost:7777/upload/${product?.fullimages[0].filename}`} width={900} height={7570} alt='preview image' ></Image>
+                        </div>
+                      
+                     
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

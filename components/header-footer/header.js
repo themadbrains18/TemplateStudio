@@ -182,7 +182,7 @@ const Header = (props) => {
                                 props?.categoryList.map((item, index) => {
                                     return (
                                         <Fragment key={index}>
-                                            <NavDropdownMob heading={item?.category} subHeading={item?.subCategories} />
+                                            <NavDropdownMob heading={item?.category} subHeading={item?.subcategories} products={props.productList}/>
                                         </Fragment>
                                     )
                                 })
