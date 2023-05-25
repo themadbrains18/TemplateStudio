@@ -46,7 +46,7 @@ const NavDropdownMob = (props) => {
                     </div>
                     <div className='grid grid-cols-2 place-items-center gap-[10px] mb-5'>
                         {
-                            navDropdownCardsMob.map((elem, index) => {
+                            props.products.map((elem, index) => {
                                 return (
                                     <Fragment key={index}>
                                         <DropdownTemplateCard data={elem} />
