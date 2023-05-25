@@ -2,41 +2,6 @@ import React, { Fragment } from 'react'
 import TemplateCard from '../snippets/templateCard'
 
 const RelatedProduct = (props) => {
-    let templateData = [
-        {
-            "templateImg": "relatedCardImg1.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "relatedCardImg1.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "relatedCardImg1.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-        {
-            "templateImg": "relatedCardImg1.png",
-            "caption": "Room Sharing - UI Kit Template...",
-            "designingToolIcon": "Figma.svg",
-            "companyLogo": "tmb_icon.svg",
-            "companyName": "themadbrains",
-            "templateType": "UI templates",
-        },
-    ]
-
     return (
         <>
             <section className='sec_spacing-80 bg-back-white'>

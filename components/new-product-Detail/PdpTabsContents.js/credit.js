@@ -10,7 +10,7 @@ const Credit = ({ tabContent, product }) => {
                         <li>
                             <p className=' main-info mb-5'> Fonts Used </p>
                             {
-                                product?.fonts.map((font, ind ) => {
+                                product?.fonts!==undefined && product?.fonts!==null && product?.fonts.map((font, ind ) => {
                                     return (
                                         <Fragment key={ind}>
                                             <span className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{font.fontName} </span>
@@ -23,7 +23,7 @@ const Credit = ({ tabContent, product }) => {
                         <li>
                             <p className=' main-info mb-5'> Icons Used </p>
                             {
-                                product?.icons.map((icon, ind ) => {
+                                product?.icons!==undefined && product?.icons!==null && product?.icons.map((icon, ind ) => {
                                     return (
                                         <Fragment key={ind}>
                                             <span className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{icon.iconName} </span>
@@ -37,7 +37,7 @@ const Credit = ({ tabContent, product }) => {
                         <li>
                             <p className=' main-info mb-5'> Images Used </p>
                             {
-                                product?.images.map((img, ind ) => {
+                                product?.images!==undefined && product?.images!==null && product?.images.map((img, ind ) => {
                                     return (
                                         <Fragment key={ind}>
                                             <span className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{img.imageName} </span>
