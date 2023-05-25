@@ -43,7 +43,7 @@ const NewPdpTabs = (props) => {
                     <Credit tabContent={tabContent} product={props.product}/>
 
                     {/* What's New Tab Content Called here */}
-                    <WhatsNew tabContent={tabContent}/>
+                    <WhatsNew tabContent={tabContent} product={props.product}/>
 
                     {/* About Author Tab Content Called here */}
                     <AboutAuthor tabContent={tabContent} productList={props.productList}/>

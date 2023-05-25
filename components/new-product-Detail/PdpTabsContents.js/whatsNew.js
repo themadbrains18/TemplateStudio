@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import publishedIcon from 'public/icons/watsNewIcon.svg'
 
-const WhatsNew = ({tabContent}) => {
+const WhatsNew = ({tabContent, product }) => {
     return (
         <>
             <div className={`${tabContent === 4 ? "block mx-0 xl:mx-44 pt-[20px] md:pt-[40px] xl:pt-[80px]" : "hidden "}`}>
@@ -11,21 +11,22 @@ const WhatsNew = ({tabContent}) => {
                         <Image src={publishedIcon} alt='icon' />
                         <div>
                             <p className='medium-heading mb-[10px]'>Published On</p>
-                            <p className='main-info'>23/03/2022</p>
+                            {console.log(product, "========sda")}
+                            <p className='main-info'>{product?.createdAt}</p>
                         </div>
                     </div>
                     <div className='flex gap-[10px] md:gap-4 p-[10px] items-center md:py-4 md:px-5 md:items-start border border-divider-light '>
                         <Image src={publishedIcon} alt='icon' />
                         <div>
                             <p className='medium-heading mb-[10px]'>Last Update</p>
-                            <p className='main-info'>23/03/2022</p>
+                            <p className='main-info'>{product?.updatedAt}</p>
                         </div>
                     </div>
                     <div className='flex gap-[10px] md:gap-4 p-[10px] items-center md:py-4 md:px-5 md:items-start border border-divider-light '>
                         <Image src={publishedIcon} alt='icon' />
                         <div>
                             <p className='medium-heading mb-[10px]'>Latest Version</p>
-                            <p className='main-info'>1.0.0</p>
+                            <p className='main-info'>{product?.version}</p>
                         </div>
                     </div>
                 </div>

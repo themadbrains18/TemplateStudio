@@ -117,7 +117,7 @@ const PdpSec = ({ product }) => {
                                 <span className='font-open-sans font-semibold text-white text-sm bg-primary py-[2px] px-[11px]'>FREE</span>
                                 <div className='flex gap-5 items-center'>
                                     <span className='small-info '>Total Price</span>
-                                    <span className='font-open-sans font-bold text-[20px] text-light-text'>$0.00</span>
+                                    <span className='font-open-sans font-bold text-[20px] text-light-text'>{`${product?.price == null || product?.price == undefined ? "$0.00" : product?.price  }`}</span>
                                 </div>
                             </div>
                             <button className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Free — Download</button>
