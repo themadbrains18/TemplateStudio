@@ -13,7 +13,6 @@ const WhatsNew = ({tabContent, product }) => {
                         <Image src={publishedIcon} alt='icon' />
                         <div>
                             <p className='medium-heading mb-[10px]'>Published On</p>
-                            {console.log(product, "========sda")}
                             <p className='main-info'>{moment(product?.createdAt).format('D/M/YYYY')}</p>
                         </div>
                     </div>

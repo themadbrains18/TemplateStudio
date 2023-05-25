@@ -114,13 +114,13 @@ const PdpSec = ({ product }) => {
                             </div>
 
                             <div className='p-[10px] xmd:p-5 bg-primary-800 border border-divider-main flex justify-between items-center mb-[30px]'>
-                                <span className='font-open-sans font-semibold text-white text-sm bg-primary py-[2px] px-[11px]'>FREE</span>
+                                <span className='font-open-sans font-semibold text-white text-sm bg-primary py-[2px] px-[11px]'>{product?.price == null || product?.price == undefined ? 'FREE' : 'PAID'}</span>
                                 <div className='flex gap-5 items-center'>
                                     <span className='small-info '>Total Price</span>
-                                    <span className='font-open-sans font-bold text-[20px] text-light-text'>{`${product?.price == null || product?.price == undefined ? "$0.00" : product?.price  }`}</span>
+                                    <span className='font-open-sans font-bold text-[20px] text-light-text'>{`${product?.price == null || product?.price == undefined ? "$0.00" : `$${product?.price.toFixed(2)}`  }`}</span>
                                 </div>
                             </div>
-                            <button className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Free — Download</button>
+                            <button className='solid-btn w-full !py-[13px] text-[18px] mb-5'>{product?.price == null || product?.price == undefined ? 'Free —' : ''} Download</button>
                             <button className='solid-white-btn w-full !py-[13px] text-[18px] border border-primary-100'>Preview</button>
                         </div>
                     </div>
