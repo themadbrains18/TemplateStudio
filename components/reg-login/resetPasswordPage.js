@@ -7,6 +7,7 @@ import fbIcon from 'public/icons/fbIcon.svg'
 import twitterIcon from 'public/icons/twitterIcon.svg'
 import regLogo from 'public/icons/regLogo.svg'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const ResetPasswordPage = () => {
     const router = useRouter()
@@ -25,11 +26,11 @@ const ResetPasswordPage = () => {
                         <ul className='mb-5 lg:mb-[30px]'>
                             <li className='mb-5 lg:mb-[30px]'>
                                 <label className='block reg-info mb-1'>Password</label>
-                                <input type='password' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                                <input type='password' placeholder='Your Password ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                             </li>
                             <li>
                                 <label className='block reg-info mb-1'>Confirm Password</label>
-                                <input type='password' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                                <input type='password' placeholder='Your Password again' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                             </li>
                         </ul>
                         <div className=" mr-4 inline-block min-h-[1.5rem] pl-[1.5rem] mb-[30px] lg:mb-[40px] xl:mb-[60px]">
@@ -42,7 +43,7 @@ const ResetPasswordPage = () => {
                         <p className='font-open-sans font-normal text-[14px] text-[#4B5563] mb-[60px]'>New Password Must Be Different From Previous Used Password.</p>
                         
                         <div className='text-right mb-[30px] lg:mb-[60px]'>
-                            <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Login</button>
+                            <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Save New Password</button>
                         </div>
                         <div className='flex justify-between gap-[15px]'>
                             <button className='flex gap-[8px] lg:gap-[15px] justify-center items-center border border-divider-main py-[6px] lg:py-[10px] px-5 max-w-[190px] w-full'>
@@ -59,7 +60,7 @@ const ResetPasswordPage = () => {
                             </button>
                         </div>
                     </div>
-                    <p className='font-open-sans text-base text-[#544E4E]' >Not a member yet? <button className='text-main-text font-semibold'>Register Now</button></p>
+                    <p className='font-open-sans text-base text-[#544E4E]' >Not a member yet? <Link href="/register" className='text-main-text font-semibold'>Register Now</Link></p>
                 </div>
             </div>
         </>
