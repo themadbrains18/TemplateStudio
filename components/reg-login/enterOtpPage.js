@@ -78,14 +78,14 @@ const EnterOtpPage = () => {
                         </ul>
 
                         <div className='text-right mb-[30px] lg:mb-[60px]'>
-                            <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Verify Now</button>
+                            <Link href="/resetPassword" className='inline-block text-center solid-btn w-full !py-[13px] text-[18px] mb-5'>Verify Now</Link>
                         </div>
                         <div className='flex gap-4 justify-center'>
                             <p className='font-open-sans font-normal text-[14px] text-[#4B5563]'> Resend OTP After (04:20)</p>
-                            <span className='font-open-sans font-normal text-[14px] text-[#0A394F]'>Resend Code</span>
+                            <button className='font-open-sans font-normal text-[14px] text-[#0A394F]'>Resend Code</button>
                         </div>
                     </div>
-                    <p className='font-open-sans text-base text-[#544E4E]' >Not a member yet? <button className='text-main-text font-semibold'>Register Now</button></p>
+                    <p className='font-open-sans text-base text-[#544E4E]' >Not a member yet? <Link href="/register" className='text-main-text font-semibold'>Register Now</Link></p>
                 </div>
             </div>
         </>

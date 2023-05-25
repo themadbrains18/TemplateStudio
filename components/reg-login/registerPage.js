@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import Link from 'next/link'
 
 import googleIcon from 'public/icons/googleIcon.svg'
 import fbIcon from 'public/icons/fbIcon.svg'
@@ -44,7 +45,7 @@ const RegisterPage = () => {
                         </div>
                         <div className='text-right mb-[30px] lg:mb-[60px]'>
                             <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Create Account</button>
-                            <button className='medium-info text-right'>Forgot Password</button>
+                            <Link href="/forgotPassword" className='medium-info text-right'>Forgot Password</Link>
                         </div>
                         <div className='flex justify-between gap-[15px]'>
                             <button className='flex gap-[8px] lg:gap-[15px] justify-center items-center border border-divider-main py-[6px] lg:py-[10px] px-5 max-w-[190px] w-full'>
@@ -61,7 +62,7 @@ const RegisterPage = () => {
                             </button>
                         </div>
                     </div>
-                    <p className='font-open-sans text-base text-[#544E4E] mt-5' >Already registered? <button className='text-main-text font-semibold'>Login Now</button></p>
+                    <p className='font-open-sans text-base text-[#544E4E] mt-5' >Already registered? <Link href="/login" className='text-main-text font-semibold'>Login Now</Link></p>
                 </div>
             </div>
         </>

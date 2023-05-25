@@ -6,6 +6,7 @@ import fbIcon from 'public/icons/fbIcon.svg'
 import twitterIcon from 'public/icons/twitterIcon.svg'
 import regLogo from 'public/icons/regLogo.svg'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const LoginPage = () => {
     const router = useRouter()
@@ -40,7 +41,7 @@ const LoginPage = () => {
                         </div>
                         <div className='text-right mb-[30px] lg:mb-[60px]'>
                             <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Login</button>
-                            <button className='medium-info text-right'>Forgot Password</button>
+                            <Link href="/forgotPassword" className='medium-info text-right'>Forgot Password</Link>
                         </div>
                         <div className='flex justify-between gap-[15px]'>
                             <button className='flex gap-[8px] lg:gap-[15px] justify-center items-center border border-divider-main py-[6px] lg:py-[10px] px-5 max-w-[190px] w-full'>
@@ -57,7 +58,7 @@ const LoginPage = () => {
                             </button>
                         </div>
                     </div>
-                    <p className='font-open-sans text-base text-[#544E4E]' >Not a member yet? <button className='text-main-text font-semibold'>Register Now</button></p>
+                    <p className='font-open-sans text-base text-[#544E4E]' >Not a member yet? <Link href="/register" className='text-main-text font-semibold'>Register Now</Link></p>
                 </div>
             </div>
         </>
