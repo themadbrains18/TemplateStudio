@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
+import  { useState } from 'react'
 
 import googleIcon from 'public/icons/googleIcon.svg'
 import fbIcon from 'public/icons/fbIcon.svg'
@@ -10,6 +11,22 @@ import { useRouter } from 'next/router'
 
 const RegisterPage = () => {
     const router = useRouter()
+
+    const [passwordType, setPasswordType] = useState("password");
+    const [passwordInput, setPasswordInput] = useState("");
+    const handlePasswordChange =(evnt)=>{
+        setPasswordInput(evnt.target.value);
+    }
+    const togglePassword =()=>{
+      if(passwordType==="password")
+      {
+       setPasswordType("text")
+       return;
+      }
+      setPasswordType("password")
+    }
+
+    
     return (
         <>
             <div className='grid grid-cols-1 justify-items-center lg:grid-cols-2  '>
@@ -19,7 +36,7 @@ const RegisterPage = () => {
                     <p className='text-white font-open-sans font-medium text-[14px]'>By Madbrains Technologies LLP.</p>
                 </div>
 
-                <div className='flex flex-col justify-between  py-[40px] px-5 lg:py-[50px] lg:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
+                <div className='flex flex-col gap-7 justify-between  py-[40px] px-5 lg:py-[50px] lg:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
                     <h1 className='reg-heading mb-[30px] lg:mb-0'>Register Here!</h1>
                     <div className='mb-[30px] lg:mb-0'>
                         <ul className='mb-5 lg:mb-[30px]'>
@@ -33,7 +50,7 @@ const RegisterPage = () => {
                             </li>
                             <li>
                                 <label className='block reg-info mb-1'>Password</label>
-                                <input type='password' placeholder='Password' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                                <input type={passwordType} onChange={handlePasswordChange} value={passwordInput} name="password"  placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                             </li>
                         </ul>
                         <div className=" mr-4 inline-block min-h-[1.5rem] pl-[1.5rem] mb-[30px] lg:mb-[40px] xl:mb-[60px]">
@@ -41,7 +58,7 @@ const RegisterPage = () => {
                                 type="checkbox"
                                 id="showPass"
                             />
-                            <label htmlFor='showPass' className='small-info !font-semibold !text-[#BA6EF4] cursor-pointer' >Show Password</label>
+                            <label htmlFor='showPass' className='small-info !font-semibold !text-[#BA6EF4] cursor-pointer'  onClick={togglePassword} >Show Password</label>
                         </div>
                         <div className='text-right mb-[30px] lg:mb-[60px]'>
                             <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Create Account</button>

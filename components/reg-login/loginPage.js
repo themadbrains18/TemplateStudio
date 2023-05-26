@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
 import googleIcon from 'public/icons/googleIcon.svg'
 import fbIcon from 'public/icons/fbIcon.svg'
@@ -10,6 +10,22 @@ import Link from 'next/link'
 
 const LoginPage = () => {
     const router = useRouter()
+   
+
+    const [passwordType, setPasswordType] = useState("password");
+    const [passwordInput, setPasswordInput] = useState("");
+    const handlePasswordChange =(evnt)=>{
+        setPasswordInput(evnt.target.value);
+    }
+    const togglePassword =()=>{
+      if(passwordType==="password")
+      {
+       setPasswordType("text")
+       return;
+      }
+      setPasswordType("password")
+    }
+
     return (
         <>
             <div className='grid grid-cols-1 justify-items-center lg:grid-cols-2  '>
@@ -25,11 +41,11 @@ const LoginPage = () => {
                         <ul className='mb-5 lg:mb-[30px]'>
                             <li className='mb-5 lg:mb-[30px]'>
                                 <label className='block reg-info mb-1'>Email or Phone</label>
-                                <input type='text' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                                <input  type='text' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                             </li>
                             <li>
                                 <label className='block reg-info mb-1'>Password</label>
-                                <input type='password' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                                <input type={passwordType} onChange={handlePasswordChange} value={passwordInput} name="password"  placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                             </li>
                         </ul>
                         <div className=" mr-4 inline-block min-h-[1.5rem] pl-[1.5rem] mb-[30px] lg:mb-[40px] xl:mb-[60px]">
@@ -37,7 +53,7 @@ const LoginPage = () => {
                                 type="checkbox"
                                 id="showPass"
                             />
-                            <label htmlFor='showPass' className='small-info !font-semibold !text-[#BA6EF4] cursor-pointer' >Show Password</label>
+                            <label htmlFor='showPass' className='small-info !font-semibold !text-[#BA6EF4] cursor-pointer' onClick={togglePassword} >Show Password</label>
                         </div>
                         <div className='text-right mb-[30px] lg:mb-[60px]'>
                             <button type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5'>Login</button>
