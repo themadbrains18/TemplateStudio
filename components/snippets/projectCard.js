@@ -6,7 +6,7 @@ const ProjectCard = ({ items }) => {
     
     return (
         <>
-            <Link href="/" className='projectCard max-w-[218px] w-full  border border-divider-main'>
+            <Link href={`/product/${items.id}`} className='projectCard max-w-[218px] w-full  border border-divider-main'>
                 <div className='relative'>
                     <Image src= {`http://localhost:7777/upload/${items.sliderimages[0]?.filename}`} width={218} height={106} alt="Image Error" className='' />
                     <div className="overlay absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed opacity-0 transition-all duration-500 ease-in-out">

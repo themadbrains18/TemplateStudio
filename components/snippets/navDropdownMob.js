@@ -9,16 +9,9 @@ import DropdownTemplateCard from '../snippets/dropdownTemplateCard'
 const NavDropdownMob = (props) => {
     const [isActive, setIsActive] = useState(false);
 
-    const navDropdownCardsMob = [
-        {
-            "image": "feature-prod-dd1.png",
-            "caption": "Room Sharing - UI Kit Te...  "
-        },
-        {
-            "image": "feature-prod-dd1.png",
-            "caption": "Room Sharing - UI Kit Tefdfddggf...  "
-        },
-    ]
+    const closeSideMenu=()=>{
+        props.toggleSidebar();
+    }
 
     return (
         <>
@@ -49,7 +42,7 @@ const NavDropdownMob = (props) => {
                             props.products.map((elem, index) => {
                                 return (
                                     <Fragment key={index}>
-                                        <DropdownTemplateCard data={elem} />
+                                        <DropdownTemplateCard data={elem} closeSideMenu={closeSideMenu}/>
                                     </Fragment>
                                 )
                             })

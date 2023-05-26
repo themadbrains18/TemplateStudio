@@ -156,7 +156,7 @@ const Header = (props) => {
                     {/* Dropdown OF First Nav Item*/}
 
                     {props?.categoryList.map((item, index) => {
-                        return <div className={`transition-300 hover:opacity-100 hover:visible  ${isShown === (index + 1) ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
+                        return <div key={index} className={`transition-300 hover:opacity-100 hover:visible  ${isShown === (index + 1) ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
                             <NavDropdown category={item} uiTemplate={item?.subcategories} products={props.productList} />
                         </div>
                     })}
@@ -182,7 +182,7 @@ const Header = (props) => {
                                 props?.categoryList.map((item, index) => {
                                     return (
                                         <Fragment key={index}>
-                                            <NavDropdownMob heading={item?.category} subHeading={item?.subcategories} products={props.productList}/>
+                                            <NavDropdownMob heading={item?.category} subHeading={item?.subcategories} products={props.productList} toggleSidebar={toggleSidebar}/>
                                         </Fragment>
                                     )
                                 })

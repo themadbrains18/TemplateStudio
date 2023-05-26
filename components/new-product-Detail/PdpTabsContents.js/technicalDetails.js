@@ -10,7 +10,7 @@ const TechnicalDetails = ({ tabContent, product }) => {
 
                     <ul className="grid grid-cols-1 gap-[10px] md:grid-cols-2">
                         {product?.technical!== undefined &&  product?.technical!== null && product?.technical.map((item) => {
-                            return <li className='tech_detail list-disc main-info border-b border-divider-main pb-5 mb-5'>{item}</li>
+                            return <li key={item} className='tech_detail list-disc main-info border-b border-divider-main pb-5 mb-5'>{item}</li>
                         })}
                     </ul>
 
