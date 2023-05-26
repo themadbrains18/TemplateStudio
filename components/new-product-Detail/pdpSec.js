@@ -152,11 +152,6 @@ const PdpSec = ({ product }) => {
                             <button className='solid-btn w-full !py-[13px] text-[18px] mb-5'>{product?.price == null || product?.price == undefined ? 'Free —' : ''} Download</button>
                             <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" className='preview_btn solid-white-btn w-full !py-[13px] text-[18px] border border-primary-100' onClick={() => preview === true ? setPreview(false) : setPreview(true)}>Preview</button>
 
-
-                            {/* <div className={`${preview === true ? "preview_act  gap-5 " : "opacity-0 invisible hidden"}`}>
-                                <Image src={`http://localhost:7777/upload/${product?.fullimages[0].filename}`} width={900} height={7570} alt='preview image' ></Image>
-                                <Image src={popupCloseBtn} width={16} height={16} alt="Popup Close Button" className='self-start' />
-                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -179,7 +174,7 @@ const PdpSec = ({ product }) => {
                             //     type: "progressbar",
                             // }}
                             autoHeight={true}
-                            navigation={true}   
+                            navigation={true}
                             modules={[Pagination, Navigation]}
                             className="mySwiper"
                         >
