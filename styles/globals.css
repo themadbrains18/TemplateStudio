@@ -266,12 +266,21 @@ html,body{
  .projectCard:hover .overlay{
   @apply opacity-40;
  } 
- .swiper-button-prev::after{
+ /* .swiper-button-prev::after{
   @apply hidden;
- }
- .swiper-button-next::after{
+ } */
+
+/* .swiper-button-lock{
+  display: block !important;
+} */
+ .swiper-button-next.swiper-button-lock::after{
   @apply !text-[30px] top-[15%] absolute right-[0px] z-20;
  }
+ .swiper-button-prev.swiper-button-lock::after{
+  @apply !text-[30px] top-[15%] absolute left-[0px] z-20;
+ }
+
+
  .swiper.swiper-initialized.swiper-horizontal{
   @apply pr-12;
  }
@@ -356,3 +365,15 @@ html,body{
   @apply m-0 p-0 border-0;
 }
 
+
+.swiper-button-next{
+  @apply !text-[30px] top-[15%] !fixed !right-[33%] z-20;
+}
+
+.swiper-button-prev{
+  @apply !text-[30px] top-[15%] !fixed !left-[33%] z-20;
+}
+/* 
+swiper-button-next::after{
+  @apply !text-[30px] top-[15%] !fixed right-[0px] z-20;
+ } */
