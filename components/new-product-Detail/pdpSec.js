@@ -178,14 +178,17 @@ const PdpSec = ({ product }) => {
                             // pagination={{
                             //     type: "progressbar",
                             // }}
-                            navigation={true}
+                            autoHeight={true}
+                            navigation={true}   
                             modules={[Pagination, Navigation]}
                             className="mySwiper"
                         >
                             <div className="p-4 space-y-6">
                                 {
                                     product?.fullimages?.map((elem, ind) => {
-                                        return <SwiperSlide key={ind}>  <Image src={`http://localhost:7777/upload/${elem.filename}`} width={1000} height={7570} alt='preview image' ></Image></SwiperSlide>
+                                        return <SwiperSlide key={ind}>
+                                            <Image src={`http://localhost:7777/upload/${elem.filename}`} width={1000} height={1000} alt='preview image' className='object-contain h-auto max-h-fit' ></Image>
+                                        </SwiperSlide>
                                     })
 
                                 }
