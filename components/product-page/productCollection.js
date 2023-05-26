@@ -15,6 +15,7 @@ import TemplateCard from '../snippets/templateCard'
 
 let soft;
 let indust;
+let prange;
 
 const ProductCollection = (props) => {
 
@@ -28,8 +29,9 @@ const ProductCollection = (props) => {
 
     const [softwareType, setSoftwareType] = useState([]);
     const [industryType, setIndustryType] = useState([]);
+    const [priceRangeType, setPriceRangeType] = useState([]);
 
-
+    const [tempFilterProductList,setTempFilterProductList] = useState([]);
 
     let updateTab = (ind) => {
         setTab(ind)
@@ -81,7 +83,7 @@ const ProductCollection = (props) => {
         const filterData = [
             {
                 'filterTitle': 'Price Range',
-                'filterOption': ['Freebies', '0$ - 05$', '05 - 10$', '10$ - 20 $']
+                'filterOption': ['Freebies', '0  - 05', '05 - 10', '10 - 20']
             },
             {
                 'filterTitle': 'Template Studio Special',
@@ -105,158 +107,207 @@ const ProductCollection = (props) => {
     }
 
     const filterCollectionTemplate = (type, item) => {
-        let data=[];
-        let industryData=[];   
+        let data = [];
+        let industryData = [];
+        let priceRangeData = [];
         if (type === 'Software Type') {
-            let record = filterBySoftwareType(item);
+            let record = filterBySoftwareType(type, item);
             data = record;
         }
 
         if (type === 'Industries') {
-            let record = filterByIndustries(item);
+            let record = filterByIndustries(type, item);
             industryData = record;
         }
 
-        const merged = [...data, ...industryData];
+        if (type === 'Price Range') {
+            let record = filterByPriceRange(type, item);
+            priceRangeData = record;
+        }
+
+        const merged = [...data, ...industryData, ...priceRangeData];
 
         let uniqueArr = [...new Set(merged)];
 
+        if (router.query.subcategory !== undefined && uniqueArr.length > 0) {
+            let filterdata = uniqueArr.filter((item) => {
+                if (item.templatesubcategories.length > 0) {
+                    return item.templatesubcategories[0].subcategory.subCategory === router.query.subcategory
+                }
+            });
+            uniqueArr = filterdata;
+        }
+
         setFilterProduct(uniqueArr);
-        if(uniqueArr.length === 0 && (soft === undefined || soft.length === 0) && (indust === undefined || indust.length === 0)){
+        if (uniqueArr.length === 0 && (soft === undefined || soft.length === 0) && (indust === undefined || indust.length === 0) && (prange === undefined || prange.length === 0)) {
             setFilterProduct(props?.productList);
         }
-        
     }
 
-    const filterBySoftwareType = (item) => {
-        
+    const filterByPriceRange = (type, item) => {
+        let data = [];
+
+        prange = [...priceRangeType];
+
+
+        let exist = priceRangeType.filter(e => e === item);
+
+        if (exist.length > 0) {
+            setPriceRangeType(priceRangeType.filter(e => e !== item));
+            prange = prange.filter(e => e !== item);
+        }
+        else {
+            setPriceRangeType(oldArray => [...oldArray, item]);
+            prange.push(item)
+        }
+
+        if (prange.length > 0) {
+            if(tempFilterProductList.length > 0 && (industryType.length > 0 || softwareType.length > 0)){
+                tempFilterProductList.filter((a) => {
+                    if (a.price !== null) {
+                        let record = prange.filter(e => (e > a.price >= e.split(' - ')[0] || e.split(' - ')[1] <= a.price))
+                        if (record.length > 0) {
+                            data.push(a);
+                        }
+                    }
+                });
+            }
+            else {
+                props?.productList.filter((a) => {
+                    if (a.price !== null) {
+                        prange.filter(e => {
+                            if (a.price >= e.split(' - ')[0] && a.price <= e.split(' - ')[1]) {
+                                data.push(a);
+                            }
+                        })
+                    }
+                })
+                setTempFilterProductList(data);
+            }
+
+            return data;
+
+        }
+        else {
+            if(tempFilterProductList.length > 0 && (softwareType.length === 0 && industryType.length === 0)){
+                return props.productList
+            }
+            else{
+                return tempFilterProductList
+            }
+        }
+    }
+
+    const filterBySoftwareType = (type, item) => {
+
         let data = [];
 
         soft = [...softwareType];
 
-        let exist = softwareType.filter(e => e === item);
+        if (type === 'Software Type') {
+            let exist = softwareType.filter(e => e === item);
 
-        if (exist.length > 0) {
-            setSoftwareType(softwareType.filter(e => e !== item));
-            soft = soft.filter(e => e !== item);
-        }
-        else {
-            setSoftwareType(oldArray => [...oldArray, item]);
-            soft.push(item)
+            if (exist.length > 0) {
+                setSoftwareType(softwareType.filter(e => e !== item));
+                soft = soft.filter(e => e !== item);
+            }
+            else {
+                setSoftwareType(oldArray => [...oldArray, item]);
+                soft.push(item)
+            }
         }
 
         if (soft.length > 0) {
-            if (industryType.length > 0) {
-                props?.productList.filter((item) => {
-                    if (item.templateindrusties.length > 0) {
-                        item.templateindrusties.map((a) => {
-                            let record = industryType.filter(e => e === a.industry.industry)
-                            if (record.length > 0) {
-                                data.push(item);
-                            }
-                        })
+            if(tempFilterProductList.length > 0 && (industryType.length > 0 || priceRangeType.length > 0)){
+                tempFilterProductList.filter((item) => {
+                    if (item.templatesoftwaretypes.length > 0) {
+                        let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
+                        if (record.length > 0) {
+                            data.push(item);
+                        }
                     }
                 });
             }
-
-            if(data.length === 0){
-                data = props?.productList;
-            }
-
-            let newData = [];
-
-            data.filter((item) => {
-                if (item.templatesoftwaretypes.length > 0) {
-                    let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
-                    if (record.length > 0) {
-                        newData.push(item);
-                    }
-                }
-            });
-
-            return newData;
-        }
-        else {
-            if (industryType.length > 0) {
+            else{
                 props?.productList.filter((item) => {
-                    if (item.templateindrusties.length > 0) {
-                        item.templateindrusties.map((a) => {
-                            let record = industryType.filter(e => e === a.industry.industry)
-                            if (record.length > 0) {
-                                data.push(item);
-                            }
-                        })
+                    if (item.templatesoftwaretypes.length > 0) {
+                        let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
+                        if (record.length > 0) {
+                            data.push(item);
+                        }
                     }
                 });
-            }
 
+                setTempFilterProductList(data);
+            }
+            
             return data;
         }
-
+        else{
+            if(tempFilterProductList.length > 0 && (industryType.length === 0 && priceRangeType.length === 0)){
+                return props.productList
+            }
+            else{
+                return tempFilterProductList
+            }
+        }
     }
 
-    const filterByIndustries = (item) => {
-        
+    const filterByIndustries = (type, item) => {
+
         let data = [];
 
         indust = [...industryType];
 
-        let exist = industryType.filter(e => e === item);
+        if (type === 'Industries') {
+            let exist = industryType.filter(e => e === item);
 
-        if (exist.length > 0) {
-            setIndustryType(industryType.filter(e => e !== item));
-            indust = indust.filter(e => e !== item);
-        }
-        else {
-            setIndustryType(oldArray => [...oldArray, item]);
-            indust.push(item)
+            if (exist.length > 0) {
+                setIndustryType(industryType.filter(e => e !== item));
+                indust = indust.filter(e => e !== item);
+            }
+            else {
+                setIndustryType(oldArray => [...oldArray, item]);
+                indust.push(item)
+            }
         }
 
         if (indust.length > 0) {
-            if (softwareType.length > 0) {
-                props?.productList.filter((item) => {
-                    if (item.templatesoftwaretypes.length > 0) {
-                        let record = softwareType.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
-                        if (record.length > 0) {
-                            data.push(item);
-                        }
+            if(tempFilterProductList.length > 0 && (softwareType.length > 0 || priceRangeType.length > 0)){
+                tempFilterProductList.filter((item) => {
+                    if (item.templateindrusties.length > 0) {
+                        item.templateindrusties.map((a) => {
+                            let record = indust.filter(e => e === a.industry.industry)
+                            if (record.length > 0) {
+                                data.push(item);
+                            }
+                        })
                     }
                 });
             }
-
-            if(data.length === 0){
-                data = props?.productList;
-            }
-
-            let newData = [];
-
-            data.filter((item) => {
-                if (item.templateindrusties.length > 0) {
-                    item.templateindrusties.map((a) => {
-                        let record = indust.filter(e => e === a.industry.industry)
-                        if (record.length > 0) {
-                            newData.push(item);
-                        }
-                    })
-                }
-            });
-
-            return newData; 
-        }
-        else {
-            if (softwareType.length > 0) {
+            else{
                 props?.productList.filter((item) => {
-                    if (item.templatesoftwaretypes.length > 0) {
-                        let record = softwareType.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
-                        if (record.length > 0) {
-                            data.push(item);
-                        }
+                    if (item.templateindrusties.length > 0) {
+                        item.templateindrusties.map((a) => {
+                            let record = indust.filter(e => e === a.industry.industry)
+                            if (record.length > 0) {
+                                data.push(item);
+                            }
+                        })
                     }
                 });
+                setTempFilterProductList(data);
             }
             return data;
         }
-
+        else{
+            if(tempFilterProductList.length > 0 && (softwareType.length === 0 && priceRangeType.length === 0)){
+                return props.productList
+            }
+            else{
+                return tempFilterProductList
+            }
+        }
     }
 
     return (

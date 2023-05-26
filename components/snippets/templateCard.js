@@ -18,7 +18,7 @@ const TemplateCard = ({ items }) => {
                         <Image src={shareArrowIcon} width={16} height={12} alt="Image Error" className=''></Image>
                     </span>
                     <div className='template_bg text-white font-open-sans font-semibold text-sm py-[2px] px-[10px] bg-black bg-opacity-0 transition duration-500 ease-in-out rounded-[30px] absolute top-5 right-5  '>
-                    <span className='template_num opacity-0 transition duration-500 ease-in-out'> 1/20 </span> 
+                    <span className='template_num opacity-0 transition duration-500 ease-in-out'> 1/{items?.sliderimages?.length} </span> 
                     </div>
                 </Link>
                 <div className='py-3 px-5  bg-white'>
