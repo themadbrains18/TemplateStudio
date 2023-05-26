@@ -51,19 +51,19 @@ const EnterOtpPage = () => {
                     <p className='text-white font-open-sans font-medium text-[14px]'>By Madbrains Technologies LLP.</p>
                 </div>
 
-                <div className='flex flex-col justify-between  py-[40px] px-5 lg:py-[50px] lg:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
-                    <div className='mb-[50px]'>
-                        <h1 className='reg-heading mb-[20px] lg:mb-[70px]'>Enter OTP</h1>
+                <div className='flex flex-col gap-9 justify-center py-[40px] px-5 lg:py-[50px] lg:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
+                <div className='mb-[30px] md:mb-5'>
+                        <h1 className='reg-heading mb-[20px] lg:mb-[30px]'>Enter OTP</h1>
                         <div className='flex gap-3'>
                             <Image src={backButton} width={13} height={13} alt='image error' />
-                            <Link href="/" className='font-open-sans font-semibold text-[18px] text-primary-100'>Back To Log In</Link>
+                            <Link href="/login" className='font-open-sans font-semibold text-[18px] text-primary-100'>Back To Log In</Link>
                         </div>
                     </div>
                     <div className='mb-[30px] lg:mb-0'>
                         <ul className='mb-5 lg:mb-[30px]'>
                             <li className='mb-5 lg:mb-[30px]'>
-                                <div className='mt-5 mb-[60px]'>
-                                    <label className='block reg-info mb-[30px]'>Please enter one time OTP</label>
+                                <div className='mb-[60px]'>
+                                    <label className='block reg-info mb-[15px]'>Please enter one time OTP</label>
                                     <div className="flex justify-center  bg-primary-800 py-2 lg:py-[15px] px-5 lg:px-[45px] gap-[10px] sm:gap-[20px] lg:gap-[30px] input_wrapper input_wrapper_email">
                                         <input type="number" className="block px-2 md:px-4  bg-divider-main border text-center border-divider-main w-[35px] md:w-[46px] min-h-[35px] md:min-h-[46px] text-black  outline-none" name="code1" />
                                         <input type="number" className="block px-2 md:px-4  bg-divider-main border text-center border-divider-main  w-[35px] md:w-[46px] min-h-[35px] md:min-h-[46px] text-black  outline-none" name="code2" />

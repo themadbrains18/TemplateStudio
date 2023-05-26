@@ -20,12 +20,12 @@ const ForgotPassPage = () => {
                     <p className='text-white font-open-sans font-medium text-[14px]'>By Madbrains Technologies LLP.</p>
                 </div>
 
-                <div className='flex flex-col justify-between  py-[40px] px-5 lg:py-[50px] lg:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
-                    <div className='mb-[50px]'>
-                        <h1 className='reg-heading mb-[20px] lg:mb-[70px]'>Forgot Password</h1>
+                <div className='flex flex-col gap-9 justify-center py-[40px] px-5 lg:py-[50px] lg:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
+                    <div className='mb-[30px] md:mb-5'>
+                        <h1 className='reg-heading mb-[20px] lg:mb-[30px]'>Forgot Password</h1>
                         <div className='flex gap-3'>
                             <Image src={backButton} width={13} height={13} alt='image error' />
-                            <Link href="/" className='font-open-sans font-semibold text-[18px] text-primary-100'>Back To Log In</Link>
+                            <Link href="/login" className='font-open-sans font-semibold text-[18px] text-primary-100'>Back To Log In</Link>
                         </div>
                     </div>
                     <div className='mb-[30px] lg:mb-0'>

@@ -27,7 +27,6 @@ const PdpSec = ({ product }) => {
     const [thumbnail, setThumbnail] = useState(product?.fullimages[0]?.filename);
     const [pdpborder, setPdpborder] = useState(0);
     const [preview, setPreview] = useState(false);
-    const [showSideDrawer, setshowSideDrawer] = useState(false);
 
     
 
@@ -37,10 +36,14 @@ const PdpSec = ({ product }) => {
         let previewCloseBtn = document.body.querySelector(".preview_close_btn");
 
         previewBtn.addEventListener("click", ()=>{
-                document.body.style.overflow="hidden"
+                document.body.style.overflowY="hidden"
+              document.querySelector("html").style.overflowY="hidden";
+                // document.body.previousElementSibling.previousElementSibling.style.overflowY="hidden"
         })
         previewCloseBtn.addEventListener("click", ()=>{
-            document.body.style.overflow="unset"
+            document.body.style.overflowY="unset"
+            // document.body.previousElementSibling.previousElementSibling.style.overflowY="unset"
+            document.querySelector("html").style.overflowY="unset";
         })
     }, [])
 
