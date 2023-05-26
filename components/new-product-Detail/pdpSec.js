@@ -10,7 +10,7 @@ import popupCloseBtn from 'public/icons/popupCloseBtn.svg'
 
 
 // import Swiper core and required modules
-import { Navigation, Autoplay } from 'swiper';
+import { Navigation, Autoplay, Pagination } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -19,6 +19,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import Link from 'next/link'
+
+
+import "swiper/css/pagination";
+
 
 
 const PdpSec = ({ product }) => {
@@ -157,21 +161,34 @@ const PdpSec = ({ product }) => {
             </section>
 
 
-            <div id="defaultModal" tabIndex="-1" aria-hidden="true" className={`fixed bg-gray-600 bg-opacity-80 top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full ${preview == true ? "justify-center items-center flex" : "hidden "}`}>
-                <div className="relative w-full max-w-2xl max-h-full">
-                    <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+            <div id="defaultModal" tabindex="-1" aria-hidden="true" className={`fixed bg-gray-600 bg-opacity-80 top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full ${preview == true ? "justify-center items-center flex" : "hidden "}`}>
+                <div class="relative w-full max-w-2xl max-h-full">
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
 
-                            <button type="button" className="preview_close_btn text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal" onClick={(e) => { setPreview(false) }} >
-                                <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                                <span className="sr-only">Close modal</span>
+                            <button type="button" class="preview_close_btn text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal" onClick={(e) => { setPreview(false) }} >
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <span class="sr-only">Close modal</span>
                             </button>
                         </div>
+                        <Swiper
+                            // pagination={{
+                            //     type: "progressbar",
+                            // }}
+                            navigation={true}
+                            modules={[Pagination, Navigation]}
+                            className="mySwiper"
+                        >
+                            <div class="p-4 space-y-6">
+                                {
+                                    product?.fullimages?.map((elem, ind) => {
+                                    return    <SwiperSlide>  <Image src={`http://localhost:7777/upload/${elem.filename}`} width={1000} height={7570} alt='preview image' ></Image></SwiperSlide>
+                                    })
 
-                        <div className="p-6 space-y-6">
-                            <Image src={`http://localhost:7777/upload/${product?.fullimages[0].filename}`} width={900} height={7570} alt='preview image' ></Image>
-                        </div>
+                                }
 
+                            </div>
+                        </Swiper>
 
                     </div>
                 </div>
