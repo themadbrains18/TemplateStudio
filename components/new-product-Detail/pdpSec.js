@@ -42,11 +42,9 @@ const PdpSec = ({ product }) => {
         previewBtn.addEventListener("click", () => {
             document.body.style.overflowY = "hidden"
             document.querySelector("html").style.overflowY = "hidden";
-            // document.body.previousElementSibling.previousElementSibling.style.overflowY="hidden"
         })
         previewCloseBtn.addEventListener("click", () => {
             document.body.style.overflowY = "unset"
-            // document.body.previousElementSibling.previousElementSibling.style.overflowY="unset"
             document.querySelector("html").style.overflowY = "unset";
         })
     }, [])
@@ -67,6 +65,9 @@ const PdpSec = ({ product }) => {
                     <div className='grid grid-cols-1 gap-7 xmd:grid-cols-2'>
                         <div>
                             <div className='p-[10px] xmd:p-5 border-[1px] border-divider-main '>
+                                <Image src={`http://localhost:7777/upload/${thumbnail !== undefined ? thumbnail : product?.sliderimages[0]?.filename}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
+                            </div>
+                            {/* <div  className='p-[10px] xmd:p-5 border-[1px] border-divider-main '>
                                 <Link href="/" className='pdp_main_img relative'>
                                     <div className="overlay absolute z-10 bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed opacity-0 transition duration-500 ease-in-out">
                                     </div>
@@ -75,27 +76,19 @@ const PdpSec = ({ product }) => {
                                     </span>
                                     <Image src={`http://localhost:7777/upload/${thumbnail !== undefined ? thumbnail : product?.sliderimages[0]?.filename}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
                                 </Link>
-                            </div>
-                            <div className=''>
+                            </div> */}
+                            <div className='swiper_tabs'>
+
                                 <Swiper
-                                    // install Swiper modules
-                                    modules={[Navigation, Autoplay]}
+                                    // pagination={{
+                                    //     type: "progressbar",
+                                    // }}
                                     spaceBetween={10}
                                     slidesPerView={6}
-                                    freeMode="true"
-                                    loop={true}
-                                    autoplay={{
-                                        "delay": 1000,
-                                    }}
-                                    speed="1500"
-
+                                    autoHeight={true}
                                     navigation={true}
-
-                                    onSwiper={(swiper) => {
-                                        // console.log(swiper)
-                                    }
-                                    }
-                                    onSlideChange={() => console.log('slide change')}
+                                    modules={[Pagination, Navigation]}
+                                    className="mySwiper"
                                 >
                                     <div className='flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
                                         {
@@ -160,7 +153,7 @@ const PdpSec = ({ product }) => {
 
 
             <div id="defaultModal" tabIndex="-1" aria-hidden="true" className={`fixed bg-gray-600 bg-opacity-80 top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full ${preview == true ? "justify-center items-center flex" : "hidden "}`}>
-                <div className="relative w-full max-w-2xl max-h-full">
+                <div className="preview_popup relative w-full max-w-2xl max-h-full">
                     <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
 
@@ -182,10 +175,9 @@ const PdpSec = ({ product }) => {
                                 {
                                     product?.fullimages?.map((elem, ind) => {
                                         return <SwiperSlide key={ind}>
-                                            <Image src={`http://localhost:7777/upload/${elem.filename}`} width={1000} height={1000} alt='preview image' className='object-contain h-auto max-h-fit' ></Image>
+                                            <Image src={`http://localhost:7777/upload/${elem.filename}`} width={900} height={1000} alt='preview image' ></Image>
                                         </SwiperSlide>
                                     })
-
                                 }
 
                             </div>
