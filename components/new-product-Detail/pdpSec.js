@@ -51,7 +51,7 @@ const PdpSec = ({ product }) => {
 
     return (
         <>
-            {/* <SideDrawer open={showSideDrawer} closed={sideDrawerClosedHandler}/> */}
+       
             <section className='py-[20px] bg-back-white'>
                 <div className='big_container'>
                     <div className='flex items-center gap-2 mb-5'>
@@ -94,7 +94,7 @@ const PdpSec = ({ product }) => {
                                         {
                                             product?.sliderimages.map((elem, ind) => {
                                                 return (
-                                                    <Fragment key={ind}>
+                                                    <Fragment key={elem.id}>
                                                         <SwiperSlide><Image src={`http://localhost:7777/upload/${elem?.filename}`} width={116} height={76} alt="Icon" className={`cursor-pointer border-divider-main border-[2px] ${pdpborder === ind ? "border-primary" : ""}`} onClick={() => { setThumbnail(elem?.filename), setPdpborder(ind) }} /></SwiperSlide>
                                                     </Fragment>
                                                 )
@@ -114,7 +114,7 @@ const PdpSec = ({ product }) => {
                                 {
                                     product?.templatesoftwaretypes?.map((elem, ind) => {
                                         return (
-                                            <Fragment key={ind}>
+                                            <Fragment key={elem.id}>
                                                 <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item justify-items-end gap-4 mb-[18px]'>
                                                     <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
                                                         <input type='checkbox' id={`'${elem?.softwaretype?.softwareType}'`} className='ckbx_input' ></input>
@@ -129,7 +129,6 @@ const PdpSec = ({ product }) => {
                                                 </div>
                                             </Fragment>
                                         )
-
                                     })
                                 }
 
@@ -148,7 +147,6 @@ const PdpSec = ({ product }) => {
                         </div>
                     </div>
                 </div>
-
             </section>
 
 
@@ -174,7 +172,7 @@ const PdpSec = ({ product }) => {
                             <div className="p-4 space-y-6">
                                 {
                                     product?.fullimages?.map((elem, ind) => {
-                                        return <SwiperSlide key={ind}>
+                                        return <SwiperSlide key={elem.id}>
                                             <Image src={`http://localhost:7777/upload/${elem.filename}`} width={900} height={1000} alt='preview image' ></Image>
                                         </SwiperSlide>
                                     })

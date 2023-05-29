@@ -11,7 +11,7 @@ const RelatedProduct = (props) => {
                         {
                             props?.productList.slice(0, 4).map((value, index) => {
                                 return (
-                                    <Fragment key={index}>
+                                    <Fragment key={value.id}>
                                         <TemplateCard items={value} />
                                     </Fragment>
                                 )

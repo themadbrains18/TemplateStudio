@@ -48,7 +48,7 @@ const FilterCheckBox = (props) => {
                 <div className={`overflow-hidden transition-300 acc_ontent`}>
                     {props?.data && props?.data?.filterOption.map((item, index) => {
                         return (
-                            <div key={index} className='flex justify-between mb-[15px] relative'>
+                            <div key={item.id} className='flex justify-between mb-[15px] relative'>
                                 <p className='main-info'>{item}</p>
                                 <input type='checkbox' className='checkbx' onClick={() => { setTag(); filterCollection(props?.data?.filterTitle, item) }} />
                                 <span className='checkmark'></span>

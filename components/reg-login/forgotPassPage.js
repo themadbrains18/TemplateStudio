@@ -9,11 +9,43 @@ import backButton from 'public/icons/backButton.svg'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+
+
+const schema = Yup.object().shape({
+    email: Yup.string().email().required(),
+});
+
+
 const ForgotPassPage = () => {
+    const { register, handleSubmit, formState: { errors }, reset, clearErrors } = useForm({
+        resolver: yupResolver(schema),
+    });
+
     const router = useRouter()
+
+    
+    const onSubmitHandler = async (data) => {
+        console.log(data, "================sfdjksf");
+        let result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/users`, {
+            method: "POST",
+            body: JSON.stringify(data)
+        }).then(response => response.json())
+        if (result) {
+            console.log("=sucesss");
+            reset();
+        }
+        else {
+            console.log("===fail");
+        }
+
+    };
     return (
         <>
-            <div className='grid grid-cols-1 justify-items-center lg:grid-cols-2  '>
+            <form onSubmit={handleSubmit(onSubmitHandler)}  className='grid grid-cols-1 justify-items-center lg:grid-cols-2  '>
                 <div className='bg-reg-bg w-full h-[374px] lg:h-[900px] flex flex-col justify-between py-[50px] px-5 lg:px-[40px] xl:px-[100px] xl:h-[100vh]'>
                     <Image src={regLogo} width={276} height={40} alt='image error' className='cursor-pointer' onClick={()=>{router.push('/')}} />
                     <p className='font-open-sans font-normal text-[32px] lg:text-[40px]  xl:text-[62px] text-white max-w-[900px] w-full text-center'>Free High-quality UI kits and design resources</p>
@@ -32,12 +64,13 @@ const ForgotPassPage = () => {
                         <ul className='mb-5 lg:mb-[30px]'>
                             <li className='mb-5 lg:mb-[30px]'>
                                 <label className='block reg-info mb-1'>Email or Phone</label>
-                                <input type='text' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                                <input {...register("email")} type='text' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                                <p className='text-red-500 text-[12px]'>{errors.email?.message}</p>
                             </li>
                         </ul>
 
                         <div className='text-right mb-[30px] lg:mb-[60px]'>
-                            <Link href="/enterOtp" className='solid-btn w-full !py-[13px] text-[18px] mb-5 inline-block text-center'>Send OTP</Link>
+                            <Link href="/enterOtp" type='submit' className='solid-btn w-full !py-[13px] text-[18px] mb-5 inline-block text-center'>Send OTP</Link>
                         </div>
                         <div className='flex justify-between gap-[15px]'>
                             <button className='flex gap-[8px] lg:gap-[15px] justify-center items-center border border-divider-main py-[6px] lg:py-[10px] px-5 max-w-[190px] w-full'>
@@ -56,7 +89,7 @@ const ForgotPassPage = () => {
                     </div>
                     <p className='font-open-sans text-base text-[#544E4E]' >Not a member yet? <Link href="/register" className='text-main-text font-semibold'>Register Now</Link></p>
                 </div>
-            </div>
+            </form>
         </>
     )
 }

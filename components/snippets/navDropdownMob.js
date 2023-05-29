@@ -25,7 +25,7 @@ const NavDropdownMob = (props) => {
                         {
                             props.subHeading.map((e, i) => {
                                 return (
-                                    <Fragment key={i}>
+                                    <Fragment key={e.id}>
                                         <button className='px-[10px] py-2 border-[0.5px] border-divider-main medium-heading text-[14px] whitespace-nowrap'>{e.subCategory}</button>
                                     </Fragment>
                                 )
@@ -41,7 +41,7 @@ const NavDropdownMob = (props) => {
                         {
                             props.products.map((elem, index) => {
                                 return (
-                                    <Fragment key={index}>
+                                    <Fragment key={elem.id}>
                                         <DropdownTemplateCard data={elem} closeSideMenu={closeSideMenu}/>
                                     </Fragment>
                                 )

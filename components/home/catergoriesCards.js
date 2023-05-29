@@ -27,7 +27,7 @@ const CatergoriesCards = () => {
                         {
                             data.map((value, index) => {
                                 return (
-                                    <Fragment key={index}>
+                                    <Fragment key={value.id}>
                                         <Card items={value} />
                                     </Fragment>
                                 )

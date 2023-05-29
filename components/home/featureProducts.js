@@ -14,7 +14,7 @@ const FeatureProducts = (props) => {
                         {
                             props?.productList.map((value, index) => {
                                 return (
-                                    <Fragment key={index}>
+                                    <Fragment key={value.id}>
                                         <TemplateCard items={value} />
                                     </Fragment>
                                 )
