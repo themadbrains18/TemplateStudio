@@ -42,12 +42,13 @@ const LoginPage = () => {
 
     const onSubmitHandler = async (data) => {
         console.log(data, "================sfdjksf");
-        let result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/users`, {
+        let result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/users/login`, {
             method: "POST",
             body: JSON.stringify(data)
         }).then(response => response.json())
-        if (result) {
+        if (result?.data?.success==true) {
             console.log("=sucesss");
+            router.push("/");
             reset();
         }
         else {

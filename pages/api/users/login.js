@@ -26,7 +26,7 @@ const handler = router.handler({
 router.post(async (req, res) => {
     try {
         console.log(process.env.NEXT_PUBLIC_APIURL, " === test",)
-        let data = await postData(`${process.env.NEXT_PUBLIC_APIURL}/auth/signup`,JSON.parse(req.body))
+        let data = await postData(`${process.env.NEXT_PUBLIC_APIURL}/auth/login`,JSON.parse(req.body))
 
         res.status(200).send({ data });
     } catch (error) {

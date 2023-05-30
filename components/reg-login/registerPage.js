@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
-import  { useState } from 'react'
+import { useState } from 'react'
 
 import googleIcon from 'public/icons/googleIcon.svg'
 import fbIcon from 'public/icons/fbIcon.svg'
@@ -12,12 +12,18 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import EnterOtpPage from './enterOtpPage'
 
 
 const schema = Yup.object().shape({
     name: Yup.string().required().min(8).max(32),
     email: Yup.string().email().required(),
-    password: Yup.string().required().min(8),
+    password: Yup.string()
+        .min(6, 'Password must be at least 6 characters')
+        .required('Password is required'),
+        confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .required('Confirm Password is required'),
 });
 
 const RegisterPage = () => {
@@ -25,23 +31,24 @@ const RegisterPage = () => {
 
     const [passwordType, setPasswordType] = useState("password");
     const [passwordInput, setPasswordInput] = useState("");
+    const [show,setShow]= useState(0)
+    const[userId, setUserId]= useState()
 
 
 
-    const { register, handleSubmit, formState: { errors }, reset,clearErrors } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset, clearErrors } = useForm({
         resolver: yupResolver(schema),
     });
 
-    const handlePasswordChange =(evnt)=>{
+    const handlePasswordChange = (evnt) => {
         setPasswordInput(evnt.target.value);
     }
-    const togglePassword =()=>{
-      if(passwordType==="password")
-      {
-       setPasswordType("text")
-       return;
-      }
-      setPasswordType("password")
+    const togglePassword = () => {
+        if (passwordType === "password") {
+            setPasswordType("text")
+            return;
+        }
+        setPasswordType("password")
     }
 
 
@@ -52,8 +59,10 @@ const RegisterPage = () => {
             body: JSON.stringify(data)
         }).then(response => response.json())
         if (result) {
+            console.log(result?.data?.userId,"=result?.data?.userId");
+            setUserId(result?.data?.userId)
+            setShow(1)
             console.log("=sucesss");
-            reset();
         }
         else {
             console.log("===fail");
@@ -64,9 +73,11 @@ const RegisterPage = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmitHandler)}  className='grid grid-cols-1 justify-items-center lg:grid-cols-2  '>
+            {
+                show === 0 &&
+            <form onSubmit={handleSubmit(onSubmitHandler)} className='grid grid-cols-1 justify-items-center lg:grid-cols-2  '>
                 <div className='bg-reg-bg w-full h-[374px] lg:h-[900px] flex flex-col justify-between py-[50px] px-5 lg:px-[40px] xl:px-[100px] xl:h-[100vh]'>
-                    <Image src={regLogo} width={276} height={40} alt='image error' className='cursor-pointer' onClick={()=>{router.push('/')}}/>
+                    <Image src={regLogo} width={276} height={40} alt='image error' className='cursor-pointer' onClick={() => { router.push('/') }} />
                     <p className='font-open-sans font-normal text-[32px] lg:text-[40px]  xl:text-[62px] text-white max-w-[900px] w-full text-center'>Free High-quality UI kits and design resources</p>
                     <p className='text-white font-open-sans font-medium text-[14px]'>By Madbrains Technologies LLP.</p>
                 </div>
@@ -87,8 +98,13 @@ const RegisterPage = () => {
                             </li>
                             <li>
                                 <label className='block reg-info mb-1'>Password</label>
-                                <input {...register("password")}  type={passwordType} onChange={handlePasswordChange} value={passwordInput}   placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                                <input {...register("password")} type={passwordType} onChange={handlePasswordChange} placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                                 <p className='text-red-500 text-[12px]'>{errors.password?.message}</p>
+                            </li>
+                            <li>
+                                <label className='block reg-info mb-1'>Confirm Password</label>
+                                <input {...register("confirmPassword")} type={passwordType} onChange={handlePasswordChange} placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
+                                <p className='text-red-500 text-[12px]'>{errors.confirmPassword?.message}</p>
                             </li>
                         </ul>
                         <div className=" mr-4 inline-block min-h-[1.5rem] pl-[1.5rem] mb-[30px] lg:mb-[40px] xl:mb-[60px]" >
@@ -121,6 +137,11 @@ const RegisterPage = () => {
                     <p className='font-open-sans text-base text-[#544E4E] mt-5' >Already registered? <Link href="/login" className='text-main-text font-semibold'>Login Now</Link></p>
                 </div>
             </form>
+            }
+            {
+                show === 1 &&
+                <EnterOtpPage userid={userId} />
+            }
         </>
     )
 }
