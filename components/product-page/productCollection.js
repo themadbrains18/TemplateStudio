@@ -31,7 +31,7 @@ const ProductCollection = (props) => {
     const [industryType, setIndustryType] = useState([]);
     const [priceRangeType, setPriceRangeType] = useState([]);
 
-    const [tempFilterProductList,setTempFilterProductList] = useState([]);
+    const [tempFilterProductList, setTempFilterProductList] = useState([]);
 
     let updateTab = (ind) => {
         setTab(ind)
@@ -49,6 +49,7 @@ const ProductCollection = (props) => {
                 }
             });
             setFilterProduct(data);
+            setTempFilterProductList(data);
         }
         else {
             setFilterProduct(props?.productList);
@@ -69,11 +70,11 @@ const ProductCollection = (props) => {
             data?.subcategories.map((item, index) => {
                 if (router.query.category !== undefined) {
                     if (router.query.category === data.category) {
-                        tabs.push(item.subCategory)
+                        tabs.push({ "category": router.query.category, "subcategory": item.subCategory })
                     }
                 }
                 else {
-                    tabs.push(item.subCategory)
+                    tabs.push({ "category": data.category, "subcategory": item.subCategory })
                 }
             })
         })
@@ -162,7 +163,7 @@ const ProductCollection = (props) => {
         }
 
         if (prange.length > 0) {
-            if(tempFilterProductList.length > 0 && (industryType.length > 0 || softwareType.length > 0)){
+            if (tempFilterProductList.length > 0 && (industryType.length > 0 || softwareType.length > 0 || router.query.category!==undefined)) {
                 tempFilterProductList.filter((a) => {
                     if (a.price !== null) {
                         let record = prange.filter(e => (e > a.price >= e.split(' - ')[0] || e.split(' - ')[1] <= a.price))
@@ -189,10 +190,10 @@ const ProductCollection = (props) => {
 
         }
         else {
-            if(tempFilterProductList.length > 0 && (softwareType.length === 0 && industryType.length === 0)){
+            if (tempFilterProductList.length > 0 && (softwareType.length === 0 && industryType.length === 0)) {
                 return props.productList
             }
-            else{
+            else {
                 return tempFilterProductList
             }
         }
@@ -218,7 +219,7 @@ const ProductCollection = (props) => {
         }
 
         if (soft.length > 0) {
-            if(tempFilterProductList.length > 0 && (industryType.length > 0 || priceRangeType.length > 0)){
+            if (tempFilterProductList.length > 0 && (industryType.length > 0 || priceRangeType.length > 0 || router.query.category!==undefined)) {
                 tempFilterProductList.filter((item) => {
                     if (item.templatesoftwaretypes.length > 0) {
                         let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
@@ -228,7 +229,7 @@ const ProductCollection = (props) => {
                     }
                 });
             }
-            else{
+            else {
                 props?.productList.filter((item) => {
                     if (item.templatesoftwaretypes.length > 0) {
                         let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
@@ -240,14 +241,14 @@ const ProductCollection = (props) => {
 
                 setTempFilterProductList(data);
             }
-            
+
             return data;
         }
-        else{
-            if(tempFilterProductList.length > 0 && (industryType.length === 0 && priceRangeType.length === 0)){
+        else {
+            if (tempFilterProductList.length > 0 && (industryType.length === 0 && priceRangeType.length === 0)) {
                 return props.productList
             }
-            else{
+            else {
                 return tempFilterProductList
             }
         }
@@ -273,7 +274,7 @@ const ProductCollection = (props) => {
         }
 
         if (indust.length > 0) {
-            if(tempFilterProductList.length > 0 && (softwareType.length > 0 || priceRangeType.length > 0)){
+            if (tempFilterProductList.length > 0 && (softwareType.length > 0 || priceRangeType.length > 0 || router.query.category!==undefined)) {
                 tempFilterProductList.filter((item) => {
                     if (item.templateindrusties.length > 0) {
                         item.templateindrusties.map((a) => {
@@ -285,7 +286,7 @@ const ProductCollection = (props) => {
                     }
                 });
             }
-            else{
+            else {
                 props?.productList.filter((item) => {
                     if (item.templateindrusties.length > 0) {
                         item.templateindrusties.map((a) => {
@@ -300,11 +301,11 @@ const ProductCollection = (props) => {
             }
             return data;
         }
-        else{
-            if(tempFilterProductList.length > 0 && (softwareType.length === 0 && priceRangeType.length === 0)){
+        else {
+            if (tempFilterProductList.length > 0 && (softwareType.length === 0 && priceRangeType.length === 0)) {
                 return props.productList
             }
-            else{
+            else {
                 return tempFilterProductList
             }
         }
@@ -321,7 +322,10 @@ const ProductCollection = (props) => {
                                 tabsTitleOption.map((elem, ind) => {
                                     return (
                                         <Fragment key={ind}>
-                                            <button className={`large-info whitespace-nowrap border-b-[2px] border-transparent ${tab === ind ? "!border-primary" : ""}`} onClick={() => updateTab(ind)}>{elem}</button>
+                                            <button className={`large-info whitespace-nowrap border-b-[2px] border-transparent ${tab === ind ? "!border-primary" : ""}`} onClick={() => {
+                                                updateTab(ind);
+                                                router.push(`/productPage?category=${elem.category}&subcategory=${elem.subcategory}`)
+                                            }}>{elem.subcategory}</button>
                                         </Fragment>
                                     )
                                 })
