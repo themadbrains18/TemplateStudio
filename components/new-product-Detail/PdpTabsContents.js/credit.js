@@ -12,7 +12,7 @@ const Credit = ({ tabContent, product }) => {
                             {
                                 product?.fonts!==undefined && product?.fonts!==null && product?.fonts.map((font, ind ) => {
                                     return (
-                                        <Fragment key={ind}>
+                                        <Fragment key={font.id}>
                                             <span className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{font.fontName} </span>
                                         </Fragment>
                                     )
@@ -25,7 +25,7 @@ const Credit = ({ tabContent, product }) => {
                             {
                                 product?.icons!==undefined && product?.icons!==null && product?.icons.map((icon, ind ) => {
                                     return (
-                                        <Fragment key={ind}>
+                                        <Fragment key={icon.id}>
                                             <span className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{icon.iconName} </span>
                                         </Fragment>
                                     )
@@ -39,7 +39,7 @@ const Credit = ({ tabContent, product }) => {
                             {
                                 product?.images!==undefined && product?.images!==null && product?.images.map((img, ind ) => {
                                     return (
-                                        <Fragment key={ind}>
+                                        <Fragment key={img.id}>
                                             <span className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{img.imageName} </span>
                                         </Fragment>
                                     )

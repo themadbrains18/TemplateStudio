@@ -10,9 +10,22 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 
-const EnterOtpPage = () => {
+
+
+// const schema = Yup.object().shape({
+//    otp: Yup.number().positive().required("This field is required")
+// });
+
+
+const EnterOtpPage = (props) => {
+    // const { register, handleSubmit,setValue, formState: { errors }, reset, clearErrors } = useForm({
+    //     resolver: yupResolver(schema),
+    // });
+    console.log(props?.userid);
+
     const router = useRouter()
     const [emailOtp, setEmailOtp] = useState();
+
     useEffect(() => {
         const emailinputElements = document.querySelectorAll('.input_wrapper_email input');
 
@@ -35,16 +48,41 @@ const EnterOtpPage = () => {
                     emailinputElements[index + 1].dispatchEvent(new Event('input'))
                 }
                 else {
-                    setEmailOtp(emailinputElements[0].value + '' + emailinputElements[1].value + '' + emailinputElements[2].value + '' + emailinputElements[3].value + '' + emailinputElements[4].value + '' + emailinputElements[5].value);
+                   setEmailOtp(emailinputElements[0].value + '' + emailinputElements[1].value + '' + emailinputElements[2].value + '' + emailinputElements[3].value + '' + emailinputElements[4].value + '' + emailinputElements[5].value);
+                  
                 }
             })
         })
 
     }, [])
 
+
+    const onSubmitHandler = async (e) => {
+        e.preventDefault()
+        console.log(e, "================sfdjksf");
+        let obj={
+            id:props?.userid,
+            otp:emailOtp
+        }
+        let result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/users/verify`, {
+            method: "POST",
+            body: JSON.stringify(obj)
+        }).then(response => response.json())
+        if (result) {
+            // router.push('/enterOtp')
+            console.log("=sucesss");
+        }
+        else {
+            console.log("===fail");
+        }
+
+    };
+
+
+
     return (
         <>
-            <div className='grid grid-cols-1 justify-items-center lg:grid-cols-2  '>
+            <form  className='grid grid-cols-1 justify-items-center lg:grid-cols-2  '>
                 <div className='bg-reg-bg w-full h-[374px] lg:h-[900px] flex flex-col justify-between py-[50px] px-5 lg:px-[40px] xl:px-[100px] xl:h-[100vh]'>
                     <Image src={regLogo} width={276} height={40} alt='image error' className='cursor-pointer' onClick={()=>{router.push('/')}} />
                     <p className='font-open-sans font-normal text-[32px] lg:text-[40px]  xl:text-[62px] text-white max-w-[900px] w-full text-center'>Free High-quality UI kits and design resources</p>
@@ -72,13 +110,14 @@ const EnterOtpPage = () => {
                                         <input type="number" className="block px-2 md:px-4  bg-divider-main border text-center  border-divider-main  w-[35px] md:w-[46px] min-h-[35px] md:min-h-[46px] text-black  outline-none" name="code5" />
                                         <input type="number" className="block px-2 md:px-4  bg-divider-main border text-center border-divider-main  w-[35px] md:w-[46px] min-h-[35px] md:min-h-[46px] text-black  outline-none" name="code6" />
                                     </div>
+                                 
                                 </div>
                                 <p className='font-open-sans font-normal text-[14px] text-[#4B5563]'>Please check your mobile, 6-digit confirmation code to (+1234567890), please enter the confirmation code to verify it’s you.</p>
                             </li>
                         </ul>
 
                         <div className='text-right mb-[30px] lg:mb-[60px]'>
-                            <Link href="/resetPassword" className='inline-block text-center solid-btn w-full !py-[13px] text-[18px] mb-5'>Verify Now</Link>
+                            <button className='inline-block text-center solid-btn w-full !py-[13px] text-[18px] mb-5' onClick={(e)=>onSubmitHandler(e)}>Verify Now</button>
                         </div>
                         <div className='flex gap-4 justify-center'>
                             <p className='font-open-sans font-normal text-[14px] text-[#4B5563]'> Resend OTP After (04:20)</p>
@@ -87,7 +126,7 @@ const EnterOtpPage = () => {
                     </div>
                     <p className='font-open-sans text-base text-[#544E4E]' >Not a member yet? <Link href="/register" className='text-main-text font-semibold'>Register Now</Link></p>
                 </div>
-            </div>
+            </form>
         </>
     )
 }

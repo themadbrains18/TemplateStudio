@@ -37,8 +37,8 @@ function App({ Component, pageProps }) {
       method: "GET"
     }).then(response => response.json());
 
-    setCategoryList(categoryList.data.data);
-    setproductList(productList.data.data.slice(0, 4));
+    setCategoryList(categoryList?.data?.data);
+    setproductList(productList?.data?.data?.slice(0, 4));
   }
 
   return (

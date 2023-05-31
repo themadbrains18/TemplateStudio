@@ -19,7 +19,7 @@ const NavDropdown = (props) => {
           {
             props.uiTemplate.map((elem, ind) => {
               return (
-                <Fragment key={ind}>
+                <Fragment key={elem.id}>
                   <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap ${tabContent === ind ? "border-[2px] border-primary" : ""}`} onClick={() => {
                     updateTabs(ind);
                     // router.push('/productPage');
@@ -42,7 +42,7 @@ const NavDropdown = (props) => {
             {
               props?.products.map((value, index) => {
                 return (
-                  <Fragment key={index}>
+                  <Fragment key={value.id}>
                     <ProjectCard items={value} />
                   </Fragment>
                 )

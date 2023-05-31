@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.1.0",
     "moment": "^2.29.4",
     "next": "13.2.4",
     "next-connect": "^1.0.0",
@@ -16,11 +17,14 @@
     "node": "^16.20.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-form-hook": "^0.0.1",
+    "react-hook-form": "^7.44.2",
     "react-id-swiper": "^4.0.0",
     "react-image-gallery": "^1.2.11",
     "react-player": "^2.12.0",
     "semver": "^7.5.1",
-    "swiper": "^9.3.2"
+    "swiper": "^9.3.2",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

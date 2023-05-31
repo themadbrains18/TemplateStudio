@@ -96,7 +96,7 @@ const Header = (props) => {
                                 {
                                     props?.categoryList.map((item, index) => {
                                         return (
-                                            <Fragment key={index} >
+                                            <Fragment key={item.id} >
                                                 <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative cursor-pointer' onMouseEnter={() => setIsShown(index + 1)} onMouseLeave={() => setIsShown(0)}>
                                                     <span className=''>{item?.category}</span>
                                                     <svg className='nav_down_arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,7 +128,7 @@ const Header = (props) => {
                                             {
                                                 searchDropdown.map((elem, index) => {
                                                     return (
-                                                        <Fragment key={index}>
+                                                        <Fragment key={elem.id}>
                                                             <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300'
                                                                 onClick={() => {
                                                                     setText(elem.item)
@@ -156,7 +156,7 @@ const Header = (props) => {
                     {/* Dropdown OF First Nav Item*/}
 
                     {props?.categoryList.map((item, index) => {
-                        return <div key={index} className={`transition-300 hover:opacity-100 hover:visible  ${isShown === (index + 1) ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
+                        return <div key={item.id} className={`transition-300 hover:opacity-100 hover:visible  ${isShown === (index + 1) ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
                             <NavDropdown category={item} uiTemplate={item?.subcategories} products={props.productList} />
                         </div>
                     })}
@@ -181,7 +181,7 @@ const Header = (props) => {
                             {
                                 props?.categoryList.map((item, index) => {
                                     return (
-                                        <Fragment key={index}>
+                                        <Fragment key={item.id}>
                                             <NavDropdownMob heading={item?.category} subHeading={item?.subcategories} products={props.productList} toggleSidebar={toggleSidebar}/>
                                         </Fragment>
                                     )

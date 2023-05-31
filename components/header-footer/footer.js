@@ -30,17 +30,17 @@ const Footer = () => {
           <div className='flex gap-[80px] flex-wrap sm:flex-nowrap md:gap-10 md:justify-between xmd:gap-[68px]'>
             <ul>
               <li className='footer-title mb-10'>Design</li>
-              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Sketch"><span>Sketch</span> </Link></li>
-              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Adobe XD"><span> Adobe XD</span> </Link></li>
-              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Figma"><span>Figma</span> </Link></li>
+              <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after="Sketch"><span>Sketch</span> </Link></li>
+              <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after="Adobe XD"><span> Adobe XD</span> </Link></li>
+              <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after="Figma"><span>Figma</span> </Link></li>
             </ul>
             <ul>
               <li className='footer-title mb-10'>Coded </li>
-              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="HTML"><span>HTML</span> </Link></li>
-              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="React"><span> React</span> </Link></li>
-              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Wordpress"><span>Wordpress</span> </Link></li>
-              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Shopify"><span>Shopify</span> </Link></li>
-              <li className=''><Link href="/" className='footer-info mb-[26px] pseudo-text-effect' data-after="Bootstrap"><span>Bootstrap</span> </Link></li>
+              <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after="HTML"><span>HTML</span> </Link></li>
+              <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after="React"><span> React</span> </Link></li>
+              <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after="Wordpress"><span>Wordpress</span> </Link></li>
+              <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after="Shopify"><span>Shopify</span> </Link></li>
+              <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after="Bootstrap"><span>Bootstrap</span> </Link></li>
             </ul>
             <ul className='md:max-w-[370px] -mt-[60px] sm:mt-0'>
               <li className='footer-title mb-[15px]'>Join Our Newsletter</li>

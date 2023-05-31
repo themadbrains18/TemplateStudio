@@ -270,20 +270,25 @@ html,body{
   @apply hidden;
  } */
 
-/* .swiper-button-lock{
-  display: block !important;
-} */
- .swiper-button-next.swiper-button-lock::after{
-  @apply !text-[30px] top-[15%] absolute right-[0px] z-20;
+ .swiper_tabs .swiper-button-lock{
+  @apply block;
+} 
+
+ .swiper_tabs .swiper-button-next::after{
+  @apply !text-[30px] !z-20;
  }
- .swiper-button-prev.swiper-button-lock::after{
-  @apply !text-[30px] top-[15%] absolute left-[0px] z-20;
+ .swiper_tabs .swiper-button-prev::after{
+  @apply !text-[30px] !z-20;
  }
 
+ .swiper-button-lock{
+  @apply w-6;
+ }
 
+/*  
  .swiper.swiper-initialized.swiper-horizontal{
   @apply pr-12;
- }
+ } */
 
 
 /* Footer Links Hover Effects */
@@ -366,14 +371,15 @@ html,body{
 }
 
 
-.swiper-button-next{
-  @apply !text-[30px] top-[15%] !fixed !right-[33%] z-20;
+/* PDP preview swiper */
+.preview_popup .swiper-button-next{
+  @apply !top-[50%] !fixed md:!right-[50%] !right-[5%] md:translate-x-[300px];
 }
 
-.swiper-button-prev{
-  @apply !text-[30px] top-[15%] !fixed !left-[33%] z-20;
+.preview_popup .swiper-button-prev{
+  @apply top-[50%] !fixed md:!left-[50%] !left-[5%] md:translate-x-[-300px];
 }
-/* 
-swiper-button-next::after{
-  @apply !text-[30px] top-[15%] !fixed right-[0px] z-20;
- } */
+
+.swiper.swiper-initialized.swiper-horizontal{
+  @apply pr-0;
+}

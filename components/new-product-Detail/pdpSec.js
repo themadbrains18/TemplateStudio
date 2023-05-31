@@ -42,18 +42,16 @@ const PdpSec = ({ product }) => {
         previewBtn.addEventListener("click", () => {
             document.body.style.overflowY = "hidden"
             document.querySelector("html").style.overflowY = "hidden";
-            // document.body.previousElementSibling.previousElementSibling.style.overflowY="hidden"
         })
         previewCloseBtn.addEventListener("click", () => {
             document.body.style.overflowY = "unset"
-            // document.body.previousElementSibling.previousElementSibling.style.overflowY="unset"
             document.querySelector("html").style.overflowY = "unset";
         })
     }, [])
 
     return (
         <>
-            {/* <SideDrawer open={showSideDrawer} closed={sideDrawerClosedHandler}/> */}
+       
             <section className='py-[20px] bg-back-white'>
                 <div className='big_container'>
                     <div className='flex items-center gap-2 mb-5'>
@@ -67,6 +65,9 @@ const PdpSec = ({ product }) => {
                     <div className='grid grid-cols-1 gap-7 xmd:grid-cols-2'>
                         <div>
                             <div className='p-[10px] xmd:p-5 border-[1px] border-divider-main '>
+                                <Image src={`http://localhost:7777/upload/${thumbnail !== undefined ? thumbnail : product?.sliderimages[0]?.filename}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
+                            </div>
+                            {/* <div  className='p-[10px] xmd:p-5 border-[1px] border-divider-main '>
                                 <Link href="/" className='pdp_main_img relative'>
                                     <div className="overlay absolute z-10 bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed opacity-0 transition duration-500 ease-in-out">
                                     </div>
@@ -75,33 +76,25 @@ const PdpSec = ({ product }) => {
                                     </span>
                                     <Image src={`http://localhost:7777/upload/${thumbnail !== undefined ? thumbnail : product?.sliderimages[0]?.filename}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
                                 </Link>
-                            </div>
-                            <div className=''>
+                            </div> */}
+                            <div className='swiper_tabs'>
+
                                 <Swiper
-                                    // install Swiper modules
-                                    modules={[Navigation, Autoplay]}
+                                    // pagination={{
+                                    //     type: "progressbar",
+                                    // }}
                                     spaceBetween={10}
                                     slidesPerView={6}
-                                    freeMode="true"
-                                    loop={true}
-                                    autoplay={{
-                                        "delay": 1000,
-                                    }}
-                                    speed="1500"
-
+                                    autoHeight={true}
                                     navigation={true}
-
-                                    onSwiper={(swiper) => {
-                                        // console.log(swiper)
-                                    }
-                                    }
-                                    onSlideChange={() => console.log('slide change')}
+                                    modules={[Pagination, Navigation]}
+                                    className="mySwiper"
                                 >
                                     <div className='flex gap-7 pt-[10px] xmd:p-5 xmd:border xmd:border-divider-main'>
                                         {
                                             product?.sliderimages.map((elem, ind) => {
                                                 return (
-                                                    <Fragment key={ind}>
+                                                    <Fragment key={elem.id}>
                                                         <SwiperSlide><Image src={`http://localhost:7777/upload/${elem?.filename}`} width={116} height={76} alt="Icon" className={`cursor-pointer border-divider-main border-[2px] ${pdpborder === ind ? "border-primary" : ""}`} onClick={() => { setThumbnail(elem?.filename), setPdpborder(ind) }} /></SwiperSlide>
                                                     </Fragment>
                                                 )
@@ -121,7 +114,7 @@ const PdpSec = ({ product }) => {
                                 {
                                     product?.templatesoftwaretypes?.map((elem, ind) => {
                                         return (
-                                            <Fragment key={ind}>
+                                            <Fragment key={elem.id}>
                                                 <div className='p-[10px] xmd:p-5 border border-divider-main grid pdp_chkbx_item justify-items-end gap-4 mb-[18px]'>
                                                     <div className='flex gap-[10px] xmd:gap-[22px] items-center relative overflow-hidden justify-self-start'>
                                                         <input type='checkbox' id={`'${elem?.softwaretype?.softwareType}'`} className='ckbx_input' ></input>
@@ -136,7 +129,6 @@ const PdpSec = ({ product }) => {
                                                 </div>
                                             </Fragment>
                                         )
-
                                     })
                                 }
 
@@ -152,20 +144,14 @@ const PdpSec = ({ product }) => {
                             <button className='solid-btn w-full !py-[13px] text-[18px] mb-5'>{product?.price == null || product?.price == undefined ? 'Free —' : ''} Download</button>
                             <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" className='preview_btn solid-white-btn w-full !py-[13px] text-[18px] border border-primary-100' onClick={() => preview === true ? setPreview(false) : setPreview(true)}>Preview</button>
 
-
-                            {/* <div className={`${preview === true ? "preview_act  gap-5 " : "opacity-0 invisible hidden"}`}>
-                                <Image src={`http://localhost:7777/upload/${product?.fullimages[0].filename}`} width={900} height={7570} alt='preview image' ></Image>
-                                <Image src={popupCloseBtn} width={16} height={16} alt="Popup Close Button" className='self-start' />
-                            </div> */}
                         </div>
                     </div>
                 </div>
-
             </section>
 
 
             <div id="defaultModal" tabIndex="-1" aria-hidden="true" className={`fixed bg-gray-600 bg-opacity-80 top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full ${preview == true ? "justify-center items-center flex" : "hidden "}`}>
-                <div className="relative w-full max-w-2xl max-h-full">
+                <div className="preview_popup relative w-full max-w-2xl max-h-full">
                     <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
 
@@ -179,18 +165,17 @@ const PdpSec = ({ product }) => {
                             //     type: "progressbar",
                             // }}
                             autoHeight={true}
-                            navigation={true}   
+                            navigation={true}
                             modules={[Pagination, Navigation]}
                             className="mySwiper"
                         >
                             <div className="p-4 space-y-6">
                                 {
                                     product?.fullimages?.map((elem, ind) => {
-                                        return <SwiperSlide key={ind}>
-                                            <Image src={`http://localhost:7777/upload/${elem.filename}`} width={1000} height={1000} alt='preview image' className='object-contain h-auto max-h-fit' ></Image>
+                                        return <SwiperSlide key={elem.id}>
+                                            <Image src={`http://localhost:7777/upload/${elem.filename}`} width={900} height={1000} alt='preview image' ></Image>
                                         </SwiperSlide>
                                     })
-
                                 }
 
                             </div>

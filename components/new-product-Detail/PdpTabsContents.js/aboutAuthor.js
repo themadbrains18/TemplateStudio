@@ -71,7 +71,7 @@ const AboutAuthor = ({ tabContent,productList }) => {
                         {
                             productList.slice(0, 5).map((value, index) => {
                                 return (
-                                    <Fragment key={index}>
+                                    <Fragment key={value.id}>
                                         <ProjectCard items={value} />
                                     </Fragment>
                                 )
