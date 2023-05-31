@@ -16,7 +16,7 @@ import EnterOtpPage from './enterOtpPage'
 
 
 const schema = Yup.object().shape({
-    name: Yup.string().required().min(8).max(32),
+    name: Yup.string().required().min(2).max(32),
     email: Yup.string().email().required(),
     password: Yup.string()
         .min(6, 'Password must be at least 6 characters')
@@ -53,7 +53,6 @@ const RegisterPage = () => {
 
 
     const onSubmitHandler = async (data) => {
-        console.log(data, "================sfdjksf");
         let result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/users`, {
             method: "POST",
             body: JSON.stringify(data)
@@ -96,7 +95,7 @@ const RegisterPage = () => {
                                 <input {...register("email")} type='text' placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                                 <p className='text-red-500 text-[12px]'>{errors.email?.message}</p>
                             </li>
-                            <li>
+                            <li className='mb-5 lg:mb-[30px]'>
                                 <label className='block reg-info mb-1'>Password</label>
                                 <input {...register("password")} type={passwordType} onChange={handlePasswordChange} placeholder='Your Details ' className='py-[14px] px-5 outline-none border border-divider-main w-full block bg-primary-800' />
                                 <p className='text-red-500 text-[12px]'>{errors.password?.message}</p>

@@ -9,6 +9,9 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -49,15 +52,22 @@ const LoginPage = () => {
         if (result?.data?.success==true) {
             console.log("=sucesss");
             router.push("/");
+            toast.success('Login Successfully!', {
+                position: toast.POSITION.TOP_RIGHT
+            });
             reset();
         }
         else {
+            toast.error('Invalid Email or Password !', {
+                position: toast.POSITION.TOP_RIGHT
+            });
             console.log("===fail");
         }
 
     };
     return (
         <>
+          <ToastContainer />
             <form onSubmit={handleSubmit(onSubmitHandler)}  className='grid grid-cols-1 justify-items-center lg:grid-cols-2  '>
                 <div className='bg-reg-bg w-full h-[374px] lg:h-[900px] flex flex-col justify-between py-[50px] px-5 lg:px-[40px] xl:px-[100px] xl:h-[100vh]'>
                     <Image src={regLogo} width={276} height={40} alt='image error' className='cursor-pointer' onClick={() => { router.push('/') }} />
