@@ -8,7 +8,7 @@ async function postData(url = '', data = {}, token="") {
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
         'Content-Type': 'application/json',
-        // 'authrization': `${token}`,
+        'token': `${token}`,
       },
       redirect: 'follow', // manual, *follow, error
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -44,7 +44,7 @@ async function postData(url = '', data = {}, token="") {
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
         'Content-Type': 'application/json',
-        'authrization': `${token}`,
+        'token': `${token}`,
       },
       redirect: 'follow', // manual, *follow, error
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -62,7 +62,7 @@ async function postData(url = '', data = {}, token="") {
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
         'Content-Type': 'application/json',
-        'authrization': `${token.trim()}`
+        'token': `${token.trim()}`
       },
       redirect: 'follow', // manual, *follow, error
       referrerPolicy: 'no-referrer',
@@ -88,7 +88,7 @@ async function postData(url = '', data = {}, token="") {
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
         'Content-Type': 'application/json',
-        'authrization': `${token}`,
+        'token': `${token}`,
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       redirect: 'follow', // manual, *follow, error

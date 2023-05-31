@@ -7,7 +7,7 @@ import twitterIcon from 'public/icons/twitterIcon.svg'
 import regLogo from 'public/icons/regLogo.svg'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-
+import { signIn } from "next-auth/react"
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -44,24 +44,23 @@ const LoginPage = () => {
 
 
     const onSubmitHandler = async (data) => {
-        console.log(data, "================sfdjksf");
         let result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/users/login`, {
             method: "POST",
             body: JSON.stringify(data)
         }).then(response => response.json())
         if (result?.data?.success==true) {
-            console.log("=sucesss");
-            router.push("/");
-            toast.success('Login Successfully!', {
+            toast.success(result?.data?.message, {
                 position: toast.POSITION.TOP_RIGHT
             });
             reset();
+            // console.log(result?.data?.obj);
+            signIn("credentials", result?.data?.obj);
+            router.push("/");
         }
         else {
             toast.error('Invalid Email or Password !', {
                 position: toast.POSITION.TOP_RIGHT
             });
-            console.log("===fail");
         }
 
     };

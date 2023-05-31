@@ -3,8 +3,11 @@ import CatergoriesCards from "@/components/home/catergoriesCards";
 import FeatureProducts from "@/components/home/featureProducts";
 import FreeOfCost from "@/components/home/freeOfCost";
 import PopularTemplate from "@/components/home/popularTemplate";
+import { useSession } from 'next-auth/react';
 
 const Home=({productList, categoryList})=> {
+
+  
   return (
     <>
       <Hero />
