@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-
+import { useSession } from 'next-auth/react';
 
 import logo from 'public/icons/Logo.svg'
 import searchIcon from 'public/icons/search-icon.svg'
@@ -23,6 +23,7 @@ const Header = (props) => {
     const [toggle, setToggle] = useState(false);
     const [isShown, setIsShown] = useState(0);
     const [text, setText] = useState('All Product');
+    const { data: session } = useSession()
 
     const dropdown = useRef(null);
 
@@ -149,7 +150,12 @@ const Header = (props) => {
                             {/* Search Bar End*/}
 
                             {/* Sign Up Button Start*/}
-                            <Link href="/register" className='solid-btn text-lg font-semibold hidden xmd:block'>Sign Up</Link>
+                            {session === undefined || session === null && 
+                                <Link href="/register" className='solid-btn text-lg font-semibold hidden xmd:block'>Sign Up</Link>
+                            }
+                            {session !==undefined && session !== null && 
+                                <h5 className='text-lg font-semibold hidden xmd:block'>Welcome {session?.user?.name}</h5>
+                            }
                             {/* Sign Up Button End*/}
                         </div>
                     </nav>
