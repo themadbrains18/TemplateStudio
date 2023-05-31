@@ -78,7 +78,7 @@ const RegisterPage = () => {
                 <div className='bg-reg-bg w-full h-[374px] lg:h-[900px] flex flex-col justify-between py-[50px] px-5 lg:px-[40px] xl:px-[100px] xl:h-[100vh]'>
                     <Image src={regLogo} width={276} height={40} alt='image error' className='cursor-pointer' onClick={() => { router.push('/') }} />
                     <p className='font-open-sans font-normal text-[32px] lg:text-[40px]  xl:text-[62px] text-white max-w-[900px] w-full text-center'>Free High-quality UI kits and design resources</p>
-                    <p className='text-white font-open-sans font-medium text-[14px]'>By Madbrains Technologies LLP.</p>
+                    <p className='text-white font-open-sans font-medium text-[14px]'>By Madbrains Technologiess LLP.</p>
                 </div>
 
                 <div className='flex flex-col gap-7 justify-between  py-[40px] px-5 lg:py-[50px] lg:px-[40px] xl:px-[100px]  max-w-[960px] w-full bg-white'>
