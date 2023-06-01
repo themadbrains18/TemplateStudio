@@ -57,7 +57,7 @@ const FreeOfCost = (props) => {
                                                 return (
                                                     <Fragment key={item.id}>
                                                         <Link href='/productPage' className='small_card flex items-center gap-[10px] p-[10px] border-[1px]  bg-white border-divider-main transition-300 md:gap-5 '>
-                                                            <Image src={`/icons/${data.designIcon}`} width={40} height={40} alt="Image Error" className="small_card_icon p-[5px] transition-300 md:w-[65px] md:h-[65px] md:p-[13px] bg-icon-bg"></Image>
+                                                            <Image src={`http://localhost:7777/upload/subcategory/${item.image}`} width={40} height={40} alt="Image Error" className="small_card_icon p-[5px] transition-300 md:w-[65px] md:h-[65px] md:p-[13px] bg-icon-bg"></Image>
                                                             <p className='medium-heading text-xs md:text-base'>{item.subCategory}</p>
                                                         </Link>
                                                     </Fragment>
