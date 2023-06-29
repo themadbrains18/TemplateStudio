@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { Fragment } from 'react'
 
 const Credit = ({ tabContent, product }) => {
@@ -13,7 +14,7 @@ const Credit = ({ tabContent, product }) => {
                                 product?.fonts!==undefined && product?.fonts!==null && product?.fonts.map((font, ind ) => {
                                     return (
                                         <Fragment key={font.id}>
-                                            <span className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{font.fontName} </span>
+                                            <Link rel="noopener noreferrer" target="_blank" href={`${font.fontUrl}`} className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{font.fontName} </Link>
                                         </Fragment>
                                     )
                                 })
@@ -26,7 +27,7 @@ const Credit = ({ tabContent, product }) => {
                                 product?.icons!==undefined && product?.icons!==null && product?.icons.map((icon, ind ) => {
                                     return (
                                         <Fragment key={icon.id}>
-                                            <span className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{icon.iconName} </span>
+                                            <Link rel="noopener noreferrer" target="_blank" href={`${icon.iconUrl}`} className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{icon.iconName} </Link>
                                         </Fragment>
                                     )
                                 })
@@ -38,9 +39,10 @@ const Credit = ({ tabContent, product }) => {
                             <p className=' main-info mb-5'> Images Used </p>
                             {
                                 product?.images!==undefined && product?.images!==null && product?.images.map((img, ind ) => {
+                                    console.log(img,"imgg...")
                                     return (
                                         <Fragment key={img.id}>
-                                            <span className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{img.imageName} </span>
+                                            <Link rel="noopener noreferrer" target="_blank" href={`${img.imageUrl}`} className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{img.imageName} </Link>
                                         </Fragment>
                                     )
                                 })
