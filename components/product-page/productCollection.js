@@ -336,13 +336,13 @@ const ProductCollection = (props) => {
                 <div className='bg-back-white'>
                     <div className='big_container'>
                         <div className='flex gap-[30px] pt-10 pb-10 relative mb:pb-20'>
-                            <div className={` max-w-[350px] w-full px-5 py-[30px] bg-white border-[1px] border-divider-main  xl:block ${filterPopUp ? "block absolute z-10 top-20 left-0" : "hidden"}`}>
+                            <div className={`max-w-[350px] w-full px-5 py-[30px] bg-white border-[1px] border-divider-main transition-300 fixed xl:relative xl:left-0 ${filterPopUp ? " absolute z-10 top-20 left-0" : "left-[-100%]"}`}>
                                 <div className='flex justify-between pb-[22px]  border-b-[1px] border-divider-main'>
                                     <div className='flex gap-[10px] '>
                                         <Image src={filterIcon} width={20} height={20} alt="Icon" className='' />
                                         <span className='large-info'>Filters</span>
                                     </div>
-                                    <Image src={popupCloseBtn} width={16} height={16} alt=" Close Button" className='lg:hidden' onClick={() => { setFilterPopUp(false) }} />
+                                    <Image src={popupCloseBtn} width={16} height={16} alt=" Close Button" className='xl:hidden' onClick={() => { setFilterPopUp(false) }} />
                                 </div>
                                 {filterOption.map((item, index) => {
                                     return (

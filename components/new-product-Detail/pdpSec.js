@@ -27,15 +27,13 @@ import "swiper/css/pagination";
 
 const PdpSec = ({ product }) => {
 
-    // console.log(product, "product");
     const [thumbnail, setThumbnail] = useState(product?.fullimages[0]?.filename);
     const [pdpborder, setPdpborder] = useState(0);
     const [preview, setPreview] = useState(false);
 
 
-
+    //Stop bg scrolling when preview popUp show
     useEffect(() => {
-
         let previewBtn = document.body.querySelector(".preview_btn");
         let previewCloseBtn = document.body.querySelector(".preview_close_btn");
 
@@ -51,14 +49,14 @@ const PdpSec = ({ product }) => {
 
     return (
         <>
-       
+
             <section className='py-[20px] bg-back-white'>
                 <div className='big_container'>
                     <div className='flex items-center gap-2 mb-5'>
                         <Link href="/"><Image src='/icons/tmb_icon.svg' width={30} height={30} alt="Image Error" className=''></Image></Link>
                         <div className='flex gap-[10px] items-center'>
                             <p className='medium-heading text-[12px] md:text-[14px]'> <span className='font-open-sans text-[12px] md:text-[14px] text-light-text leading-5 font-normal pr-1'>By</span> <Link href="/">themadbrains</Link></p>
-                            <Link href="/" className='medium-heading text-[12px] md:text-[14px]'>UI templates</Link>
+                            <Link href="/" className='medium-heading text-[12px] md:text-[14px]'>{product?.templatecategories[0]?.category?.category}</Link>
                         </div>
                     </div>
 
@@ -67,7 +65,7 @@ const PdpSec = ({ product }) => {
                             <div className='p-[10px] xmd:p-5 border-[1px] border-divider-main '>
                                 <Image src={`http://localhost:7777/upload/${thumbnail !== undefined ? thumbnail : product?.sliderimages[0]?.filename}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
                             </div>
-                            {/* <div  className='p-[10px] xmd:p-5 border-[1px] border-divider-main '>
+                            {/*  <div  className='p-[10px] xmd:p-5 border-[1px] border-divider-main '>
                                 <Link href="/" className='pdp_main_img relative'>
                                     <div className="overlay absolute z-10 bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed opacity-0 transition duration-500 ease-in-out">
                                     </div>
@@ -76,7 +74,7 @@ const PdpSec = ({ product }) => {
                                     </span>
                                     <Image src={`http://localhost:7777/upload/${thumbnail !== undefined ? thumbnail : product?.sliderimages[0]?.filename}`} width={834} height={490} alt="Icon" className='mx-auto preview_img transition-all duration-700' />
                                 </Link>
-                            </div> */}
+                            </div>*/}
                             <div className='swiper_tabs'>
 
                                 <Swiper
@@ -135,7 +133,7 @@ const PdpSec = ({ product }) => {
                             </div>
 
                             <div className='p-[10px] xmd:p-5 bg-primary-800 border border-divider-main flex justify-between items-center mb-[30px]'>
-                                <span className='font-open-sans font-semibold text-white text-sm bg-primary py-[2px] px-[11px]'>{product?.price == null || product?.price == undefined ? 'FREE' : 'PAID'}</span>
+                                <span className='font-open-sans font-semibold text-white text-sm bg-primary py-[2px] px-[11px]'>{product?.price == null || product?.price == undefined || product?.price == "0" ? 'FREE' : 'PAID'}</span>
                                 <div className='flex gap-5 items-center'>
                                     <span className='small-info '>Total Price</span>
                                     <span className='font-open-sans font-bold text-[20px] text-light-text'>{`${product?.price == null || product?.price == undefined ? "$0.00" : `$${product?.price.toFixed(2)}`}`}</span>

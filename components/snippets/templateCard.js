@@ -33,11 +33,10 @@ const TemplateCard = ({ items }) => {
                                 <p className='medium-heading text-[12px]'> themadbrains <span className='font-open-sans text-[12px] text-light-text leading-5 font-normal pr-1'>By</span> <Link href="/" className=''>{items.companyName}</Link></p>
                              
                                 {/* should be dynamic with backend */}
-                                <Link href="/" className='medium-heading text-[12px]'> UI templates</Link> 
-                               
+                                <Link href="/" className='medium-heading text-[12px]'>{items?.templatecategories[0]?.category?.category} </Link> 
                             </div>
                         </div>
-                        <span className='font-open-sans font-semibold text-white text-sm bg-primary py-[2px] px-[11px]'>FREE</span>
+                        <span className='font-open-sans font-semibold text-white text-sm bg-primary py-[2px] px-[11px]'>{items?.price == null || items?.price == undefined || items?.price == "0" ? "Free" : "Paid"}</span>
                     </div>
                 </div>
             </div>

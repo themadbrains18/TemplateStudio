@@ -5,7 +5,7 @@ import wave from 'public/icons/wave.svg'
 import Link from 'next/link'
 
 const FreeOfCost = (props) => {
-
+console.log(props);
     let designsData = [
         {
             "designIcon": "designIcon1.svg",

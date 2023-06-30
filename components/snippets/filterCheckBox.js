@@ -43,7 +43,7 @@ const FilterCheckBox = (props) => {
             <div className='pb-[10px] pt-8 bg-white border-b-[1px] border-divider-main last:border-none'>
                 <div className='flex justify-between pb-[27px] cursor-pointer' onClick={setHeight}>
                     <h3 className='medium-heading text-[18px]'>{props?.data?.filterTitle}</h3>
-                    <Image src={arrowUp} width={12} height={7} alt="Icon" className={`arrowIcon transition-300  ${rotate && "rotate-180"}`}></Image>
+                    <Image src={arrowUp} width={12} height={7} alt="Icon" className={`arrowIcon transition-300  ${rotate == true ? "rotate-180" : "rotate-0"}`}></Image>
                 </div>
                 <div className={`overflow-hidden transition-300 acc_ontent`}>
                     {props?.data && props?.data?.filterOption.map((item, index) => {

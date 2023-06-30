@@ -39,7 +39,6 @@ const Credit = ({ tabContent, product }) => {
                             <p className=' main-info mb-5'> Images Used </p>
                             {
                                 product?.images!==undefined && product?.images!==null && product?.images.map((img, ind ) => {
-                                    console.log(img,"imgg...")
                                     return (
                                         <Fragment key={img.id}>
                                             <Link rel="noopener noreferrer" target="_blank" href={`${img.imageUrl}`} className='list-item list-disc font-open-sans font-semibold text-sm text-link-main mb-[10px]'>{img.imageName} </Link>
