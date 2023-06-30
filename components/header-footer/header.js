@@ -47,7 +47,7 @@ const Header = (props) => {
     const ToggleDropDown = () => {
         toggle === true ? setToggle(false) : setToggle(true)
     }
-    
+
     const searchDropdown = [
         {
             "item": "All Products",
@@ -150,21 +150,25 @@ const Header = (props) => {
                             {/* Search Bar End*/}
 
                             {/* Sign Up Button Start*/}
-                            {session === undefined || session === null && 
+                            {session === undefined || session === null &&
                                 <Link href="/register" className='solid-btn text-lg font-semibold hidden xmd:block'>Sign Up</Link>
                             }
-                            {session !==undefined && session !== null && 
+                            {session !== undefined && session !== null &&
                                 <h5 className='text-lg font-semibold hidden xmd:block'>Welcome {session?.user?.name}</h5>
                             }
                             {/* Sign Up Button End*/}
                         </div>
                     </nav>
-                    {/* Dropdown OF First Nav Item*/}
+                    {/* Dropdown OF First Nav Item */}
 
                     {props?.categoryList.map((item, index) => {
-                        return <div key={item.id} className={`transition-300 hover:opacity-100 hover:visible  ${isShown === (index + 1) ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
-                            <NavDropdown category={item} uiTemplate={item?.subcategories} products={props.productList} />
-                        </div>
+                        return (
+                            <Fragment key={item.id}>
+                                <div key={item.id} className={`transition-300 hover:opacity-100 hover:visible  ${isShown === (index + 1) ? 'visible opacity-1' : 'opacity-0 invisible'}`}>
+                                    <NavDropdown category={item} uiTemplate={item?.subcategories} products={props.productList} />
+                                </div>
+                            </Fragment>
+                        )
                     })}
 
                     {/*Header Menu SideBar*/}
@@ -188,7 +192,7 @@ const Header = (props) => {
                                 props?.categoryList.map((item, index) => {
                                     return (
                                         <Fragment key={item.id}>
-                                            <NavDropdownMob heading={item?.category} subHeading={item?.subcategories} products={props.productList} toggleSidebar={toggleSidebar}/>
+                                            <NavDropdownMob heading={item?.category} subHeading={item?.subcategories} products={props.productList} toggleSidebar={toggleSidebar} />
                                         </Fragment>
                                     )
                                 })

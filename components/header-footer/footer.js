@@ -21,11 +21,11 @@ const Footer = () => {
             <Image src={logoFooter} width={227} height={35} alt="Footer Logo" className='mb-[10px]' ></Image>
             <p className='info-14 text-sm mb-[130px]'>Template Studio is the place to find free of cost high-quality design resources for designers, creative agencies and developers</p>
             <div className='hidden lg:flex gap-6'>
-              <Image src={mediaIcon1} width={30} height={30} alt='img error'></Image>
-              <Image src={linkedIn} width={30} height={30} alt='img error'></Image>
-              <Image src={twitter} width={30} height={30} alt='img error'></Image>
-              <Image src={behance} width={30} height={30} alt='img error'></Image>
-              <Image src={instagram} width={30} height={30} alt='img error'></Image>
+              <Link href="/"><Image src={mediaIcon1} width={30} height={30} alt='img error'></Image></Link>
+              <Link href="/"><Image src={linkedIn} width={30} height={30} alt='img error'></Image></Link>
+              <Link href="/"><Image src={twitter} width={30} height={30} alt='img error'></Image></Link>
+              <Link href="/"><Image src={behance} width={30} height={30} alt='img error'></Image></Link>
+              <Link href="/"><Image src={instagram} width={30} height={30} alt='img error'></Image></Link>
             </div>
           </div>
 
@@ -48,12 +48,12 @@ const Footer = () => {
                 Coded.map((item, index) => {
                   return (
                     <Fragment key={index}>
-                    <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after={`${item}`}><span>{item}</span> </Link></li>
+                      <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after={`${item}`}><span>{item}</span> </Link></li>
                     </Fragment>
                   )
                 })
               }
-              
+
             </ul>
             <ul className='md:max-w-[370px] -mt-[60px] sm:mt-0'>
               <li className='footer-title mb-[15px]'>Join Our Newsletter</li>

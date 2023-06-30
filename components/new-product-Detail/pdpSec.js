@@ -30,7 +30,7 @@ const PdpSec = ({ product }) => {
     const [thumbnail, setThumbnail] = useState(product?.fullimages[0]?.filename);
     const [pdpborder, setPdpborder] = useState(0);
     const [preview, setPreview] = useState(false);
-
+    const [detail, setDetail] = useState(false);
 
     //Stop bg scrolling when preview popUp show
     useEffect(() => {
@@ -76,7 +76,6 @@ const PdpSec = ({ product }) => {
                                 </Link>
                             </div>*/}
                             <div className='swiper_tabs'>
-
                                 <Swiper
                                     // pagination={{
                                     //     type: "progressbar",
@@ -121,7 +120,7 @@ const PdpSec = ({ product }) => {
                                                     </div>
                                                     <div className='h-[100%] w-[2px] bg-divider-main'></div>
                                                     <div className='flex gap-5 w-full justify-end'>
-                                                        <button className='small-info !font-semibold w-full'>View Detail </button>
+                                                        <button className='small-info !font-semibold w-full' onClick={() => detail === true ? setDetail(false) : setDetail(true)}>View Detail </button>
                                                         <Image src={figmaIcon30} width={30} height={30} alt="Icon" className='justify-self-end' />
                                                     </div>
                                                 </div>
@@ -170,18 +169,34 @@ const PdpSec = ({ product }) => {
                             <div className="p-4 space-y-6">
                                 {
                                     product?.fullimages?.map((elem, ind) => {
-                                        return <SwiperSlide key={elem.id}>
-                                            <Image src={`http://localhost:7777/upload/${elem.filename}`} width={900} height={1000} alt='preview image' ></Image>
-                                        </SwiperSlide>
+                                        return (
+                                            <Fragment key={elem.id}>
+                                                <SwiperSlide key={elem.id}>
+                                                    <Image src={`http://localhost:7777/upload/${elem.filename}`} width={900} height={1000} alt='preview image' ></Image>
+                                                </SwiperSlide>
+                                            </Fragment>
+                                        )
                                     })
                                 }
-
                             </div>
                         </Swiper>
 
                     </div>
                 </div>
             </div>
+            <div className={`fixed bg-gray-600 bg-opacity-80 top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full ${detail == true ? "fixed top-0 left-0" : "hidden "}`}>
+                <button type="button" className="preview_close_btn text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal" onClick={(e) => { setDetail(false) }} >
+                    <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                    <span className="sr-only">Close modal</span>
+                </button>
+
+                {/* VIEW DETAIL POPUP OR PAGE HERE */}
+
+
+
+            </div>
+
+
         </>
     )
 }

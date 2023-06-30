@@ -163,7 +163,7 @@ const ProductCollection = (props) => {
         }
 
         if (prange.length > 0) {
-            if (tempFilterProductList.length > 0 && (industryType.length > 0 || softwareType.length > 0 || router.query.category!==undefined)) {
+            if (tempFilterProductList.length > 0 && (industryType.length > 0 || softwareType.length > 0 || router.query.category !== undefined)) {
                 tempFilterProductList.filter((a) => {
                     if (a.price !== null) {
                         let record = prange.filter(e => (e > a.price >= e.split(' - ')[0] || e.split(' - ')[1] <= a.price))
@@ -219,7 +219,7 @@ const ProductCollection = (props) => {
         }
 
         if (soft.length > 0) {
-            if (tempFilterProductList.length > 0 && (industryType.length > 0 || priceRangeType.length > 0 || router.query.category!==undefined)) {
+            if (tempFilterProductList.length > 0 && (industryType.length > 0 || priceRangeType.length > 0 || router.query.category !== undefined)) {
                 tempFilterProductList.filter((item) => {
                     if (item.templatesoftwaretypes.length > 0) {
                         let record = soft.filter(e => e === item.templatesoftwaretypes[0].softwaretype.softwareType)
@@ -274,7 +274,7 @@ const ProductCollection = (props) => {
         }
 
         if (indust.length > 0) {
-            if (tempFilterProductList.length > 0 && (softwareType.length > 0 || priceRangeType.length > 0 || router.query.category!==undefined)) {
+            if (tempFilterProductList.length > 0 && (softwareType.length > 0 || priceRangeType.length > 0 || router.query.category !== undefined)) {
                 tempFilterProductList.filter((item) => {
                     if (item.templateindrusties.length > 0) {
                         item.templateindrusties.map((a) => {
@@ -310,6 +310,9 @@ const ProductCollection = (props) => {
             }
         }
     }
+
+    let sortBy = ["Newest releases", "Most popular", "Best sellers"]
+
 
     return (
         <>
@@ -382,9 +385,15 @@ const ProductCollection = (props) => {
                                                 </svg>
                                             </button>
                                             <ul className='sortby_dropdown py-[10px] absolute top-[42px] right-0 z-10 w-[208px] bg-white opacity-0 invisible transition-300'>
-                                                <li className='main-info py-2 px-[30px] mb-[10px] border-l-2 border-transparent hover:bg-primary-800 hover:border-l-2 hover:border-primary rounded-sm transition-300 cursor-pointer'>Newest releases</li>
-                                                <li className='main-info py-2 px-[30px] mb-[10px] border-l-2 border-transparent hover:bg-primary-800 hover:border-l-2 hover:border-primary rounded-sm transition-300 cursor-pointer'>Most popular</li>
-                                                <li className='main-info py-2 px-[30px] mb-[10px] border-l-2 border-transparent hover:bg-primary-800 hover:border-l-2 hover:border-primary rounded-sm transition-300 cursor-pointer'>Best sellers</li>
+                                                {
+                                                    sortBy.map((item, index) => {
+                                                        return (
+                                                            <Fragment key={index}>
+                                                                <li className='main-info py-2 px-[30px] mb-[10px] border-l-2 border-transparent hover:bg-primary-800 hover:border-l-2 hover:border-primary rounded-sm transition-300 cursor-pointer'>{item}</li>
+                                                            </Fragment>
+                                                        )
+                                                    })
+                                                }
                                             </ul>
                                         </div>
                                     </div>
