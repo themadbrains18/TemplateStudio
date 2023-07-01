@@ -127,7 +127,6 @@ const PdpSec = ({ product }) => {
                                         )
                                     })
                                 }
-
                             </div>
 
                             <div className='p-[10px] xmd:p-5 bg-primary-800 border border-divider-main flex justify-between items-center mb-[30px]'>

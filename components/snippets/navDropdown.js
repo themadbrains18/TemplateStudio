@@ -3,6 +3,7 @@ import Image from 'next/image'
 import ProjectCard from '../snippets/projectCard'
 import navDropdwopnRightArrow from 'public/icons/navDropdwopnRightArrow.svg'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const NavDropdown = (props) => {
 
@@ -33,9 +34,9 @@ const NavDropdown = (props) => {
         </div>
         <div className=''>
           <div className='flex justify-between'>
-            <h2 className='main-heading !text-[18px] mt-[30px] mb-[20px] pl-[6px] border-l-2 rounded-sm text-red-50'>Feature Product</h2>
+            <h2 className='main-heading !text-[18px] mt-[30px] mb-[20px] pl-[6px] border-l-2  border-[#5D5775] rounded-[4px] text-red-50 bg-gradient-to-r from-[#F5EAFD]  from-10% ... '>Feature Product</h2>
             <button className='flex gap-2 items-center'>
-              <p className='medium-info !text-primary'>View All Products </p> <Image src={navDropdwopnRightArrow} width={9} height={5} alt="Side Arrow" className='' />
+              <Link href="/productPage" className='medium-info !text-primary'>View All Products </Link> <Image src={navDropdwopnRightArrow} width={9} height={5} alt="Side Arrow" className='' />
             </button>
           </div>
           <div className='grid grid-cols-4 gap-5'>

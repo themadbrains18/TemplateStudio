@@ -33,13 +33,13 @@ const NavDropdownMob = (props) => {
                         }
                     </div>
                     <div className='flex justify-between mb-5'>
-                        <h3 className='main-heading !text-[18px]'>Feature Product</h3>
+                    <h2 className='main-heading !text-[18px] mt-[30px] mb-[20px] pl-[6px] border-l-[1.5px] !leading-7 border-[#5D5775] rounded-[4px] text-red-50 bg-gradient-to-r from-[#F5EAFD] ... '>Feature Product</h2>
                         <button className='flex gap-2 items-center'>
                             <p className='medium-info !text-primary'>View All Products  </p><Image src={sideArrow} width={9} height={5} alt="Side Arrow" className=''></Image></button>
                     </div>
                     <div className='grid grid-cols-2 place-items-center gap-[10px] mb-5'>
                         {
-                            props.products.map((elem, index) => {
+                            props.products.slice(0, 2).map((elem, index) => {
                                 return (
                                     <Fragment key={elem.id}>
                                         <DropdownTemplateCard data={elem} closeSideMenu={closeSideMenu}/>
