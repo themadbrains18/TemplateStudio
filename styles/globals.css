@@ -383,3 +383,20 @@ html,body{
 .swiper.swiper-initialized.swiper-horizontal{
   @apply pr-0;
 }
+
+.rating_prod::after{
+  content: "";
+  width: 20px;
+  position: absolute;
+  height: 20px;
+  background-color: #5d5775;
+  top: 14px;
+  z-index: -1;
+  transform: rotate(45deg);
+  left: 58px;
+}
+
+.rating:hover + .rating_prod{
+    top: -60px;
+    opacity: 1;
+}

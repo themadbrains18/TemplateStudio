@@ -147,7 +147,7 @@ const ProductCollection = (props) => {
 
     const filterByPriceRange = (type, item) => {
         let data = [];
-
+        
         prange = [...priceRangeType];
 
 
@@ -166,7 +166,12 @@ const ProductCollection = (props) => {
             if (tempFilterProductList.length > 0 && (industryType.length > 0 || softwareType.length > 0 || router.query.category !== undefined)) {
                 tempFilterProductList.filter((a) => {
                     if (a.price !== null) {
-                        let record = prange.filter(e => (e > a.price >= e.split(' - ')[0] || e.split(' - ')[1] <= a.price))
+                        let record = prange.filter((e) => {
+                            
+                            e > a.price >= e.split(' - ')[0] || e.split(' - ')[1] <= a.price
+                        }
+                            
+                            )
                         if (record.length > 0) {
                             data.push(a);
                         }
@@ -177,6 +182,11 @@ const ProductCollection = (props) => {
                 props?.productList.filter((a) => {
                     if (a.price !== null) {
                         prange.filter(e => {
+                        console.log(e,"===e.rangelist");
+                        if(e=="Freebies"){
+                            console.log(e,"==hiii");
+                            e='0  - 00'
+                        }
                             if (a.price >= e.split(' - ')[0] && a.price <= e.split(' - ')[1]) {
                                 data.push(a);
                             }
