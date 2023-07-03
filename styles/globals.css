@@ -399,4 +399,6 @@ html,body{
 .rating:hover + .rating_prod{
     top: -60px;
     opacity: 1;
+    display: flex;
+    visibility: visible;
 }

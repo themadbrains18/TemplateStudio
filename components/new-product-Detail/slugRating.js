@@ -13,11 +13,11 @@ const SlugRating = () => {
                     <div className='flex justify-between items-center py-[42px] border-b border-divider-main'>
                         <div className='main-info'><Link href="/" className='pr-2'>Home</Link>/ <span className='pl-2'>Products</span></div>
                         <div className=''>
-                            <div className='rating flex gap-[10px] items-center cursor-pointer relative z-10 '>
+                            <div className='rating flex gap-[10px] items-center justify-end cursor-pointer relative z-10 '>
                                 <span>4.9</span>
                                 <Image src={star} width={20} height={20} alt="Icon" className='' />
                             </div>
-                            <div className='relative top-[-40px] right-[30%] z-0 flex gap-2 px-3 py-1 bg-[#5d5775] rounded-3xl rating_prod opacity-0 transition-300'>
+                            <div className='opacity-0 invisible flex relative top-[-50px] right-[-30%] z-0 gap-2 px-3 py-1 bg-[#5d5775] rounded-3xl rating_prod  transition-300'>
                                 <Image src={rating} width={12} height={12} alt='rating icon' className='w-[21px] h-[21px]'/>
                                 <span className='text-white font-open-sans text-[14px] font-semibold'>Rate Product</span>
                             </div>
