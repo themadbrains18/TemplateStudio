@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 const NavDropdown = (props) => {
-
+console.log(props,"navDropdown===")
   const router = useRouter()
   const [tabContent, setTabContent] = useState(0);
   let updateTabs = (id) => {
@@ -18,13 +18,14 @@ const NavDropdown = (props) => {
       <div className='p-10 bg-white shadow-btnShadow-Dropdown absolute top-[121px] left-[5%] xl:left-[33%] '>
         <div className='flex gap-5 items-center flex-wrap overflow-x-auto pb-[30px] border-bottom max-w-[900px] w-full'>
           {
-            props.uiTemplate.map((elem, ind) => {
+            props?.uiTemplate.map((elem, ind) => {
               return (
                 <Fragment key={elem.id}>
                   <button className={`px-[10px] py-2 medium-heading text-[14px] whitespace-nowrap ${tabContent === ind ? "border-[2px] border-primary" : ""}`} onClick={() => {
                     updateTabs(ind);
                     // router.push('/productPage');
                     router.push(`/productPage?category=${props.category.category}&subcategory=${elem.subCategory}`);
+                    console.log(props.category.category,"navDroppppp")
                     // window.location.href = '/productPage?category='+props.category.category+'&subcategory='+elem.subCategory;
                   }}>{elem.subCategory}</button>
                 </Fragment>

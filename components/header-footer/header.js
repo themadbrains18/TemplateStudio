@@ -48,32 +48,7 @@ const Header = (props) => {
         toggle === true ? setToggle(false) : setToggle(true)
     }
 
-    const searchDropdown = [
-        {
-            "item": "All Products",
-        },
-        {
-            "item": "Sports",
-        },
-        {
-            "item": "Insurance",
-        },
-        {
-            "item": "Education",
-        },
-        {
-            "item": "Entertainment",
-        },
-        {
-            "item": "Real Estate",
-        },
-        {
-            "item": "Retail",
-        },
-        {
-            "item": "Technology",
-        },
-    ]
+    const searchDropdown = ["All Products", "Sports","Insurance","Education","Entertainment","Real Estate","Retail","Technology"]
     return (
         <>
             <header className='py-[34px] border-b-[1px] border-divider-main relative z-50 bg-white'>
@@ -96,6 +71,7 @@ const Header = (props) => {
                             <ul className='gap-8 hidden xmd:flex'>
                                 {
                                     props?.categoryList.map((item, index) => {
+                                        console.log(item,"header==");
                                         return (
                                             <Fragment key={item.id} >
                                                 <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative cursor-pointer' onMouseEnter={() => setIsShown(index + 1)} onMouseLeave={() => setIsShown(0)}>
@@ -132,8 +108,8 @@ const Header = (props) => {
                                                         <Fragment key={elem.id}>
                                                             <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300'
                                                                 onClick={() => {
-                                                                    setText(elem.item)
-                                                                }} >{elem.item}</li>
+                                                                    setText(elem)
+                                                                }} >{elem}</li>
                                                         </Fragment>
                                                     )
                                                 })

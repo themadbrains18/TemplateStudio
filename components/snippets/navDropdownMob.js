@@ -33,7 +33,7 @@ const NavDropdownMob = (props) => {
                         }
                     </div>
                     <div className='flex justify-between mb-5'>
-                    <h2 className='main-heading !text-[18px] mt-[30px] mb-[20px] pl-[6px] border-l-[1.5px] !leading-7 border-[#5D5775] rounded-[4px] text-red-50 bg-gradient-to-r from-[#F5EAFD] ... '>Feature Product</h2>
+                    <h2 className='main-heading !text-[18px] pl-[6px] border-l-[1.5px] !leading-7 border-[#5D5775] rounded-[4px] text-red-50 bg-gradient-to-r from-[#F5EAFD] ... '>Feature Product</h2>
                         <button className='flex gap-2 items-center'>
                             <p className='medium-info !text-primary'>View All Products  </p><Image src={sideArrow} width={9} height={5} alt="Side Arrow" className=''></Image></button>
                     </div>

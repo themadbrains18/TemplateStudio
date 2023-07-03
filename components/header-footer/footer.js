@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+
 import logoFooter from 'public/icons/logo-footer.svg'
 import mediaIcon1 from 'public/icons/mediaIcon1.svg'
 import linkedIn from 'public/icons/linkedIn.svg'
@@ -9,10 +10,7 @@ import twitter from 'public/icons/twitter.svg'
 import behance from 'public/icons/behance.svg'
 import instagram from 'public/icons/instagram.svg'
 
-const Footer = () => {
-  let design = ["Sketch", "Adobe XD", "Figma"]
-  let Coded = ["HTML", "React", "Wordpress", "Shopify", "Bootstrap"]
-
+const Footer = (props) => {
   return (
     <footer className='pt-[80px] pb-10'>
       <div className='container'>
@@ -33,10 +31,15 @@ const Footer = () => {
             <ul>
               <li className='footer-title mb-10'>Design</li>
               {
-                design.map((item, index) => {
+
+                props.softwareList.map((item, index) => {
+                 
                   return (
                     <Fragment key={index}>
-                      <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after={`${item}`}><span>{item}</span> </Link></li>
+                      <li className=''>
+                        <Link href={'/productPage?category=software&subcategory='+item?.softwareType} className='footer-info mb-[26px] pseudo-text-effect' data-after={`${item?.softwareType}`}><span onClick={() => {
+                        }}>{item?.softwareType}</span></Link>
+                      </li>
                     </Fragment>
                   )
                 })
@@ -45,10 +48,10 @@ const Footer = () => {
             <ul>
               <li className='footer-title mb-10'>Coded </li>
               {
-                Coded.map((item, index) => {
+                props?.categoryList[1]?.subcategories.map((item, index) => {
                   return (
                     <Fragment key={index}>
-                      <li className=''><Link href="/productPage" className='footer-info mb-[26px] pseudo-text-effect' data-after={`${item}`}><span>{item}</span> </Link></li>
+                      <li className=''><Link href={'/productPage?category=HTML Template&subcategory='+item?.subCategory} className='footer-info mb-[26px] pseudo-text-effect' data-after={`${item?.subCategory}`}><span>{item?.subCategory}</span> </Link></li>
                     </Fragment>
                   )
                 })
