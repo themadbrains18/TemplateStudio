@@ -4,7 +4,6 @@ import TemplateCard from '../snippets/templateCard'
 
 const FeatureProducts = (props) => {
 
-
     return (
         <>
             <section className='sec_spacing bg-back-white'>

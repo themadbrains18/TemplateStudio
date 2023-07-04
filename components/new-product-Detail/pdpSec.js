@@ -1,7 +1,7 @@
 
 import React, { Fragment, useEffect, useState } from 'react'
 import Image from 'next/image'
-
+import useDownloader from "react-use-downloader";
 import pdpArrowRight from 'public/icons/pdpArrowRight.svg'
 import figmaIcon30 from 'public/icons/figmaIcon30.svg'
 import xdIcon30 from 'public/icons/xd--30.svg'
@@ -26,7 +26,6 @@ import "swiper/css/pagination";
 
 
 const PdpSec = ({ product }) => {
-
     const [thumbnail, setThumbnail] = useState(product?.fullimages[0]?.filename);
     const [pdpborder, setPdpborder] = useState(0);
     const [preview, setPreview] = useState(false);
@@ -37,7 +36,11 @@ const PdpSec = ({ product }) => {
       
     };
 
-
+    const { size, elapsed, percentage, download,
+        cancel, error, isInProgress } =
+    useDownloader();
+    const fileUrl = product?.file?.sourceFile;
+    const filename = "File.zip";
 
     //Stop bg scrolling when preview popUp show
     useEffect(() => {
@@ -145,7 +148,7 @@ const PdpSec = ({ product }) => {
                                     <span className='font-open-sans font-bold text-[20px] text-light-text'>{`${product?.price == null || product?.price == undefined ? "$0.00" : `$${product?.price.toFixed(2)}`}`}</span>
                                 </div>
                             </div>
-                            <button className='solid-btn w-full !py-[13px] text-[18px] mb-5'>{product?.price == null || product?.price == undefined ? 'Free —' : ''} Download</button>
+                            <button className='solid-btn w-full !py-[13px] text-[18px] mb-5' onClick={() => download(fileUrl, filename)}>{product?.price == null || product?.price == undefined ? 'Free —' : ''} Download</button>
                             <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" className='preview_btn solid-white-btn w-full !py-[13px] text-[18px] border border-primary-100' onClick={() => preview === true ? setPreview(false) : setPreview(true)}>Preview</button>
 
                         </div>

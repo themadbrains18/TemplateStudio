@@ -30,9 +30,9 @@ const TemplateCard = ({ items }) => {
                         <div className='flex items-center gap-2'>
                             <Image src="/icons/tmb_icon.svg" width={20} height={20} alt="Image Error" className=''></Image>
                             <div className='flex gap-[10px] items-center'>
-                                <p className='medium-heading text-[12px]'> themadbrains <span className='font-open-sans text-[12px] text-light-text leading-5 font-normal pr-1'>By</span> <Link href="/" className=''>{items.companyName}</Link></p>
+                                <p className='medium-heading text-[12px]'> <span className='font-open-sans text-[12px] text-light-text leading-5 font-normal pr-1'>By</span> themadbrains  <Link href="/" className=''>{items.companyName}</Link></p>
                              
-                                {/* should be dynamic with backend */}
+                               
                                 <Link href="/" className='medium-heading text-[12px]'>{items?.templatecategories[0]?.category?.category} </Link> 
                             </div>
                         </div>

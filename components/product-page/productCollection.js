@@ -33,7 +33,7 @@ const ProductCollection = (props) => {
 
     const [tempFilterProductList, setTempFilterProductList] = useState([]);
     const [tagremove, setTagremove] = useState(false);
-   
+   const [loadMore, setLoadMore] = useState(12);
 
 
     // const uncheckingBox = () =>{
@@ -434,8 +434,7 @@ const ProductCollection = (props) => {
                                     <>
                                         <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
                                             {
-                                                filterProduct.map((value, index) => {
-                                                    console.log(value,"value hai bro");
+                                                filterProduct.slice(0,loadMore).map((value, index) => {
                                                     return (
                                                         <Fragment key={index}>
                                                             <TemplateCard items={value} />
@@ -445,7 +444,7 @@ const ProductCollection = (props) => {
                                             }
                                         </div>
                                         <div className='text-center mt-0 md:mt-[30px]'>
-                                            <button className='solid-white-btn shadow-btnShadow text-center'>Load More Products</button>
+                                            <button className='solid-white-btn shadow-btnShadow text-center' onClick={()=>{setLoadMore(loadMore+6)}} >Load More Products</button>
                                         </div>
                                     </>
                                 }
