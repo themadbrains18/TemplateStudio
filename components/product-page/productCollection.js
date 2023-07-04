@@ -32,6 +32,14 @@ const ProductCollection = (props) => {
     const [priceRangeType, setPriceRangeType] = useState([]);
 
     const [tempFilterProductList, setTempFilterProductList] = useState([]);
+    const [tagremove, setTagremove] = useState(false);
+   
+
+
+    // const uncheckingBox = () =>{
+    //     setTagremove()
+    // }
+    // setTagremove 
 
     let updateTab = (ind) => {
         setTab(ind)
@@ -360,7 +368,7 @@ const ProductCollection = (props) => {
                                 {filterOption.map((item, index) => {
                                     return (
                                         <Fragment key={index}>
-                                            <FilterCheckBox data={item} filterCollectionTemplate={filterCollectionTemplate} />
+                                            <FilterCheckBox data={item} filterCollectionTemplate={filterCollectionTemplate}/>
                                         </Fragment>
                                     )
                                 })}
@@ -372,13 +380,13 @@ const ProductCollection = (props) => {
                                             <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{router.query.subcategory}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
                                         }
                                         {softwareType.map((item) => {
-                                            return <li key={item} className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
+                                            return <li key={item} className={`${tagremove ? "hidden" : "flex"} gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap `}>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer'  /></li>
                                         })}
                                         {industryType.map((item) => {
-                                            return <li key={item} className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
+                                            return <li key={item} className={`${tagremove ? "hidden" : "flex"} gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap `}>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer'  /></li>
                                         })}
 
-                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] rounded-sm h-8 whitespace-nowrap'>Clear all<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
+                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] rounded-sm h-8 whitespace-nowrap'>Clear all<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' onClick={()=>{ setTagremove(!tagremove)}}/></li>
                                     </ul>
                                     <div className='relative flex justify-between w-full items-center xl:w-auto whitespace-nowrap'>
                                         <div className='flex gap-[10px] xl:hidden' onClick={() => {
@@ -415,7 +423,7 @@ const ProductCollection = (props) => {
                                         <p className='medium-heading text-[18px] md:text-[20px]'>Sorry, we couldn’t find any results for this search. Maybe give one of these a try?</p>
                                         <Image src={notFoundProd} width={197} height={140} alt="Icon" className='py-[80px] m-auto' />
                                         <div className='border-t-[1px] border-divider-main py-[30px] flex flex-col gap-5 md:justify-between'>
-                                            <p className='small-info md:!text-base'>Try <Link href="" className="text-primary border-b-[1px] border-primary"> clearing some filters </Link> and try again.</p>
+                                            <p className='small-info md:!text-base'>Try <span className="text-primary border-b-[1px] border-primary"> clearing some filters </span> and try again.</p>
                                             <button className='solid-btn text-lg font-semibold'>Find more products</button>
                                         </div>
                                     </div>
@@ -427,6 +435,7 @@ const ProductCollection = (props) => {
                                         <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
                                             {
                                                 filterProduct.map((value, index) => {
+                                                    console.log(value,"value hai bro");
                                                     return (
                                                         <Fragment key={index}>
                                                             <TemplateCard items={value} />

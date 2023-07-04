@@ -71,7 +71,6 @@ const Header = (props) => {
                             <ul className='gap-8 hidden xmd:flex'>
                                 {
                                     props?.categoryList.map((item, index) => {
-                                        console.log(item,"header==");
                                         return (
                                             <Fragment key={item.id} >
                                                 <li className='nav-info hoverNavArrow flex gap-2 items-center hover:text-primary transition-300 relative cursor-pointer' onMouseEnter={() => setIsShown(index + 1)} onMouseLeave={() => setIsShown(0)}>

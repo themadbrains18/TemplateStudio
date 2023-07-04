@@ -13,7 +13,7 @@ const Home=({productList, categoryList})=> {
       <Hero />
       <CatergoriesCards />
       <FeatureProducts productList={productList?.slice(0, 6)}/>
-      <FreeOfCost categoryList={categoryList}/>
+      <FreeOfCost categoryList={categoryList} productList={productList}/>
       <PopularTemplate productList={productList?.slice(0, 6)}/>
     </>
   )

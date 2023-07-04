@@ -30,6 +30,14 @@ const PdpSec = ({ product }) => {
     const [thumbnail, setThumbnail] = useState(product?.fullimages[0]?.filename);
     const [pdpborder, setPdpborder] = useState(0);
     const [preview, setPreview] = useState(false);
+    const [isShowMore, setIsShowMore] = useState(false);
+
+    const toggleReadMoreLess = () => {
+      setIsShowMore(!isShowMore);
+      
+    };
+
+
 
     //Stop bg scrolling when preview popUp show
     useEffect(() => {
@@ -46,6 +54,7 @@ const PdpSec = ({ product }) => {
         })
     }, [])
 
+    
     return (
         <>
 
@@ -104,7 +113,7 @@ const PdpSec = ({ product }) => {
                         <div className=''>
                             <div className='mb-5 xmd:mb-10 '>
                                 <h2 className="main-heading mb-[10px]  xmd:mb-5">{product?.name}</h2>
-                                <p className='main-info '>{product?.description}<span className='cursor-pointer font-semibold text-dark-text'> View more</span></p>
+                                <p className='main-info '>{isShowMore == true ? product?.description : product?.description.slice(0,50)}<span className='cursor-pointer font-semibold text-dark-text' onClick={toggleReadMoreLess}> {isShowMore ? "Read Less" : "...Read More"}</span></p>
                             </div>
                             <div>
                                 {

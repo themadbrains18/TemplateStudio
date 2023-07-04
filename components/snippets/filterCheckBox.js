@@ -4,7 +4,6 @@ import Image from 'next/image'
 import arrowUp from 'public/icons/arrowUp.svg'
 
 const FilterCheckBox = (props) => {
-    const [tag, setTag] = useState('');
     const [rotate, setRotate] = useState(false);
 
     useEffect(() => {
@@ -50,8 +49,7 @@ const FilterCheckBox = (props) => {
                         return (
                             <div key={item.id} className='flex justify-between mb-[15px] relative'>
                                 <p className='main-info'>{item}</p>
-                        {console.log(props?.data?.filterTitle,"hi===")}
-                                <input type='checkbox' className='checkbx' onClick={() => { setTag(); filterCollection(props?.data?.filterTitle, item) }} />
+                                <input type='checkbox' className='checkbx' onClick={() => { filterCollection(props?.data?.filterTitle, item) }} />
                                 <span className='checkmark'></span>
                             </div>
                         )

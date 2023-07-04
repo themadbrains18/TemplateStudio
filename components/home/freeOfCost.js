@@ -5,7 +5,6 @@ import wave from 'public/icons/wave.svg'
 import Link from 'next/link'
 
 const FreeOfCost = (props) => {
-    console.log(props);
     let designsData = [
         {
             "designIcon": "designIcon1.svg",
@@ -40,6 +39,8 @@ const FreeOfCost = (props) => {
             designTitle: "Wireframe Design",
         },
     ]
+
+
     return (
         <>
             <section className='sec_spacing relative'>
@@ -56,7 +57,7 @@ const FreeOfCost = (props) => {
                                             data?.subcategories.map((item, index) => {
                                                 return (
                                                     <Fragment key={item.id}>
-                                                        <Link href='/productPage' className='small_card flex items-center gap-[10px] p-[10px] border-[1px]  bg-white border-divider-main transition-300 md:gap-5 '>
+                                                        <Link href={`/productPage?category=${data.category}&subcategory=${item.subCategory}`} className='small_card flex items-center gap-[10px] p-[10px] border-[1px]  bg-white border-divider-main transition-300 md:gap-5 '>
                                                             <svg className="small_card_icon p-[5px] transition-300 md:w-[65px] md:h-[65px] md:p-[13px] bg-icon-bg" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M15.6458 1H3.77074C2.24288 1 1 2.24288 1 3.77074V10.8958C1 12.4239 2.24288 13.6668 3.77074 13.6668H15.6458C17.1739 13.6668 18.4168 12.4239 18.4168 10.8958V3.77074C18.4168 2.24288 17.1739 1 15.6458 1Z" fill="#5D5775" />
                                                                 <path d="M15.6458 16.834H3.77074C2.24288 16.834 1 18.0769 1 19.605V36.23C1 37.7579 2.24288 39.0008 3.77074 39.0008H15.6458C17.1739 39.0008 18.4168 37.7579 18.4168 36.23V19.605C18.4168 18.0769 17.1739 16.834 15.6458 16.834Z" fill="#CE99F7" />
@@ -65,7 +66,7 @@ const FreeOfCost = (props) => {
                                                             </svg>
                                                             <p className='medium-heading text-xs md:text-base'>{item.subCategory}</p>
                                                         </Link>
-                                                    </Fragment>
+                                                    </Fragment> 
                                                 )
                                             })
                                         }

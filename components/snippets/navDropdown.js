@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 const NavDropdown = (props) => {
-console.log(props,"navDropdown===")
   const router = useRouter()
   const [tabContent, setTabContent] = useState(0);
   let updateTabs = (id) => {
@@ -25,7 +24,6 @@ console.log(props,"navDropdown===")
                     updateTabs(ind);
                     // router.push('/productPage');
                     router.push(`/productPage?category=${props.category.category}&subcategory=${elem.subCategory}`);
-                    console.log(props.category.category,"navDroppppp")
                     // window.location.href = '/productPage?category='+props.category.category+'&subcategory='+elem.subCategory;
                   }}>{elem.subCategory}</button>
                 </Fragment>
