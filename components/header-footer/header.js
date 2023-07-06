@@ -14,6 +14,7 @@ import downArrowSearch from 'public/icons/downArrowSearch.svg'
 import searchCloseIcon from 'public/icons/searchCloseIcon.svg'
 import NavDropdown from '../snippets/navDropdown'
 import NavDropdownMob from '../snippets/navDropdownMob'
+import { date } from 'yup';
 
 
 
@@ -24,6 +25,11 @@ const Header = (props) => {
     const [isShown, setIsShown] = useState(0);
     const [text, setText] = useState('All Product');
     const { data: session } = useSession()
+    const [query, setQuery] = useState("");
+    const [data, setData] = useState([]);
+    const [serchedData, setSerchedData] = useState();
+
+    const keys = ["name"];
 
     const dropdown = useRef(null);
 
@@ -48,7 +54,25 @@ const Header = (props) => {
         toggle === true ? setToggle(false) : setToggle(true)
     }
 
-    const searchDropdown = ["All Products", "Sports","Insurance","Education","Entertainment","Real Estate","Retail","Technology"]
+    console.log(query, "what is inside query")
+
+    useEffect(() => {
+        console.log(props?.allProductList, "==dkdjkj");
+        setData(props?.allProductList);
+        if (query.length > 1) {
+            search()
+        }else{
+            setSerchedData([])
+        }
+    }, [query]);
+    
+    function search() {
+        let returnitem = data.filter((item) => { return item.name.toLowerCase().includes(query) })
+        setSerchedData(returnitem);
+    }
+
+
+    const searchDropdown = ["All Products", "Sports", "Insurance", "Education", "Entertainment", "Real Estate", "Retail", "Technology"]
     return (
         <>
             <header className='py-[34px] border-b-[1px] border-divider-main relative z-50 bg-white'>
@@ -89,39 +113,57 @@ const Header = (props) => {
                         </div>
                         <div className='flex items-center xmd:gap-7'>
                             {/* Search Bar Start*/}
+
                             <div className={`relative transition-300 `}>
                                 <Image src={searchIcon} width={18} height={18} alt="Search Icon" className='cursor-pointer' onClick={() => { setSearchBar(true) }} />
 
-                                <div className={`px-2 py-3  border-[1px] border-primary-400  absolute w-[315px] md:w-[380px] top-[50%]  translate-y-[-50%] bg-white duration-700 transition-all ${searchBar ? "left-[calc(100%-300px)] visible opacity-[1] md:left-[calc(100%-380px)]" : "left-[calc(100%+20px)] invisible opacity-0"}`}>
-                                    <div className='flex gap-[10px]'>
-                                        <div ref={dropdown} >
-                                            <button className='flex items-center cursor-pointer gap-2 px-[15px] py-[5px] bg-primary-700' onClick={() => { ToggleDropDown(true) }}>
-                                                <span className='small-info whitespace-nowrap'>{text}</span>
-                                                <Image src={downArrowSearch} width={10} height={5} alt="Down Arrow" className={`nav_down_arrow ${toggle && "rotate-180"}  `} />
-                                            </button>
-                                        </div>
-                                        <ul className={`py-[10px] absolute top-[50px] left-0 max-w-[170px] sm:max-w-[218px] w-full bg-white  transition-300 shadow-btnShadow-Dropdown visible  ${toggle ? "" : "opacity-0 invisible "}`}>
+                                <div className={`absolute w-[315px] md:w-[380px] top-[50%]  translate-y-[-50%] bg-white duration-700 transition-all ${searchBar ? "left-[calc(100%-300px)] visible opacity-[1] md:left-[calc(100%-380px)]" : "left-[calc(100%+20px)] invisible opacity-0"}`}>
+                                    <div className='px-2 py-3  border-[1px] border-primary-400'>
+                                        <div className='flex gap-[10px]'>
+                                            <div ref={dropdown} >
+                                                <button className='flex items-center cursor-pointer gap-2 px-[15px] py-[5px] bg-primary-700' onClick={() => { ToggleDropDown(true) }}>
+                                                    <span className='small-info whitespace-nowrap'>{text}</span>
+                                                    <Image src={downArrowSearch} width={10} height={5} alt="Down Arrow" className={`nav_down_arrow ${toggle && "rotate-180"}  `} />
+                                                </button>
+                                            </div>
+                                            <ul className={`py-[10px] absolute top-[50px] left-0 max-w-[170px] sm:max-w-[218px] w-full bg-white  transition-300 shadow-btnShadow-Dropdown visible  ${toggle ? "" : "opacity-0 invisible "}`}>
+                                           
                                             {
-                                                searchDropdown.map((elem, index) => {
-                                                    return (
-                                                        <Fragment key={elem.id}>
-                                                            <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300'
-                                                                onClick={() => {
-                                                                    setText(elem)
-                                                                }} >{elem}</li>
-                                                        </Fragment>
-                                                    )
-                                                })
-                                            }
-                                        </ul>
-                                        <span className='border-[1px] border-primary-400'></span>
-                                        <div className='flex'>
-                                            <input type='text' placeholder='Search all templates.... ' className='max-w-[200px] w-full pr-3 outline-none' />
-                                            <Image src={searchCloseIcon} width={20} height={20} alt="Searchclose button" className='cursor-pointer' onClick={() => { setSearchBar(false) }} />
+                                                console.log(props?.allProductList,"props bab===")}
+                                                {
+                                                    searchDropdown?.map((elem, index) => {
+                                                        return (
+                                                            <Fragment key={elem.id}>
+                                                                <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300'
+                                                                    onClick={() => {
+                                                                        setText(elem)
+                                                                    }} >{elem}</li>
+                                                            </Fragment>
+                                                        )
+                                                    })
+                                                }
+                                            </ul>
+                                            <span className='border-[1px] border-primary-400'></span>
+                                            <div className='flex'>
+                                                <input type='text' placeholder='Search all templates.... ' className='max-w-[200px] w-full pr-3 outline-none' onChange={(e) => setQuery(e.target.value.toLowerCase())} />
+                                                <Image src={searchCloseIcon} width={20} height={20} alt="Searchclose button" className='cursor-pointer' onClick={() => { setSearchBar(false) }} />
+                                            </div>
                                         </div>
                                     </div>
+                                    <ul className='fixed bg-white w-full shadow-md'>
+                                        {
+                                            serchedData?.map((searchItems,index) => {
+                                                return (
+                                                    <Fragment key={index}>
+                                                        <li className='' onClick={()=>{ setSerchedData([])}}> <Link href={`/product/${searchItems.id}`} className='block px-3 py-3 hover:bg-icon-bg'> {searchItems?.name} </Link></li>
+                                                    </Fragment>
+                                                )
+                                            })
+                                        }
+                                    </ul>
                                 </div>
                             </div>
+
                             {/* Search Bar End*/}
 
                             {/* Sign Up Button Start*/}

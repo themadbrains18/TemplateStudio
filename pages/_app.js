@@ -14,6 +14,8 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
   const [categoryList, setCategoryList] = useState([]);
   const [productList, setproductList] = useState([]);
   const [softwareList, setSoftwareList] = useState([]);
+  const [allProductList, setAllProductList] = useState([]);
+
 
 
   useEffect(() => {
@@ -48,9 +50,15 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
     let softwareTypeItem = softwareTypeList?.data?.data?.filter((data)=>{
     return data.categoryId == 1
     })
+
+    let AllProductList = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/product`, {
+      method: "GET"
+    }).then(response => response.json());
+
     setSoftwareList(softwareTypeItem);
     setCategoryList(categoryList?.data?.data);
     setproductList(productList?.data?.data?.slice(0, 4));
+    setAllProductList(productList?.data?.data);
   }
 
 
@@ -76,7 +84,7 @@ return (
           </>
           :
 
-          <Header categoryList={categoryList} productList={productList} />
+          <Header categoryList={categoryList} productList={productList} allProductList={allProductList} />
       }
       <Component {...pageProps} />
       {router.pathname == '/register' || router.pathname == '/login' || router.pathname == '/enterOtp' || router.pathname == '/resetPassword' || router.pathname == '/forgotPassword' ?
