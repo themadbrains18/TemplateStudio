@@ -402,3 +402,20 @@ html,body{
     display: flex;
     visibility: visible;
 }
+
+
+
+.window {
+  @apply border-[10px] border-white rounded-[15px] p-[5px] cursor-pointer;  
+  /* box-shadow: 0px 20px 46px 2px #bcc6ff; */
+}
+
+
+.hero_img {
+  @apply w-full object-cover object-top h-[270px];
+  transition: 8s all ease;
+}
+
+.hero_img:hover {
+  @apply object-bottom;
+}

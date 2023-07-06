@@ -127,9 +127,6 @@ const Header = (props) => {
                                                 </button>
                                             </div>
                                             <ul className={`py-[10px] absolute top-[50px] left-0 max-w-[170px] sm:max-w-[218px] w-full bg-white  transition-300 shadow-btnShadow-Dropdown visible  ${toggle ? "" : "opacity-0 invisible "}`}>
-                                           
-                                            {
-                                                console.log(props?.allProductList,"props bab===")}
                                                 {
                                                     searchDropdown?.map((elem, index) => {
                                                         return (
