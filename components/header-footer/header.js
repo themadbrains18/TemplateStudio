@@ -19,6 +19,7 @@ import { date } from 'yup';
 
 
 const Header = (props) => {
+    console.log(props, "propppp")
     const [sideBar, setSideBar] = useState(false);
     const [searchBar, setSearchBar] = useState(false);
     const [toggle, setToggle] = useState(false);
@@ -27,6 +28,7 @@ const Header = (props) => {
     const { data: session } = useSession()
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
+
     const [serchedData, setSerchedData] = useState();
 
     const keys = ["name"];
@@ -59,20 +61,30 @@ const Header = (props) => {
     useEffect(() => {
         console.log(props?.allProductList, "==dkdjkj");
         setData(props?.allProductList);
+        console.log(text,"====text subcategory");
         if (query.length > 1) {
             search()
-        }else{
+        } else {
             setSerchedData([])
         }
-    }, [query]);
-    
+    }, [query,text]);
+
     function search() {
-        let returnitem = data.filter((item) => { return item.name.toLowerCase().includes(query) })
-        setSerchedData(returnitem);
+        
+        if(text==="All Product"){
+            let returnitem = data.filter((item) => { return item.name.toLowerCase().includes(query) })
+            setSerchedData(returnitem);
+        }
+        else{
+            let arr=[];
+            arr= data.filter((item) => { return item.templatesubcategories[0].subcategory.subCategory===text })
+            let returnitem = arr.filter((item) => { return item.name.toLowerCase().includes(query) })
+            setSerchedData(returnitem);
+        }
     }
 
 
-    const searchDropdown = ["All Products", "Sports", "Insurance", "Education", "Entertainment", "Real Estate", "Retail", "Technology"]
+    const searchDropdown = ["All Products", "Sports", "Insurance", "Education", "Entertainment", "Real Estate", "Retail", "Technology"];
     return (
         <>
             <header className='py-[34px] border-b-[1px] border-divider-main relative z-50 bg-white'>
@@ -128,17 +140,27 @@ const Header = (props) => {
                                             </div>
                                             <ul className={`py-[10px] absolute top-[50px] left-0 max-w-[170px] sm:max-w-[218px] w-full bg-white  transition-300 shadow-btnShadow-Dropdown visible  ${toggle ? "" : "opacity-0 invisible "}`}>
                                                 {
-                                                    searchDropdown?.map((elem, index) => {
+                                                    props?.categoryList?.map((data, index) => {
                                                         return (
-                                                            <Fragment key={elem.id}>
-                                                                <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300'
-                                                                    onClick={() => {
-                                                                        setText(elem)
-                                                                    }} >{elem}</li>
-                                                            </Fragment>
+                                                            <>
+                                                                {
+                                                                    data?.subcategories?.map((item, index) => {
+                                                                        return (
+                                                                            <Fragment key={item.id}>
+                                                                                <li className='main-info cursor-pointer py-2 px-[30px] mb-[10px] hover:bg-primary-800 border-l-2 border-transparent hover:border-l-2 hover:border-primary rounded-sm transition-300'
+                                                                                    onClick={() => {
+                                                                                        setText(item.subCategory)
+                                                                                    }} >{item.subCategory}</li>
+                                                                            </Fragment>
+                                                                        )
+                                                                    })
+                                                                }
+                                                            </>
                                                         )
+
                                                     })
                                                 }
+
                                             </ul>
                                             <span className='border-[1px] border-primary-400'></span>
                                             <div className='flex'>
@@ -149,10 +171,10 @@ const Header = (props) => {
                                     </div>
                                     <ul className='fixed bg-white w-full shadow-md'>
                                         {
-                                            serchedData?.map((searchItems,index) => {
+                                            serchedData?.map((searchItems, index) => {
                                                 return (
                                                     <Fragment key={index}>
-                                                        <li className='' onClick={()=>{ setSerchedData([])}}> <Link href={`/product/${searchItems.id}`} className='block px-3 py-3 hover:bg-icon-bg'> {searchItems?.name} </Link></li>
+                                                        <li className='' onClick={() => { setSerchedData([]) }}> <Link href={`/product/${searchItems.id}`} className='block px-3 py-3 hover:bg-icon-bg'> {searchItems?.name} </Link></li>
                                                     </Fragment>
                                                 )
                                             })

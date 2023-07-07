@@ -65,7 +65,7 @@ const AboutAuthor = ({ tabContent,productList }) => {
                 <div>
                     <div className='mb-5 flex justify-between'>
                         <h3 className='small-heading '>36 Projects</h3>
-                        <Link href="/" className='flex gap-2 font-semibold text-[14px] text-primary items-center'> View All Products  <Image src={rightArrow} alt='icon' width="auto" height="auto" /></Link>
+                        <Link href="/productPage" className='flex gap-2 font-semibold text-[14px] text-primary items-center'> View All Products  <Image src={rightArrow} alt='icon' width="auto" height="auto" /></Link>
                     </div>
                     <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 place-items-center'>
                         {

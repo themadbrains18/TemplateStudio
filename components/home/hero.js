@@ -29,7 +29,7 @@ const Hero = () => {
   // the video when the mouse is out the video */
   // clip.addEventListener("mouseout", function (e) {
   //     clip.pause();
-  // })
+  // }) 
   // })
 
   return (
@@ -51,12 +51,10 @@ const Hero = () => {
               </div>
             </div>
 
-
             <div className='mt-10 relative hero_part before:h-[320px] before:-top-7 before:-z-10 after:-z-20 after:top-[-10%] md:mt-0 md:before:w-[230px] md:before:h-[400px] md:before:top-[-80%] md:before:-z-20 xl:before:top-[-55%] xl:before:h-[587px]'>
               <div class="window md:max-w-[470px] w-full md:my-0 md:mr-0 ml-auto">
                 <Image src={heroImg} width={470} height={324} alt="Image Error" className='hero_img ' />
               </div>
-
 
               <div className='flex gap-2 items-center mt-5 justify-center'>
                 <span className='max-w-[129px] w-full h-[1px] bg-black mr-[-65px] sm:mr-0' ></span>
