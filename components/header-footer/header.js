@@ -19,7 +19,6 @@ import { date } from 'yup';
 
 
 const Header = (props) => {
-    console.log(props, "propppp")
     const [sideBar, setSideBar] = useState(false);
     const [searchBar, setSearchBar] = useState(false);
     const [toggle, setToggle] = useState(false);
@@ -56,12 +55,9 @@ const Header = (props) => {
         toggle === true ? setToggle(false) : setToggle(true)
     }
 
-    console.log(query, "what is inside query")
 
     useEffect(() => {
-        console.log(props?.allProductList, "==dkdjkj");
         setData(props?.allProductList);
-        console.log(text,"====text subcategory");
         if (query.length > 1) {
             search()
         } else {
@@ -70,7 +66,6 @@ const Header = (props) => {
     }, [query,text]);
 
     function search() {
-        
         if(text==="All Product"){
             let returnitem = data.filter((item) => { return item.name.toLowerCase().includes(query) })
             setSerchedData(returnitem);
@@ -83,8 +78,6 @@ const Header = (props) => {
         }
     }
 
-
-    const searchDropdown = ["All Products", "Sports", "Insurance", "Education", "Entertainment", "Real Estate", "Retail", "Technology"];
     return (
         <>
             <header className='py-[34px] border-b-[1px] border-divider-main relative z-50 bg-white'>

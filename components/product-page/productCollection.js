@@ -33,8 +33,12 @@ const ProductCollection = (props) => {
 
     const [tempFilterProductList, setTempFilterProductList] = useState([]);
     const [tagremove, setTagremove] = useState(false);
-   const [loadMore, setLoadMore] = useState(12);
+    const [loadMore, setLoadMore] = useState(12);
 
+    const [checkedFilterItem, setCheckedFilterItem] = useState([]);
+
+
+    
 
     // const uncheckingBox = () =>{
     //     setTagremove()
@@ -116,6 +120,7 @@ const ProductCollection = (props) => {
     }
 
     const filterCollectionTemplate = (type, item) => {
+        console.log(type, item, "Type meh kya hai")
         let data = [];
         let industryData = [];
         let priceRangeData = [];
@@ -147,6 +152,8 @@ const ProductCollection = (props) => {
             uniqueArr = filterdata;
         }
 
+
+
         setFilterProduct(uniqueArr);
         if (uniqueArr.length === 0 && (soft === undefined || soft.length === 0) && (indust === undefined || indust.length === 0) && (prange === undefined || prange.length === 0)) {
             setFilterProduct(props?.productList);
@@ -155,7 +162,7 @@ const ProductCollection = (props) => {
 
     const filterByPriceRange = (type, item) => {
         let data = [];
-        
+
         prange = [...priceRangeType];
 
 
@@ -164,10 +171,14 @@ const ProductCollection = (props) => {
         if (exist.length > 0) {
             setPriceRangeType(priceRangeType.filter(e => e !== item));
             prange = prange.filter(e => e !== item);
+
+            let removedItem = checkedFilterItem.filter(e => e !== item);
+            setCheckedFilterItem(removedItem);
         }
         else {
             setPriceRangeType(oldArray => [...oldArray, item]);
             prange.push(item)
+            setCheckedFilterItem([...checkedFilterItem, item]);
         }
 
         if (prange.length > 0) {
@@ -175,11 +186,11 @@ const ProductCollection = (props) => {
                 tempFilterProductList.filter((a) => {
                     if (a.price !== null) {
                         let record = prange.filter((e) => {
-                            
+
                             e > a.price >= e.split(' - ')[0] || e.split(' - ')[1] <= a.price
                         }
-                            
-                            )
+
+                        )
                         if (record.length > 0) {
                             data.push(a);
                         }
@@ -190,11 +201,11 @@ const ProductCollection = (props) => {
                 props?.productList.filter((a) => {
                     if (a.price !== null) {
                         prange.filter(e => {
-                        console.log(e,"===e.rangelist");
-                        if(e=="Freebies"){
-                            console.log(e,"==hiii");
-                            e='0  - 00'
-                        }
+                            console.log(e, "===e.rangelist");
+                            if (e == "Freebies") {
+                                console.log(e, "==hiii");
+                                e = '0  - 00'
+                            }
                             if (a.price >= e.split(' - ')[0] && a.price <= e.split(' - ')[1]) {
                                 data.push(a);
                             }
@@ -229,10 +240,16 @@ const ProductCollection = (props) => {
             if (exist.length > 0) {
                 setSoftwareType(softwareType.filter(e => e !== item));
                 soft = soft.filter(e => e !== item);
+
+
+                let removedItem = checkedFilterItem.filter(e => e !== item);
+                setCheckedFilterItem(removedItem);
             }
             else {
                 setSoftwareType(oldArray => [...oldArray, item]);
                 soft.push(item)
+                setCheckedFilterItem([...checkedFilterItem, item]);
+
             }
         }
 
@@ -284,10 +301,13 @@ const ProductCollection = (props) => {
             if (exist.length > 0) {
                 setIndustryType(industryType.filter(e => e !== item));
                 indust = indust.filter(e => e !== item);
+                let removedItem = checkedFilterItem.filter(e => e !== item);
+                setCheckedFilterItem(removedItem);
             }
             else {
                 setIndustryType(oldArray => [...oldArray, item]);
                 indust.push(item)
+                setCheckedFilterItem([...checkedFilterItem, item]);
             }
         }
 
@@ -368,7 +388,7 @@ const ProductCollection = (props) => {
                                 {filterOption.map((item, index) => {
                                     return (
                                         <Fragment key={index}>
-                                            <FilterCheckBox data={item} filterCollectionTemplate={filterCollectionTemplate}/>
+                                            <FilterCheckBox data={item} filterCollectionTemplate={filterCollectionTemplate} checkedFilterItem={checkedFilterItem} />
                                         </Fragment>
                                     )
                                 })}
@@ -376,17 +396,49 @@ const ProductCollection = (props) => {
                             <div className='w-full'>
                                 <div className='flex justify-between pb-5 border-b border-divider-light flex-col-reverse items-end gap-[18px] xl:flex-row'>
                                     <ul className='flex gap-[10px] w-full overflow-x-auto'>
-                                        {router.query.subcategory !== undefined &&
+                                        {/*  {router.query.subcategory !== undefined &&
                                             <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{router.query.subcategory}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
                                         }
-                                        {softwareType.map((item) => {
-                                            return <li key={item} className={`${tagremove ? "hidden" : "flex"} gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap `}>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer'  /></li>
+                                    */}
+                                        {
+                                            priceRangeType?.map((item) => {
+                                                return <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' onClick={() => {
+                                                    let priceItem = priceRangeType.filter((pname) => {
+                                                        return pname !== item
+                                                    }
+                                                    )
+                                                    setPriceRangeType(priceItem);
+                                                    filterCollectionTemplate('Price Range', item);
+                                                }} /></li>
+                                            })
+                                        }
+                                        {softwareType?.map((item) => {
+                                            return <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' 
+                                            onClick={() => {
+                                                let softItem = softwareType.filter((sname) => {
+                                                    return sname !== item
+                                                }
+                                                )
+                                                setSoftwareType(softItem);
+                                                filterCollectionTemplate('Software Type', item);
+                                            }}
+                                            /></li>
                                         })}
-                                        {industryType.map((item) => {
-                                            return <li key={item} className={`${tagremove ? "hidden" : "flex"} gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap `}>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer'  /></li>
+                                        {industryType?.map((item) => {
+                                            return <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' 
+                                            onClick={() => {
+                                                let indItem = industryType.filter((Iname) => {
+                                                    return Iname !== item
+                                                }
+                                                )
+                                                setIndustryType(indItem);
+                                                filterCollectionTemplate('Industries', item);
+                                            }}
+
+                                            /></li>
                                         })}
 
-                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] rounded-sm h-8 whitespace-nowrap'>Clear all<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' onClick={()=>{ setTagremove(!tagremove)}}/></li>
+                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] rounded-sm h-8 whitespace-nowrap'>Clear all<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' onClick={() => { setTagremove(!tagremove) }} /></li>
                                     </ul>
                                     <div className='relative flex justify-between w-full items-center xl:w-auto whitespace-nowrap'>
                                         <div className='flex gap-[10px] xl:hidden' onClick={() => {
@@ -434,7 +486,7 @@ const ProductCollection = (props) => {
                                     <>
                                         <div className='grid grid-cols-1 gap-[20px] py-[30px] place-items-center md:grid-cols-2 md:gap-[25px] xl:grid-cols-3'>
                                             {
-                                                filterProduct.slice(0,loadMore).map((value, index) => {
+                                                filterProduct.slice(0, loadMore).map((value, index) => {
                                                     return (
                                                         <Fragment key={index}>
                                                             <TemplateCard items={value} />
@@ -444,7 +496,7 @@ const ProductCollection = (props) => {
                                             }
                                         </div>
                                         <div className='text-center mt-0 md:mt-[30px]'>
-                                            <button className='solid-white-btn shadow-btnShadow text-center' onClick={()=>{setLoadMore(loadMore+6)}} >Load More Products</button>
+                                            <button className='solid-white-btn shadow-btnShadow text-center' onClick={() => { setLoadMore(loadMore + 6) }} >Load More Products</button>
                                         </div>
                                     </>
                                 }

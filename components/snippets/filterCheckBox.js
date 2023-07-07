@@ -34,7 +34,6 @@ const FilterCheckBox = (props) => {
         props.filterCollectionTemplate(type,item);
     }
 
-
     return (
         <>
             {/* <button className={`medium-info px-5 pt-[6px] pb-[10px] bg-primary-800 ${tabContent === 1 ? "border-b-[2px] border-primary" : ""}`} onClick={() => updateTabs(1)}>Description</button> */}
@@ -46,10 +45,12 @@ const FilterCheckBox = (props) => {
                 </div>
                 <div className={`overflow-hidden transition-300 acc_ontent`}>
                     {props?.data && props?.data?.filterOption.map((item, index) => {
+                        var data = props.checkedFilterItem.includes(item);
                         return (
                             <div key={item.id} className='flex justify-between mb-[15px] relative'>
                                 <p className='main-info'>{item}</p>
-                                <input type='checkbox' className='checkbx' onClick={() => { filterCollection(props?.data?.filterTitle, item) }} />
+                                
+                                <input type='checkbox' className='checkbx' checked={data} onClick={() => { filterCollection(props?.data?.filterTitle, item) }} />
                                 <span className='checkmark'></span>
                             </div>
                         )
