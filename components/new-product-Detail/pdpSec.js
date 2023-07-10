@@ -1,12 +1,16 @@
 
 import React, { Fragment, useEffect, useState } from 'react'
 import Image from 'next/image'
-import useDownloader from "react-use-downloader";
 import pdpArrowRight from 'public/icons/pdpArrowRight.svg'
 import figmaIcon30 from 'public/icons/figmaIcon30.svg'
 import xdIcon30 from 'public/icons/xd--30.svg'
 import sketchIcon30 from 'public/icons/sketch-30.svg'
 import popupCloseBtn from 'public/icons/popupCloseBtn.svg'
+
+import warning from 'public/icons/warning.png'
+
+
+
 
 
 // import Swiper core and required modules
@@ -30,17 +34,25 @@ const PdpSec = ({ product }) => {
     const [pdpborder, setPdpborder] = useState(0);
     const [preview, setPreview] = useState(false);
     const [isShowMore, setIsShowMore] = useState(false);
+    const [mailPopup, setMailPopup] = useState(false);
+
+    const [popupCount, setPopupCount] = useState(0);
+
+    // const showPopup = () =>{
+    //     let cou
+    //     let countIncrement = popupCount+1
+    //     setPopupCount(countIncrement)
+
+    // }
+
+
 
     const toggleReadMoreLess = () => {
-      setIsShowMore(!isShowMore);
-      
+        setIsShowMore(!isShowMore);
+
     };
 
-    const { size, elapsed, percentage, download,
-        cancel, error, isInProgress } =
-    useDownloader();
-    const fileUrl = product?.file?.sourceFile;
-    const filename = "File.zip";
+    // ,  mailPopup === true ? setMailPopup(false) : setMailPopup(true)
 
     //Stop bg scrolling when preview popUp show
     useEffect(() => {
@@ -57,10 +69,9 @@ const PdpSec = ({ product }) => {
         })
     }, [])
 
-    
+
     return (
         <>
-
             <section className='py-[20px] bg-back-white'>
                 <div className='big_container'>
                     <div className='flex items-center gap-2 mb-5'>
@@ -116,7 +127,7 @@ const PdpSec = ({ product }) => {
                         <div className=''>
                             <div className='mb-5 xmd:mb-10 '>
                                 <h2 className="main-heading mb-[10px]  xmd:mb-5">{product?.name}</h2>
-                                <p className='main-info '>{isShowMore == true ? product?.description : product?.description.slice(0,50)}<span className='cursor-pointer font-semibold text-dark-text' onClick={toggleReadMoreLess}> {isShowMore ? "Read Less" : "...Read More"}</span></p>
+                                <p className='main-info '>{isShowMore == true ? product?.description : product?.description.slice(0, 50)}<span className='cursor-pointer font-semibold text-dark-text' onClick={toggleReadMoreLess}> {isShowMore ? "Read Less" : "...Read More"}</span></p>
                             </div>
                             <div>
                                 {
@@ -140,7 +151,6 @@ const PdpSec = ({ product }) => {
                                     })
                                 }
                             </div>
-
                             <div className='p-[10px] xmd:p-5 bg-primary-800 border border-divider-main flex justify-between items-center mb-[30px]'>
                                 <span className='font-open-sans font-semibold text-white text-sm bg-primary py-[2px] px-[11px]'>{product?.price == null || product?.price == undefined || product?.price == "0" ? 'FREE' : 'PAID'}</span>
                                 <div className='flex gap-5 items-center'>
@@ -148,14 +158,12 @@ const PdpSec = ({ product }) => {
                                     <span className='font-open-sans font-bold text-[20px] text-light-text'>{`${product?.price == null || product?.price == undefined ? "$0.00" : `$${product?.price.toFixed(2)}`}`}</span>
                                 </div>
                             </div>
-                            <button className='solid-btn w-full !py-[13px] text-[18px] mb-5' onClick={() => download(fileUrl, filename)}>{product?.price == null || product?.price == undefined ? 'Free —' : ''} Download</button>
+                            <button className='solid-btn w-full !py-[13px] text-[18px] mb-5' onClick={() => { setPopupCount(popupCount + 1), setMailPopup(true) }} >{product?.price == null || product?.price == undefined ? 'Free —' : ''} Download</button>
                             <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" className='preview_btn solid-white-btn w-full !py-[13px] text-[18px] border border-primary-100' onClick={() => preview === true ? setPreview(false) : setPreview(true)}>Preview</button>
-
                         </div>
                     </div>
                 </div>
             </section>
-
 
             <div id="defaultModal" tabIndex="-1" aria-hidden="true" className={`fixed bg-gray-600 bg-opacity-80 top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full ${preview == true ? "justify-center items-center flex" : "hidden "}`}>
                 <div className="preview_popup relative w-full max-w-2xl max-h-full">
@@ -194,9 +202,49 @@ const PdpSec = ({ product }) => {
                     </div>
                 </div>
             </div>
-          
+            {
+                popupCount <= 2 ?
+                    <div id="defaultModal" tabIndex="-1" aria-hidden="true" className={`fixed bg-gray-600 bg-opacity-80 top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full ${mailPopup == true ? "justify-center items-center flex" : "hidden "}`}>
+                        <div className="preview_popup relative w-full max-w-lg max-h-full">
+                            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
 
+                                    <button type="button" className="preview_close_btn text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal" onClick={(e) => { setMailPopup(false) }} >
+                                        <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                                        <span className="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <form className='text-center p-8'>
+                                    <h4 className='mb-4 small-heading'>ENTER E-MAIL NOW FOR YOUR FREE DOWNLOAD</h4>
+                                    <p className='medium-info max-w-[350px] w-full mx-auto mb-4'>And we'll send you DOWNLOAD LINK in your email !</p>
+                                    <input type="email" placeholder="Enter your email" class="max-w-[350px] w-full border-[1px] mb-4 border-primary pt-[6px] pb-2 px-[10px] outline-none lg:pt-[9px] lg:pb-[9px]" />
+                                    <button class=" block text-center solid-btn text-sm mx-auto">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div> :
+                    <div id="defaultModal" tabIndex="-1" aria-hidden="true" className={`fixed bg-gray-600 bg-opacity-80 top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100%] max-h-full ${mailPopup == true ? "justify-center items-center flex" : "hidden "}`}>
+                        <div className="preview_popup relative w-full max-w-lg max-h-full">
+                            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
 
+                                    <button type="button" className="preview_close_btn text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal" onClick={(e) => { setMailPopup(false) }} >
+                                        <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                                        <span className="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <form className='text-center p-8'>
+                                    <div className='flex items-center gap-2 mb-4 text-center justify-center'>
+                                        <Image src={warning} alt='warning' width={30} height={30} className='w-7 h-7' />
+                                        <h4 className=' small-heading'>Download limit exceed </h4>
+                                    </div>
+                                    <p className='medium-info max-w-[350px] w-full mx-auto  mb-4'>Signup required !</p>
+                                    <Link href="/register" class=" block text-center solid-btn text-sm mx-auto ">Signup Now</Link>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            }
         </>
     )
 }

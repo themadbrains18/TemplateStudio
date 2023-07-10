@@ -53,7 +53,6 @@ const Footer = (props) => {
                   )
                 })
               }
-
             </ul>
             <ul className='md:max-w-[370px] -mt-[60px] sm:mt-0'>
               <li className='footer-title mb-[15px]'>Join Our Newsletter</li>
