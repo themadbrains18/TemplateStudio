@@ -32,18 +32,15 @@ const ProductCollection = (props) => {
     const [priceRangeType, setPriceRangeType] = useState([]);
 
     const [tempFilterProductList, setTempFilterProductList] = useState([]);
-    const [tagremove, setTagremove] = useState(false);
+
     const [loadMore, setLoadMore] = useState(12);
 
     const [checkedFilterItem, setCheckedFilterItem] = useState([]);
 
 
-    
+    console.log(router?.query.subcategory, "locationnnn")
 
-    // const uncheckingBox = () =>{
-    //     setTagremove()
-    // }
-    // setTagremove 
+
 
     let updateTab = (ind) => {
         setTab(ind)
@@ -120,7 +117,7 @@ const ProductCollection = (props) => {
     }
 
     const filterCollectionTemplate = (type, item) => {
-        console.log(type, item, "Type meh kya hai")
+
         let data = [];
         let industryData = [];
         let priceRangeData = [];
@@ -150,8 +147,8 @@ const ProductCollection = (props) => {
                 }
             });
             uniqueArr = filterdata;
-        }
 
+        }
 
 
         setFilterProduct(uniqueArr);
@@ -354,6 +351,7 @@ const ProductCollection = (props) => {
 
     return (
         <>
+
             <section className=''>
                 <div className='big_container'>
                     <div className='bg-white flex py-5 gap-[30px] flex-col md:flex-row md:pt-[45px] md:pb-[42px] '>
@@ -363,7 +361,7 @@ const ProductCollection = (props) => {
                                 tabsTitleOption.map((elem, ind) => {
                                     return (
                                         <Fragment key={ind}>
-                                            <button className={`large-info whitespace-nowrap border-b-[2px] border-transparent ${tab === ind ? "!border-primary" : ""}`} onClick={() => {
+                                            <button className={`large-info whitespace-nowrap border-b-[2px] border-transparent ${router?.query.subcategory == elem.subcategory ? "!border-primary" : ""}`} onClick={() => {
                                                 updateTab(ind);
                                                 router.push(`/productPage?category=${elem.category}&subcategory=${elem.subcategory}`)
                                             }}>{elem.subcategory}</button>
@@ -396,10 +394,6 @@ const ProductCollection = (props) => {
                             <div className='w-full'>
                                 <div className='flex justify-between pb-5 border-b border-divider-light flex-col-reverse items-end gap-[18px] xl:flex-row'>
                                     <ul className='flex gap-[10px] w-full overflow-x-auto'>
-                                        {/*  {router.query.subcategory !== undefined &&
-                                            <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{router.query.subcategory}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' /></li>
-                                        }
-                                    */}
                                         {
                                             priceRangeType?.map((item) => {
                                                 return <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' onClick={() => {
@@ -413,32 +407,33 @@ const ProductCollection = (props) => {
                                             })
                                         }
                                         {softwareType?.map((item) => {
-                                            return <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' 
-                                            onClick={() => {
-                                                let softItem = softwareType.filter((sname) => {
-                                                    return sname !== item
-                                                }
-                                                )
-                                                setSoftwareType(softItem);
-                                                filterCollectionTemplate('Software Type', item);
-                                            }}
+                                            return <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer'
+                                                onClick={() => {
+                                                    let softItem = softwareType.filter((sname) => {
+                                                        return sname !== item
+                                                    }
+                                                    )
+                                                    setSoftwareType(softItem);
+                                                    filterCollectionTemplate('Software Type', item);
+                                                }}
                                             /></li>
                                         })}
                                         {industryType?.map((item) => {
-                                            return <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' 
-                                            onClick={() => {
-                                                let indItem = industryType.filter((Iname) => {
-                                                    return Iname !== item
-                                                }
-                                                )
-                                                setIndustryType(indItem);
-                                                filterCollectionTemplate('Industries', item);
-                                            }}
+                                            return <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] bg-primary-700 rounded-sm h-8 whitespace-nowrap '>{item}<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer'
+                                                onClick={() => {
+                                                    let indItem = industryType.filter((Iname) => {
+                                                        return Iname !== item
+                                                    }
+                                                    )
+                                                    setIndustryType(indItem);
+                                                    filterCollectionTemplate('Industries', item);
+                                                }}
 
                                             /></li>
                                         })}
 
-                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] rounded-sm h-8 whitespace-nowrap'>Clear all<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' onClick={() => { setTagremove(!tagremove) }} /></li>
+                                        <li className='flex gap-[10px] items-center small-info px-[14px] py-[6px] rounded-sm h-8 whitespace-nowrap'>Clear all<Image src={filterCrossBtn} width={10} height={10} alt="Icon" className='cursor-pointer' onClick={() => { setPriceRangeType([]); setSoftwareType([]); setIndustryType([]); setCheckedFilterItem([]);
+                                        }} /></li>
                                     </ul>
                                     <div className='relative flex justify-between w-full items-center xl:w-auto whitespace-nowrap'>
                                         <div className='flex gap-[10px] xl:hidden' onClick={() => {
