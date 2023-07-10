@@ -26,19 +26,16 @@ const Footer = (props) => {
               <Link href="/"><Image src={instagram} width={30} height={30} alt='img error'></Image></Link>
             </div>
           </div>
-
           <div className='flex gap-[80px] flex-wrap sm:flex-nowrap md:gap-10 md:justify-between xmd:gap-[68px]'>
             <ul>
               <li className='footer-title mb-10'>Design</li>
               {
-
-                props.softwareList.map((item, index) => {
-                 
+                props?.categoryList[0]?.subcategories?.map((item, index) => {
                   return (
                     <Fragment key={index}>
                       <li className=''>
-                        <Link href={'/productPage?category=software&subcategory='+item?.softwareType} className='footer-info mb-[26px] pseudo-text-effect' data-after={`${item?.softwareType}`}><span onClick={() => {
-                        }}>{item?.softwareType}</span></Link>
+                        <Link href={'/productPage?category=UI Template&subcategory=' + item?.subCategory} className='footer-info mb-[26px] pseudo-text-effect' data-after={`${item?.subCategory}`}><span onClick={() => {
+                        }}>{item?.subCategory}</span></Link>
                       </li>
                     </Fragment>
                   )
@@ -51,7 +48,7 @@ const Footer = (props) => {
                 props?.categoryList[1]?.subcategories.map((item, index) => {
                   return (
                     <Fragment key={index}>
-                      <li className=''><Link href={'/productPage?category=HTML Template&subcategory='+item?.subCategory} className='footer-info mb-[26px] pseudo-text-effect' data-after={`${item?.subCategory}`}><span>{item?.subCategory}</span> </Link></li>
+                      <li className=''><Link href={'/productPage?category=HTML Template&subcategory=' + item?.subCategory} className='footer-info mb-[26px] pseudo-text-effect' data-after={`${item?.subCategory}`}><span>{item?.subCategory}</span> </Link></li>
                     </Fragment>
                   )
                 })
