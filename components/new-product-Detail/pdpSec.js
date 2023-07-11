@@ -35,24 +35,13 @@ const PdpSec = ({ product }) => {
     const [preview, setPreview] = useState(false);
     const [isShowMore, setIsShowMore] = useState(false);
     const [mailPopup, setMailPopup] = useState(false);
-
     const [popupCount, setPopupCount] = useState(0);
-
-    // const showPopup = () =>{
-    //     let cou
-    //     let countIncrement = popupCount+1
-    //     setPopupCount(countIncrement)
-
-    // }
-
 
 
     const toggleReadMoreLess = () => {
         setIsShowMore(!isShowMore);
 
     };
-
-    // ,  mailPopup === true ? setMailPopup(false) : setMailPopup(true)
 
     //Stop bg scrolling when preview popUp show
     useEffect(() => {
